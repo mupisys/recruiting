@@ -124,8 +124,6 @@ Os seguintes elementos serão considerados **pontos extras** na avaliação:
 - 🗑️ **Exclusão com confirmação dinâmica** - Modal de confirmação antes de apagar, com feedback visual
 - 🔄 **Marcar como lida sem reload** - Alternar status de mensagem usando HTMX
 - 🔍 **Busca e filtros avançados** - Sistema de busca por texto, filtros por data ou status com HTMX
-- 📊 **Dashboard com estatísticas** - Quantidade de mensagens lidas/não lidas, gráficos dinâmicos
-
 ---
 
 ## 💡 Diretrizes Criativas
