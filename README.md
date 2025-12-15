@@ -51,7 +51,7 @@ Inclua um arquivo `README.md` com:
 | **Model** | Mensagem com campos: `nome`, `email`, `mensagem`, `data_envio`, `lido` (boolean) |
 | **Autenticação** | Sistema de autenticação para área administrativa |
 | **CRUD de Mensagens** | Admin deve poder visualizar, editar e apagar mensagens |
-| **API/Endpoint** | Endpoint para receber mensagens do formulário |
+| **Views e URLs** | Views para processar o formulário e gerenciar mensagens com URLs configuradas |
 
 ### 🎨 Frontend
 
