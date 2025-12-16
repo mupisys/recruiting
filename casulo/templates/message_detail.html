@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% block title %}Detalhe{% endblock %}
+
 {% block content %}
-  <h1>Mensagem #{{ pk }}</h1>
-  <p>Detalhe (placeholder)</p>
+  <h1>Mensagem</h1>
+
+  <p><strong>Nome:</strong> {{ msg.nome }}</p>
+  <p><strong>Email:</strong> {{ msg.email }}</p>
+  <p><strong>Enviada em:</strong> {{ msg.data_envio }}</p>
+  <p><strong>Status:</strong> {% if msg.lido %}Lida{% else %}Não lida{% endif %}</p>
+
+  <hr />
+
+  <p>{{ msg.mensagem|linebreaks }}</p>
+
+  <p>
+    <a href="{% url 'messages_list' %}">Voltar</a> |
+    <a href="{% url 'message_edit' msg.pk %}">Editar</a> |
+    <a href="{% url 'message_delete_confirm' msg.pk %}">Excluir</a>
+  </p>
 {% endblock %}

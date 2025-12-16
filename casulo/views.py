@@ -1,9 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 
 from .forms import MensagemForm
+from .models import Mensagem
 
 def landpage(request):
     if request.method == "POST":
@@ -25,11 +26,19 @@ def logout_confirm(request):
 
 @login_required
 def messages_list(request):
-    return render(request, "messages_list.html")
+    mensagens = Mensagem.objects.all()
+    context = {"mensagens": mensagens}
+    return render(request, "messages_list.html", context)
 
 @login_required
 def message_detail(request, pk):
-    return render(request, "message_detail.html", {"pk": pk})
+    msg = get_object_or_404(Mensagem, pk=pk)
+    
+    if not msg.lido:
+        msg.lido = True
+        msg.save(update_fields=['lido'])
+        
+    return render(request, "message_detail.html", {"msg": msg})
 
 @login_required
 def message_edit(request, pk):

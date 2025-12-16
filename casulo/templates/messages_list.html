@@ -2,7 +2,29 @@
 {% block title %}Mensagens{% endblock %}
 {% block content %}
   <h1>Mensagens</h1>
-  <p>Listagem (placeholder)</p>
+
+  {% if mensagens %}
+    <ul>
+      {% for m in mensagens %}
+        <li>
+          <a href="{% url 'message_detail' m.pk %}">
+            {{ m.nome }} — {{ m.email }}
+          </a>
+
+          {% if m.lido %}
+            <span>(lida)</span>
+          {% else %}
+            <strong>(não lida)</strong>
+          {% endif %}
+
+          <small>— {{ m.data_envio }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhuma mensagem ainda.</p>
+  {% endif %}
+
   <form action="{% url 'logout_confirm' %}" method="get">
     <button type="submit">Sair</button>
   </form>
