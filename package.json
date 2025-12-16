@@ -1,0 +1,26 @@
+{
+  "name": "recruiting_mupi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tw:build": "npx @tailwindcss/cli -i ./static/css/input.css -o ./static/css/output.css",
+    "tw:watch": "npx @tailwindcss/cli -i ./static/css/input.css -o ./static/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GahCunha/recruiting_mupi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GahCunha/recruiting_mupi/issues"
+  },
+  "homepage": "https://github.com/GahCunha/recruiting_mupi#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
+}
