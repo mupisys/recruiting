@@ -7,9 +7,10 @@
 <p><strong>Nome:</strong> {{ msg.nome }}</p>
 <p><strong>Email:</strong> {{ msg.email }}</p>
 <p><strong>Enviada em:</strong> {{ msg.data_envio }}</p>
-<p>
-  <strong>Status:</strong> {% if msg.lido %}Lida{% else %}Não lida{% endif %}
-</p>
+
+<ul>
+  {% include "partials/message_row.html" with m=msg status="all" variant="detail" %}
+</ul>
 
 <hr />
 

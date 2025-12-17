@@ -54,10 +54,6 @@ def messages_list(request):
 @login_required
 def message_detail(request, pk):
     msg = get_object_or_404(Mensagem, pk=pk)
-    
-    if not msg.lido:
-        msg.lido = True
-        msg.save(update_fields=['lido'])
         
     return render(request, "message_detail.html", {"msg": msg})
 
@@ -86,17 +82,27 @@ def message_delete_confirm(request, pk):
     return render(request, "message_delete_confirm.html", {"msg": msg})
 
 @require_POST
+@require_POST
 @login_required
 def message_toggle_read(request, pk):
     m = get_object_or_404(Mensagem, pk=pk)
     m.lido = not m.lido
     m.save(update_fields=["lido"])
 
-    status = request.GET.get("status", "all")
+    is_htmx = request.headers.get("HX-Request") == "true"
+    if not is_htmx:
+        return redirect("messages_list")
+
+    status = request.GET.get("status") or "all"
+    variant = request.GET.get("variant") 
 
     if (status == "unread" and m.lido) or (status == "read" and not m.lido):
         resp = HttpResponse("")
         resp["HX-Reswap"] = "delete"
         return resp
 
-    return render(request, "partials/message_row.html", {"m": m, "status": status})
+    return render(
+        request,
+        "partials/message_row.html",
+        {"m": m, "status": status, "variant": variant},
+    )

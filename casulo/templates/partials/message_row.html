@@ -1,21 +1,31 @@
 <li id="msg-{{ m.pk }}">
-  <a href="{% url 'message_detail' m.pk %}">{{ m.nome }} — {{ m.email }}</a>
+  {% if variant == "detail" %}
+    {% if m.lido %}<span>(lida)</span>{% else %}<strong>(não lida)</strong>{% endif %}
 
-  {% if m.lido %}
-    <span>(lida)</span>
+    <button
+      type="button"
+      hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}&variant=detail"
+      hx-target="#msg-{{ m.pk }}"
+      hx-swap="outerHTML"
+      hx-push-url="false"
+    >
+      {% if m.lido %}Marcar como não lida{% else %}Marcar como lida{% endif %}
+    </button>
   {% else %}
-    <strong>(não lida)</strong>
+    <a href="{% url 'message_detail' m.pk %}">{{ m.nome }} — {{ m.email }}</a>
+
+    {% if m.lido %}<span>(lida)</span>{% else %}<strong>(não lida)</strong>{% endif %}
+
+    <button
+      type="button"
+      hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}"
+      hx-target="#msg-{{ m.pk }}"
+      hx-swap="outerHTML"
+      hx-push-url="false"
+    >
+      Alternar lido
+    </button>
+
+    <small>— {{ m.data_envio }}</small>
   {% endif %}
-
-  <button
-    type="button"
-    hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}"
-    hx-target="#msg-{{ m.pk }}"
-    hx-swap="outerHTML"
-    hx-push-url="false"
-  >
-    Alternar lido
-  </button>
-
-  <small>— {{ m.data_envio }}</small>
 </li>
