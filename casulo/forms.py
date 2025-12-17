@@ -10,3 +10,8 @@ class MensagemForm(forms.ModelForm):
             "email": forms.EmailInput(attrs={"placeholder": "Seu e-mail"}),
             "mensagem": forms.Textarea(attrs={"placeholder": "Sua mensagem"}),
         }
+
+class MensagemEditForm(forms.ModelForm):
+    class Meta:
+        model = Mensagem
+        fields = ["nome", "email", "mensagem", "lido"]

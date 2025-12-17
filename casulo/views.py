@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.db.models import Q
 
-from .forms import MensagemForm
+from .forms import MensagemForm , MensagemEditForm
 from .models import Mensagem
 
 def landpage(request):
@@ -66,12 +66,12 @@ def message_edit(request, pk):
     msg = get_object_or_404(Mensagem, pk=pk)
 
     if request.method == "POST":
-        form = MensagemForm(request.POST, instance=msg)
+        form = MensagemEditForm(request.POST, instance=msg)
         if form.is_valid():
             form.save()
             return redirect("message_detail", pk=msg.pk)
     else:
-        form = MensagemForm(instance=msg)
+        form = MensagemEditForm(instance=msg)
 
     return render(request, "message_edit.html", {"form": form, "msg": msg})
 
