@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponse
-from django.template.loader import render_to_string
+from django.db.models import Q
 
 from .forms import MensagemForm
 from .models import Mensagem
@@ -32,14 +32,19 @@ def logout_confirm(request):
 @login_required
 def messages_list(request):
     status = request.GET.get("status", "all")
+    q = (request.GET.get("q") or "").strip()
 
     qs = Mensagem.objects.all()
+
     if status == "unread":
         qs = qs.filter(lido=False)
     elif status == "read":
         qs = qs.filter(lido=True)
 
-    context = {"mensagens": qs, "status": status}
+    if q:
+        qs = qs.filter(Q(nome__icontains=q) | Q(email__icontains=q))
+
+    context = {"mensagens": qs, "status": status, "q": q}
 
     if request.headers.get("HX-Request") == "true":
         return render(request, "partials/messages_ul.html", context)
