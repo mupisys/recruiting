@@ -1,36 +1,43 @@
 {% extends "base.html" %}
-{% block title %}Mensagens{% endblock %}
-{% block content %}
-  <h1>Mensagens</h1>
+ {% block title %}Mensagens{% endblock %} 
+ {% block content %}
+<h1>Mensagens</h1>
 
-  {% if mensagens %}
-    <ul>
-      {% for m in mensagens %}
-        <li>
-          <a href="{% url 'message_detail' m.pk %}">
-            {{ m.nome }} — {{ m.email }}
-          </a>
+<div>
+  <button
+    type="button"
+    hx-get="{% url 'messages_list' %}?status=all"
+    hx-target="#messages-container"
+    hx-push-url="true"
+  >
+    Todas
+  </button>
 
-          {% include "partials/message_status.html" with m=m %}
+  <button
+    type="button"
+    hx-get="{% url 'messages_list' %}?status=unread"
+    hx-target="#messages-container"
+    hx-push-url="true"
+  >
+    Não lidas
+  </button>
 
-          <button
-            type="button"
-            hx-post="{% url 'message_toggle_read' m.pk %}"
-            hx-target="#status-{{ m.pk }}"
-            hx-swap="outerHTML"
-          >
-            Alternar lido
-          </button>
+  <button
+    type="button"
+    hx-get="{% url 'messages_list' %}?status=read"
+    hx-target="#messages-container"
+    hx-push-url="true"
+  >
+    Lidas
+  </button>
+</div>
 
-          <small>— {{ m.data_envio }}</small>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Nenhuma mensagem ainda.</p>
-  {% endif %}
+<div id="messages-container"
+>
+  {% include "partials/messages_ul.html" %}
+</div>
 
-  <form action="{% url 'logout_confirm' %}" method="get">
-    <button type="submit">Sair</button>
-  </form>
+<form action="{% url 'logout_confirm' %}" method="get">
+  <button type="submit">Sair</button>
+</form>
 {% endblock %}

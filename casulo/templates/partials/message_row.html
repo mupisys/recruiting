@@ -1,0 +1,21 @@
+<li id="msg-{{ m.pk }}">
+  <a href="{% url 'message_detail' m.pk %}">{{ m.nome }} — {{ m.email }}</a>
+
+  {% if m.lido %}
+    <span>(lida)</span>
+  {% else %}
+    <strong>(não lida)</strong>
+  {% endif %}
+
+  <button
+    type="button"
+    hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}"
+    hx-target="#msg-{{ m.pk }}"
+    hx-swap="outerHTML"
+    hx-push-url="false"
+  >
+    Alternar lido
+  </button>
+
+  <small>— {{ m.data_envio }}</small>
+</li>

@@ -1,0 +1,11 @@
+<div id="messages-list">
+  <ul id="messages-ul">
+    {% for m in mensagens %}
+      {% include "partials/message_row.html" with m=m status=status %}
+    {% endfor %}
+  </ul>
+
+  <p id="messages-empty" {% if mensagens %}hidden{% endif %}>
+    Nenhuma mensagem.
+  </p>
+</div>
