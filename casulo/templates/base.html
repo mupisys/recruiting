@@ -11,36 +11,256 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body x-data>
-    <nav>
-      <a href="{% url 'landpage' %}">Landpage</a>
-      <a href="{% url 'messages_list' %}">Painel</a>
-      <a href="{% url 'login' %}">Login</a>
+    <nav
+      x-data="{
+    open:false,
+    scrolled:false,
+    init(){
+      const onScroll = () => { this.scrolled = window.scrollY > 20 }
+      onScroll()
+      window.addEventListener('scroll', onScroll, { passive:true })
+    }
+  }"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      :class="scrolled
+    ? 'bg-card/75 backdrop-blur-md shadow-md border-b border-border'
+    : 'bg-transparent'"
+    >
+      <div class="mx-auto max-w-6xl px-4 lg:px-8">
+        <div class="flex h-20 items-center justify-between gap-3">
+          <!-- Logo -->
+          <a href="{% url 'landpage' %}" class="flex items-center gap-2">
+            <img
+              src="{% static 'images/LogoDinamico.gif' %}"
+              alt="Clínica Casulo"
+              class="h-12 w-auto lg:mb-4"
+            />
+          </a>
+
+          <!-- Desktop links -->
+          <div class="hidden items-center gap-8 lg:flex">
+            <a
+              href="#sobre"
+              class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >Sobre</a
+            >
+            <a
+              href="#servicos"
+              class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >Serviços</a
+            >
+            <a
+              href="#equipe"
+              class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >Equipe</a
+            >
+            <a
+              href="#espaco"
+              class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >Espaço</a
+            >
+            <a
+              href="#depoimentos"
+              class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >Depoimentos</a
+            >
+            <a
+              href="#contato"
+              class="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >Contato</a
+            >
+          </div>
+
+          <!-- Desktop CTA + auth -->
+          <div class="hidden items-center gap-4 lg:flex">
+            <a
+              href="#contato"
+              class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+            >
+              Agendar Consulta
+            </a>
+
+            {% if user.is_authenticated %}
+            <button
+              type="button"
+              class="rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition"
+              @click="$dispatch('confirm', {
+              title: 'Sair',
+              text: 'Tem certeza que deseja sair?',
+              action: '{% url 'logout_confirm' %}'
+            })"
+            >
+              Sair
+            </button>
+            {% else %}
+            <a
+              href="{% url 'login' %}"
+              class="rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition"
+            >
+              Entrar
+            </a>
+            {% endif %}
+          </div>
+
+          <!-- Mobile button -->
+          <button
+            type="button"
+            class="lg:hidden inline-flex items-center justify-center rounded-xl border bg-card/30 px-3 py-2 text-sm text-foreground hover:bg-card transition"
+            @click="open = !open"
+            @click.away="open = false"
+            :aria-expanded="open"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                x-show="!open"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+              <path
+                x-show="open"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden" x-show="open" x-transition>
+          <div
+            class="mb-3 rounded-2xl border border-border bg-card/95 p-3 shadow-md backdrop-blur"
+          >
+            <div class="flex flex-col gap-2">
+              <a
+                @click="open=false"
+                href="#sobre"
+                class="rounded-xl px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent transition"
+                >Sobre</a
+              >
+              <a
+                @click="open=false"
+                href="#servicos"
+                class="rounded-xl px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent transition"
+                >Serviços</a
+              >
+              <a
+                @click="open=false"
+                href="#equipe"
+                class="rounded-xl px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent transition"
+                >Equipe</a
+              >
+              <a
+                @click="open=false"
+                href="#espaco"
+                class="rounded-xl px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent transition"
+                >Espaço</a
+              >
+              <a
+                @click="open=false"
+                href="#depoimentos"
+                class="rounded-xl px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent transition"
+                >Depoimentos</a
+              >
+              <a
+                @click="open=false"
+                href="#contato"
+                class="rounded-xl px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent transition"
+                >Contato</a
+              >
+
+              <div class="my-2 border-t border-border"></div>
+
+              <a
+                @click="open=false"
+                href="#contato"
+                class="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+              >
+                Agendar Consulta
+              </a>
+
+              {% if user.is_authenticated %}
+              <button
+                type="button"
+                class="mt-2 rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition"
+                @click="open=false; $dispatch('confirm', {
+                title: 'Sair',
+                text: 'Tem certeza que deseja sair?',
+                action: '{% url 'logout_confirm' %}'
+              })"
+              >
+                Sair
+              </button>
+              {% else %}
+              <a
+                @click="open=false"
+                href="{% url 'login' %}"
+                class="mt-2 rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition text-center"
+              >
+                Entrar
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
 
     {% block content %}{% endblock %}
     <div
       x-data="{ open:false, title:'', text:'', action:'#' }"
       x-on:confirm.window="
-        open = true;
-        title = $event.detail.title;
-        text = $event.detail.text;
-        action = $event.detail.action;
-      "
+    open = true;
+    title = $event.detail.title;
+    text = $event.detail.text;
+    action = $event.detail.action;
+  "
       x-show="open"
       x-cloak
-      class="fixed inset-0"
+      class="fixed inset-0 z-60"
     >
-      <div class="absolute inset-0" @click="open=false"></div>
+      <!-- overlay -->
+      <div
+        class="absolute inset-0 bg-card-foreground/50 backdrop-blur-sm"
+        @click="open=false"
+      ></div>
 
-      <div class="relative">
-        <h2 x-text="title"></h2>
-        <p x-text="text"></p>
+      <!-- modal -->
+      <div class="relative flex min-h-full items-center justify-center p-4">
+        <div class="w-full max-w-md rounded-2xl border bg-card shadow-xl">
+          <div class="px-5 py-4 border-b">
+            <h2
+              class="text-lg font-semibold text-foreground"
+              x-text="title"
+            ></h2>
+          </div>
 
-        <form method="post" :action="action">
-          {% csrf_token %}
-          <button type="submit">Confirmar</button>
-          <button type="button" @click="open=false">Cancelar</button>
-        </form>
+          <div class="px-5 py-4">
+            <p class="text-sm text-muted-foreground" x-text="text"></p>
+          </div>
+
+          <div
+            class="flex items-center justify-end gap-3 bg-muted/50 px-6 py-4"
+          >
+            <button type="button" class="btn btn-ghost" @click="open=false">
+              Cancelar
+            </button>
+
+            <form method="post" :action="action">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Confirmar</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
     <script defer src="{% static 'js/htmx-csrf.js' %}"></script>
