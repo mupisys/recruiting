@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="p-8 max-w-3xl mx-auto">
+    <h1 class="text-2xl font-bold mb-6">Editar Mensagem</h1>
+
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="nome"
+            value="{{ mensagem.nome }}"
+            class="w-full border rounded px-4 py-2"
+            required
+        >
+
+        <input
+            type="email"
+            name="email"
+            value="{{ mensagem.email }}"
+            class="w-full border rounded px-4 py-2"
+            required
+        >
+
+        <textarea
+            name="mensagem"
+            rows="4"
+            class="w-full border rounded px-4 py-2"
+            required
+        >{{ mensagem.mensagem }}</textarea>
+
+        <div class="flex gap-4">
+            <button
+                type="submit"
+                class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+            >
+                Salvar
+            </button>
+
+            <a href="{% url 'message_detail' mensagem.pk %}"
+               class="px-6 py-2 border rounded">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</section>
+{% endblock %}

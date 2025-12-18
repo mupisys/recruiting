@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Projeto{% endblock %}</title>
+
+    <!-- Django nao estava reconhecendo o css, tive que fazer assim -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <header>
+        <a href="{% url 'logout' %}" class="text-red-600 underline">
+            Logout
+        </a>
+
+    </header>
+    {% block content %}
+    {% endblock %}
+
+
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
+
+</body>
+</html>

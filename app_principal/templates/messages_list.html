@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Mensagens{% endblock %}
+
+{% block content %}
+<section class="p-8">
+    <h1 class="text-2xl font-bold mb-6">Mensagens recebidas</h1>
+
+    <table class="w-full bg-white rounded shadow">
+        <thead>
+            <tr class="border-b">
+                <th class="p-3 text-left">Nome</th>
+                <th class="p-3 text-left">Email</th>
+                <th class="p-3 text-left">Data</th>
+                <th class="p-3 text-left">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in mensagens %}
+            <!--isso transforma o nome em link -->
+            <tr class="border-b hover:bg-gray-50">
+                <td class="p-3">
+                    <a href="{% url 'message_detail' msg.id %}" class="text-blue-600 underline">
+                        {{ msg.nome }}
+                    </a>
+                </td>
+
+                <td class="p-3">{{ msg.email }}</td>
+                <td class="p-3">{{ msg.data_envio|date:"d/m/Y H:i" }}</td>
+                <td class="p-3">
+                    {% if msg.lido %}
+                        <span class="text-green-600">Lida</span>
+                    {% else %}
+                        <span class="text-red-600">Não lida</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="p-4 text-center text-gray-500">
+                    Nenhuma mensagem recebida.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

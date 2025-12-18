@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block content %}
+<section class="min-h-screen flex items-center justify-center">
+    <div class="max-w-2xl w-full bg-white p-8 rounded-xl shadow">
+        <h1 class="text-3xl font-bold mb-4 text-center">
+            Entre em contato conosco
+        </h1>
+        <p class="text-center text-gray-600 mb-6">
+            Preencha o formulário e retornaremos em breve.
+        </p>
+
+
+        <div id="form-container">
+            <form 
+                hx-post="."
+                hx-target="#form-container"
+                hx-swap="outerHTML"
+                method="post"
+                class="space-y-4"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="nome"
+                    placeholder="Seu nome"
+                    class="w-full border rounded px-4 py-2"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Seu email"
+                    class="w-full border rounded px-4 py-2"
+                    required
+                >
+
+                <textarea
+                    name="mensagem"
+                    placeholder="Sua mensagem"
+                    class="w-full border rounded px-4 py-2"
+                    rows="4"
+                    required
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                >
+                    Enviar mensagem
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="p-8 max-w-xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">
+        Confirmar logout
+    </h1>
+
+    <p class="mb-6">
+        Tem certeza que deseja sair da área administrativa?
+    </p>
+
+    <form method="post" class="flex gap-4">
+        {% csrf_token %}
+
+        <button
+            type="submit"
+            class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition"
+        >
+            Sim, sair
+        </button>
+
+        <a href="{% url 'messages_list' %}"
+           class="px-6 py-2 border rounded">
+            Cancelar
+        </a>
+    </form>
+</section>
+{% endblock %}

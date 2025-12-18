@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="p-8 max-w-3xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Mensagem</h1>
+
+    <div class="border rounded p-4 space-y-2">
+        <p><strong>Nome:</strong> {{ mensagem.nome }}</p>
+        <p><strong>Email:</strong> {{ mensagem.email }}</p>
+        <p><strong>Mensagem:</strong></p>
+        <p class="border p-3 rounded bg-gray-50">
+            {{ mensagem.mensagem }}
+        </p>
+    </div>
+
+    <p class="mt-4">
+        <strong>Status:</strong>
+        {% if mensagem.lido %}
+            <span class="text-green-600">Lida</span>
+        {% else %}
+            <span class="text-red-600">Não lida</span>
+        {% endif %}
+    </p>
+
+    <a href="{% url 'messages_list' %}"
+       class="inline-block mt-6 text-blue-600 underline">
+        Voltar para lista
+    </a>
+
+    <a href="{% url 'message_edit' mensagem.pk %}"
+        class="inline-block mt-4 text-blue-600 underline">
+        Editar mensagem
+    </a>
+
+    <a href="{% url 'message_delete' mensagem.pk %}"
+        class="inline-block mt-2 text-red-600 underline">
+        Excluir mensagem
+    </a>
+
+</section>
+{% endblock %}
