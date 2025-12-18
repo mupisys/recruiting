@@ -1,8 +1,10 @@
-{% extends "base.html" %} {% load static %} {% block title %}Casulo{% endblock%}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Casulo{% endblock%}
 {% block content %}
-<section
-  class="relative pt-30 pb-20 lg:pt-40 lg:pb-32 bg-linear-to-br from-accent via-background to-accent/30"
->
+
+<!-- Hero Section -->
+<section class="relative pt-30 pb-20 lg:pt-40 lg:pb-32 bg-linear-to-br from-accent via-background to-accent/30">
   <div class="mx-auto max-w-6xl px-4 lg:px-8">
     <div class="grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
       <!-- Image -->
@@ -64,7 +66,146 @@
     </div>
   </div>
 </section>
+<!-- End Hero Section -->
 
+<!-- About Section -->
+<section id="sobre" class="py-12 lg:py-30 bg-background">
+  <div class="mx-auto max-w-6xl px-4 lg:px-8">
+    <div class="text-center mb-8 lg:mb-16">
+      <h2
+        class="text-balance text-2xl sm:text-3xl lg:text-5xl font-bold text-foreground"
+      >
+        CONHEÇA UM POUCO MAIS SOBRE NÓS
+      </h2>
+    </div>
+
+    <div class="grid gap-4 sm:gap-6 md:grid-cols-3">
+      <!-- Missão -->
+      <div
+        class="group rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-md lg:hover:shadow-xl md:hover:-translate-y-1 p-4 sm:p-6 lg:p-8"
+      >
+        <div class="flex items-center md:items-start gap-4 md:flex-col md:gap-6">
+          <div
+            class="shrink-0 w-11 h-11 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-2xl bg-primary/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+          >
+            <svg
+              class="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-muted-foreground"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+
+          <div class="min-w-0">
+            <h3
+              class="text-lg sm:text-xl lg:text-2xl font-bold text-foreground"
+            >
+              Missão
+            </h3>
+            <p
+              class="mt-2 text-sm sm:text-base text-foreground/70 leading-relaxed"
+            >
+              Cuidar com excelência da saúde das crianças e dos adolescentes
+              durante seu processo de formação, proporcionando-lhes uma atenção
+              individualizada, com profissionais competentes, na Clínica Casulo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Valores -->
+      <div
+        class="group rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-md lg:hover:shadow-xl md:hover:-translate-y-1 p-4 sm:p-6 lg:p-8"
+      >
+        <div class="flex items-center md:items-start gap-4 md:flex-col md:gap-6">
+          <div
+            class="shrink-0 w-11 h-11 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-2xl bg-primary/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+          >
+            <svg
+              class="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-primary"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              ></path>
+            </svg>
+          </div>
+
+          <div class="min-w-0">
+            <h3
+              class="text-lg sm:text-xl lg:text-2xl font-bold text-foreground"
+            >
+              Valores
+            </h3>
+            <p
+              class="mt-2 text-sm sm:text-base text-foreground/70 leading-relaxed"
+            >
+              Confiança, Ética, Integridade, Transparência, Responsabilidade,
+              Humanização, Ludicidade e Comprometimento, na Clínica Casulo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visão -->
+      <div
+        class="group rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-md lg:hover:shadow-xl md:hover:-translate-y-1 p-4 sm:p-6 lg:p-8"
+      >
+        <div class="flex items-center md:items-start gap-4 md:flex-col md:gap-6">
+          <div
+            class="shrink-0 w-11 h-11 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-2xl bg-primary/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+          >
+            <svg
+              class="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-secondary"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+
+          <div class="min-w-0">
+            <h3
+              class="text-lg sm:text-xl lg:text-2xl font-bold text-foreground"
+            >
+              Visão
+            </h3>
+            <p
+              class="mt-2 text-sm sm:text-base text-foreground/70 leading-relaxed"
+            >
+              Almejamos o reconhecimento nacional na Clínica Casulo, no
+              atendimento de crianças e adolescentes de forma lúdica,
+              individualizada e humanizada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Section -->
+
+<!-- Display messages -->
 {% if messages %}
 <ul>
   {% for message in messages %}
@@ -72,11 +213,36 @@
   {% endfor %}
 </ul>
 {% endif %}
+<!-- End Display messages -->
 
-<h2>Contato</h2>
+<!-- Contact Section -->
+<section id="contato" class="mx-auto max-w-6xl px-4 lg:px-8 py-12">
+  <div class="rounded-2xl border border-border bg-card shadow-sm">
+    <div class="border-b border-border/60 px-6 py-5">
+      <h2 class="text-2xl font-semibold tracking-tight">Contato</h2>
+      <p class="mt-1 text-sm text-foreground/70">
+        Envie sua mensagem e nossa equipe retorna o mais rápido possível.
+      </p>
+    </div>
 
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Enviar</button>
-</form>
+    <div class="px-6 py-6">
+      <form method="post" class="space-y-4">
+        {% csrf_token %}
+        <div
+          class="**:max-w-full [&_p]:space-y-2 [&_label]:block [&_label]:text-sm [&_label]:pt-2 [&_label]:font-medium [&_input]:w-full [&_input]:rounded-xl [&_input]:border [&_input]:border-input [&_input]:bg-background [&_input]:px-3 [&_input]:py-2 [&_textarea]:w-full [&_textarea]:rounded-xl [&_textarea]:border [&_textarea]:border-input [&_textarea]:bg-background [&_textarea]:px-3 [&_textarea]:py-2"
+        >
+          {{ form.as_p }}
+        </div>
+
+        <button
+          type="submit"
+          class="btn bg-primary text-primary-foreground hover:opacity-90"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
 {% endblock %}
