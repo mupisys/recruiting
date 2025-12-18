@@ -2,32 +2,93 @@
 {% block title %}Detalhe{% endblock %}
 {% block content %}
 
-<h1>Mensagem</h1>
+<main class="mx-auto w-full max-w-5xl px-4 py-8 pt-20 lg:pt-30 lg:py-10">
 
-<p><strong>Nome:</strong> {{ msg.nome }}</p>
-<p><strong>Email:</strong> {{ msg.email }}</p>
-<p><strong>Enviada em:</strong> {{ msg.data_envio }}</p>
+  <header class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <div>
+      <div class="flex items-center gap-2 text-sm text-muted-foreground">
+        <a href="{% url 'messages_list' %}" class="hover:opacity-90">Mensagens</a>
+        <span aria-hidden="true">/</span>
+        <span class="text-foreground">Detalhe</span>
+      </div>
 
-<ul>
-  {% include "partials/message_row.html" with m=msg status="all" variant="detail" %}
-</ul>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Mensagem</h1>
+      <p class="text-sm text-muted-foreground">
+        Visualize o conteúdo e gerencie a mensagem.
+      </p>
+    </div>
 
-<hr />
+    <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+      <a href="{% url 'messages_list' %}" class="btn btn-ghost w-full sm:w-auto">
+        Voltar
+      </a>
 
-<p>{{ msg.mensagem|linebreaks }}</p>
+      <a href="{% url 'message_edit' msg.pk %}" class="btn w-full sm:w-auto bg-primary text-primary-foreground hover:opacity-90">
+        Editar
+      </a>
 
-<p>
-  <a href="{% url 'messages_list' %}">Voltar</a> |
-  <a href="{% url 'message_edit' msg.pk %}">Editar</a> |
-  <button
-    type="button"
-    @click="$dispatch('confirm', {
-      title: 'Excluir mensagem',
-      text: 'Tem certeza que deseja excluir esta mensagem?',
-      action: '{% url 'message_delete_confirm' msg.pk %}'
-    })"
-  >
-    Excluir
-  </button>
-</p>
+      <button
+        type="button"
+        class="btn btn-danger w-full sm:w-auto"
+        @click="$dispatch('confirm', {
+          title: 'Excluir mensagem',
+          text: 'Tem certeza que deseja excluir esta mensagem?',
+          action: '{% url 'message_delete_confirm' msg.pk %}'
+        })"
+      >
+        Excluir
+      </button>
+    </div>
+  </header>
+
+  <section class="space-y-4">
+    <!-- card metadados -->
+    <div class="rounded-2xl border border-border bg-card/70 backdrop-blur shadow-sm">
+      <div class="p-5 sm:p-6">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Nome</p>
+            <p class="mt-1 text-sm font-medium">{{ msg.nome }}</p>
+          </div>
+
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Email</p>
+            <p class="mt-1 text-sm font-medium break-all">{{ msg.email }}</p>
+          </div>
+
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Enviada em</p>
+            <p class="mt-1 text-sm font-medium">{{ msg.data_envio }}</p>
+          </div>
+
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Status</p>
+            <div class="mt-1">
+              <ul class="m-0 list-none p-0">
+                {% include "partials/message_row.html" with m=msg status="all" variant="detail" %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- mensagem -->
+    <div class="rounded-2xl border border-border bg-card/70 backdrop-blur shadow-sm">
+      <div class="border-b border-border px-5 py-4 sm:px-6">
+        <h2 class="text-sm font-semibold">Conteúdo</h2>
+      </div>
+
+      <div class="px-5 py-4 sm:px-6">
+        <div
+          class="rounded-xl border border-border bg-background px-4 py-3 text-sm leading-relaxed
+                 whitespace-pre-wrap wrap-break-word"
+        >
+          {{ msg.mensagem }}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
 {% endblock %}
