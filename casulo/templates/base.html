@@ -111,27 +111,12 @@
             :aria-expanded="open"
             aria-controls="mobile-menu"
           >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                x-show="!open"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-              <path
-                x-show="open"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-            </svg>
+            <span x-show="!open" aria-hidden="true">
+              <i data-lucide="menu" class="h-5 w-5"></i>
+            </span>
+            <span x-show="open" x-cloak aria-hidden="true">
+              <i data-lucide="x" class="h-5 w-5"></i>
+            </span>
           </button>
         </div>
 
@@ -265,5 +250,16 @@
     </div>
     <script defer src="{% static 'js/htmx-csrf.js' %}"></script>
     <script defer src="{% static 'js/messages-list.js' %}"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const refreshLucideIcons = () => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", refreshLucideIcons);
+      document.addEventListener("htmx:afterSwap", refreshLucideIcons);
+    </script>
   </body>
 </html>
