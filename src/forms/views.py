@@ -5,7 +5,7 @@ from .forms import formModels
 from .models import dataFormModels
 
 
-def createMessage_view(request: HttpRequest):
+def createMessageView(request: HttpRequest):
     if request.method == 'POST':
         myForm = formModels(request.POST)
         if myForm.is_valid():
@@ -22,18 +22,18 @@ def createMessage_view(request: HttpRequest):
     }
     return render(request, 'homePage/index.html', context)
 
-def getAllMessages_view(request):
+def getAllMessagesView(request):
     context = {
         "forms":dataFormModels.objects.all()
     }
     return render(request, 'adminPanel/adminPanel.html', context)
 
-def deleteMessageById_view(request:HttpRequest, id):
+def deleteMessageByIdView(request:HttpRequest, id):
     form = get_object_or_404(dataFormModels, id=id)
     form.delete()
     return redirect('forms:mensagens')
 
-def editMessageById_view(request: HttpRequest, id):
+def editMessageByIdView(request: HttpRequest, id):
     form_instance = get_object_or_404(dataFormModels, id=id)
     
     if request.method == "POST":
