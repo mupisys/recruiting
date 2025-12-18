@@ -1,0 +1,18 @@
+<form
+    hx-post="{% url 'marcar_lida' mensagem.id %}"
+    hx-target="this"
+    hx-swap="outerHTML"
+>
+    {% csrf_token %}
+    {% if mensagem.lido %}
+        <button type="submit"
+            class="bg-green-500 text-white px-4 py-1 rounded-full font-semibold">
+            ✓ Lida
+        </button>
+    {% else %}
+        <button type="submit"
+            class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full font-semibold">
+            ● Não lida
+        </button>
+    {% endif %}
+</form>
