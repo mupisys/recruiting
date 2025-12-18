@@ -14,4 +14,4 @@ class MensagemForm(forms.ModelForm):
 class MensagemEditForm(forms.ModelForm):
     class Meta:
         model = Mensagem
-        fields = ["nome", "email", "mensagem", "lido"]
+        fields = ["nome", "email", "mensagem"]
