@@ -7,16 +7,13 @@
 
     <!-- Django nao estava reconhecendo o css, tive que fazer assim -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 
 <body class="bg-gray-100 text-gray-900">
 
-    <header>
-        <a href="{% url 'logout' %}" class="text-red-600 underline">
-            Logout
-        </a>
 
-    </header>
     {% block content %}
     {% endblock %}
 

@@ -3,46 +3,141 @@
 {% block title %}Mensagens{% endblock %}
 
 {% block content %}
-<section class="p-8">
-    <h1 class="text-2xl font-bold mb-6">Mensagens recebidas</h1>
+<section class="min-h-screen p-4 sm:p-8 bg-[#f1ebeb] text-gray-800 flex justify-center">
 
-    <table class="w-full bg-white rounded shadow">
-        <thead>
-            <tr class="border-b">
-                <th class="p-3 text-left">Nome</th>
-                <th class="p-3 text-left">Email</th>
-                <th class="p-3 text-left">Data</th>
-                <th class="p-3 text-left">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for msg in mensagens %}
-            <!--isso transforma o nome em link -->
-            <tr class="border-b hover:bg-gray-50">
-                <td class="p-3">
-                    <a href="{% url 'message_detail' msg.id %}" class="text-blue-600 underline">
-                        {{ msg.nome }}
-                    </a>
-                </td>
+    <div
+        class="relative w-full max-w-5xl p-4 sm:p-8 rounded-[30px] sm:rounded-[40px]
+               bg-[#eee8e8]
+               border border-[#cacaca]
+               shadow-[0_0_25px_#cacaca]"
+    >
 
-                <td class="p-3">{{ msg.email }}</td>
-                <td class="p-3">{{ msg.data_envio|date:"d/m/Y H:i" }}</td>
-                <td class="p-3">
-                    {% if msg.lido %}
-                        <span class="text-green-600">Lida</span>
-                    {% else %}
-                        <span class="text-red-600">Não lida</span>
-                    {% endif %}
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="4" class="p-4 text-center text-gray-500">
-                    Nenhuma mensagem recebida.
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <!-- LOGOUT COM ALPINE -->
+        <div x-data="{ open: false }" class="absolute top-4 right-4">
+
+            <!-- BOTÃO LOGOUT -->
+            <button
+                @click="open = true"
+                class="flex items-center gap-2 
+                       bg-red-500 text-white px-4 py-2 rounded-full
+                       shadow-[0_0_8px_#ff0000]
+                       hover:bg-red-600 hover:shadow-[0_0_13px_#ff0000]
+                       transition select-none"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                     fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                     stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" 
+                          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H3"/>
+                </svg>
+                Sair
+            </button>
+
+            <!-- OVERLAY -->
+            <div
+                x-show="open"
+                x-transition.opacity
+                x-cloak
+                @keydown.escape.window="open = false"
+                class="fixed inset-0 bg-[#f1ebeb]/80 flex items-center justify-center z-50"
+            >
+                <!-- MODAL -->
+                <div
+                    @click.outside="open = false"
+                    class="w-full max-w-sm p-6 sm:p-8 rounded-[30px]
+                           bg-[#eee8e8]
+                           border border-[#cacaca]
+                           shadow-[0_0_25px_#cacaca]"
+                >
+                    <h2 class="text-xl sm:text-2xl font-bold text-center text-[#24c0eb] mb-4">
+                        Confirmar logout
+                    </h2>
+
+                    <p class="text-center text-gray-600 mb-6">
+                        Tem certeza que deseja sair da área administrativa?
+                    </p>
+
+                    <form method="post" action="{% url 'logout' %}" class="space-y-4">
+                        {% csrf_token %}
+
+                        <button
+                            type="submit"
+                            class="w-full bg-[#24c0eb] text-white py-3 rounded-full
+                                   shadow-[0_0_15px_#24c0eb]
+                                   transition transform
+                                   hover:-translate-y-1 hover:bg-[#5cceee]
+                                   hover:shadow-[0_0_20px_#5cceee]"
+                        >
+                            Sim, sair
+                        </button>
+
+                        <button
+                            type="button"
+                            @click="open = false"
+                            class="w-full bg-[#f1ebeb] border border-[#cacaca]
+                                   rounded-full py-3
+                                   shadow-[0_0_12px_#cacaca]"
+                        >
+                            Cancelar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- TÍTULO -->
+        <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-[#24c0eb]">
+            Mensagens recebidas
+        </h1>
+
+        <!-- TABELA RESPONSIVA -->
+        <div class="overflow-x-auto rounded-[30px] border border-[#cacaca] shadow-[0_0_15px_#cacaca]">
+            <table class="min-w-[600px] w-full bg-[#f1ebeb] text-gray-800">
+                <thead class="bg-[#eee8e8] border-b border-[#cacaca]">
+                    <tr>
+                        <th class="p-3 text-left text-[#24c0eb]">Nome</th>
+                        <th class="p-3 text-left text-[#24c0eb]">Email</th>
+                        <th class="p-3 text-left text-[#24c0eb]">Data</th>
+                        <th class="p-3 text-left text-[#24c0eb]">Status</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for msg in mensagens %}
+                    <tr class="border-b border-[#cacaca] hover:bg-[#eee8e8] transition">
+                        <td class="p-3">
+                            <a href="{% url 'message_detail' msg.id %}"
+                               class="text-[#24c0eb] underline hover:text-[#5cceee] transition">
+                                {{ msg.nome }}
+                            </a>
+                        </td>
+
+                        <td class="p-3">{{ msg.email }}</td>
+                        <td class="p-3">
+                            {{ msg.data_envio|date:"d/m/Y H:i" }}
+                        </td>
+
+
+                        <td class="p-3">
+                            {% if msg.lido %}
+                                <span class="text-green-600">Lida</span>
+                            {% else %}
+                                <span class="text-red-600">Não lida</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="p-4 text-center text-gray-500">
+                            Nenhuma mensagem recebida.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </section>
 {% endblock %}

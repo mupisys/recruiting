@@ -1,29 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="p-8 max-w-xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">
-        Confirmar logout
-    </h1>
+<section class="min-h-screen p-24 bg-[#f1ebeb] text-gray-800 flex justify-center">
 
-    <p class="mb-6">
-        Tem certeza que deseja sair da área administrativa?
-    </p>
+    <div
+        class="w-full max-w-xl p-8 rounded-[40px]
+               bg-[#eee8e8]
+               border border-[#cacaca]
+               shadow-[0_0_25px_#cacaca]"
+    >
 
-    <form method="post" class="flex gap-4">
-        {% csrf_token %}
+        <h1 class="text-3xl font-bold text-center text-[#24c0eb] rounded-full py-2 mb-6">
+            Confirmar logout
+        </h1>
 
-        <button
-            type="submit"
-            class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition"
-        >
-            Sim, sair
-        </button>
+        <p class="text-lg mb-6 text-center">
+            Tem certeza que deseja sair da área administrativa?
+        </p>
 
-        <a href="{% url 'messages_list' %}"
-           class="px-6 py-2 border rounded">
-            Cancelar
-        </a>
-    </form>
+        <form method="post" class="flex flex-col gap-6">
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="w-full bg-[#24c0eb] text-white py-3 rounded-full
+                       shadow-[0_0_9px_#24c0eb]
+                       hover:bg-[#5cceee] hover:shadow-[0_0_12px_#5cceee]
+                       transition"
+            >
+                Sim, sair
+            </button>
+
+            <a href="{% url 'messages_list' %}"
+               class="w-full text-center bg-red-500 text-white py-3 rounded-full
+                      shadow-[0_0_9px_#ff0000]
+                      hover:bg-red-600 hover:shadow-[0_0_12px_#ff0000] transition">
+                Cancelar
+            </a>
+        </form>
+
+    </div>
+
 </section>
 {% endblock %}
