@@ -1,0 +1,83 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}Conversa - Heritage Auto{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12 flex justify-center" x-data="conversationDetail('{{ view.kwargs.username }}', '{{ request.user.username }}')">
+    <!-- Loading State -->
+    <div x-show="isLoading" class="flex justify-center py-20 w-full">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+    </div>
+
+    <div x-show="!isLoading" class="w-full max-w-3xl" data-aos="fade-up" style="display: none;">
+        <!-- Header / Navigation -->
+        <div class="mb-8 flex items-center justify-between">
+            <a href="{% url 'message_list' %}" class="text-muted hover:text-white transition-colors flex items-center uppercase text-xs tracking-widest font-bold">
+                <i class="bi bi-arrow-left mr-2"></i> Voltar
+            </a>
+            <h2 class="text-2xl font-black italic uppercase text-white tracking-wider">
+                Conversa com <span class="text-primary" x-text="partnerName"></span>
+            </h2>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="bg-card border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col h-[600px]">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-white to-primary opacity-50"></div>
+            
+            <!-- Messages List -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-6" id="chat-messages">
+                <template x-for="msg in messages" :key="msg.id">
+                    <div class="flex flex-col" :class="msg.sender === currentUser ? 'items-end' : 'items-start'">
+                        <div class="max-w-[80%] rounded-2xl p-4 relative group" 
+                             :class="msg.sender === currentUser ? 'bg-primary/10 border border-primary/20 rounded-tr-none' : 'bg-white/5 border border-white/10 rounded-tl-none'">
+                            
+                            <div class="flex items-center justify-between mb-2 space-x-4">
+                                <span class="text-xs font-bold uppercase tracking-wider" 
+                                      :class="msg.sender === currentUser ? 'text-primary' : 'text-white'"
+                                      x-text="msg.sender"></span>
+                                <span class="text-[10px] font-mono text-muted" x-text="formatDate(msg.created_at)"></span>
+                            </div>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap" x-text="msg.body"></p>
+                            
+                            <!-- Actions (Only for sender) -->
+                            <template x-if="msg.sender === currentUser">
+                                <div class="absolute -left-16 top-0 opacity-0 group-hover:opacity-100 transition-opacity flex space-x-2">
+                                    <button @click="deleteMessage(msg.id)" class="text-red-500 hover:text-red-400 p-2">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+                
+                <div x-show="messages.length === 0" class="text-center py-10 text-muted">
+                    Nenhuma mensagem nesta conversa.
+                </div>
+            </div>
+
+            <!-- Reply Input -->
+            <div class="bg-dark/50 p-4 border-t border-white/5">
+                <form @submit.prevent="sendMessage" class="flex space-x-4">
+                    <div class="flex-1">
+                        <input type="text" x-model="newMessage" 
+                               class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-[#ccff00] focus:shadow-[0_0_0_1px_#ccff00] transition-all duration-300"
+                               placeholder="Digite sua mensagem..." required>
+                    </div>
+                    <button type="submit" :disabled="isSending" 
+                            class="bg-primary text-dark font-black uppercase tracking-widest px-6 py-3 rounded-lg hover:bg-white transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] hover:shadow-[0_0_25px_rgba(204,255,0,0.4)] disabled:opacity-50">
+                        <i class="bi bi-send-fill" x-show="!isSending"></i>
+                        <div class="animate-spin h-5 w-5 border-2 border-dark border-t-transparent rounded-full" x-show="isSending"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'messages/conversation.js' %}"></script>
+{% endblock %}
