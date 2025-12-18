@@ -1,31 +1,83 @@
-<li id="msg-{{ m.pk }}">
+{# templates/partials/message_row.html #}
+<li id="msg-{{ m.pk }}" class="list-none group">
   {% if variant == "detail" %}
-    {% if m.lido %}<span>(lida)</span>{% else %}<strong>(não lida)</strong>{% endif %}
+    <div class="flex items-center justify-between rounded-2xl  bg-card/40 ">
+      <div class="flex items-center gap-3 px-2">
+        <div class="relative flex h-2.5 w-2.5">
+          {% if not m.lido %}
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary"></span>
+          {% else %}
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-muted-foreground/30"></span>
+          {% endif %}
+        </div>
+        <span class="text-sm font-bold tracking-tight text-foreground/70">
+          {% if not m.lido %}Aguardando leitura{% else %}Mensagem lida{% endif %}
+        </span>
+      </div>
 
-    <button
-      type="button"
-      hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}&variant=detail"
-      hx-target="#msg-{{ m.pk }}"
-      hx-swap="outerHTML"
-      hx-push-url="false"
-    >
-      {% if m.lido %}Marcar como não lida{% else %}Marcar como lida{% endif %}
-    </button>
+      <button
+        type="button"
+        class="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2 text-xs font-bold transition-all hover:bg-accent hover:border-primary/30 active:scale-95"
+        hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}&variant=detail"
+        hx-target="#msg-{{ m.pk }}"
+        hx-swap="outerHTML"
+      >
+        {% if m.lido %}
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Marcar como nova
+        {% else %}
+          <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+          Marcar como lida
+        {% endif %}
+      </button>
+    </div>
+
   {% else %}
-    <a href="{% url 'message_detail' m.pk %}">{{ m.nome }} — {{ m.email }}</a>
+    <div class="relative flex items-center justify-between gap-4 rounded-2xl border border-border bg-card/70 p-4 transition-all hover:border-primary/40 group">
+      
+      {% if not m.lido %}
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 h-10 w-1.5 rounded-r-full bg-primary"></div>
+      {% endif %}
 
-    {% if m.lido %}<span>(lida)</span>{% else %}<strong>(não lida)</strong>{% endif %}
+      <div class="flex min-w-0 flex-1 flex-col gap-0.5">
+        <div class="flex items-center gap-2">
+          <span class="truncate text-sm font-bold {% if not m.lido %}text-foreground{% else %}text-muted-foreground{% endif %}">
+            {{ m.nome }}
+          </span>
+          <span class="text-[10px] text-muted-foreground/30">•</span>
+          <span class="whitespace-nowrap text-[11px] font-medium text-muted-foreground/80">
+            {{ m.data_envio|date:"d/m/Y H:i" }}
+          </span>
+        </div>
+        <span class="truncate text-xs text-muted-foreground/60">{{ m.email }}</span>
+      </div>
 
-    <button
-      type="button"
-      hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}"
-      hx-target="#msg-{{ m.pk }}"
-      hx-swap="outerHTML"
-      hx-push-url="false"
-    >
-      Alternar lido
-    </button>
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          class="flex h-10 w-10 items-center justify-center rounded-xl transition-all
+          {% if not m.lido %} bg-primary/5 text-primary hover:bg-primary/20 {% else %} text-muted-foreground/40 hover:bg-muted hover:text-foreground {% endif %}"
+          hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}"
+          hx-target="#msg-{{ m.pk }}"
+          hx-swap="outerHTML"
+          title="{% if m.lido %}Marcar como nova{% else %}Marcar como lida{% endif %}"
+        >
+          {% if m.lido %}
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          {% else %}
+            <svg viewBox="0 0 24 24" class="h-5.5 w-5.5" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+          {% endif %}
+        </button>
 
-    <small>— {{ m.data_envio }}</small>
+        <a
+          href="{% url 'message_detail' m.pk %}"
+          class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-all hover:scale-105 active:scale-95 shadow-sm"
+          title="Ver detalhes"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </a>
+      </div>
+    </div>
   {% endif %}
 </li>
