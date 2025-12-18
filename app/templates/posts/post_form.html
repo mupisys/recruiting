@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}Criar Post - Heritage Auto{% endblock %}
+
+{% block content %}
+<div class="min-h-screen pt-24 pb-12 px-4" x-data="postForm()">
+    <div class="max-w-2xl mx-auto bg-card border border-white/10 p-8 rounded-lg shadow-2xl" data-aos="fade-up">
+        <h2 class="text-3xl font-black italic uppercase mb-8 text-primary">Ligue os Motores</h2>
+        
+        <form @submit.prevent="submitPost">
+            <!-- Title -->
+            <div class="mb-6">
+                <label class="block text-muted text-sm font-bold mb-2 uppercase">Título</label>
+                <input type="text" x-model="formData.title" class="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors" required>
+            </div>
+
+            <!-- Category -->
+            <div class="mb-6">
+                <label class="block text-muted text-sm font-bold mb-2 uppercase">Categoria</label>
+                <select x-model="formData.category_id" class="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors" required>
+                    <option value="">Selecione uma Categoria</option>
+                    <template x-for="category in categories" :key="category.id">
+                        <option :value="category.id" x-text="category.name"></option>
+                    </template>
+                </select>
+            </div>
+
+            <!-- Content -->
+            <div class="mb-6">
+                <label class="block text-muted text-sm font-bold mb-2 uppercase">Conteúdo</label>
+                <textarea x-model="formData.content" rows="6" class="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors" required></textarea>
+            </div>
+
+            <!-- Image -->
+            <div class="mb-6">
+                <label class="block text-muted text-sm font-bold mb-2 uppercase">Imagem (Opcional)</label>
+                <input type="file" @change="handleFileChange($event, 'image')" class="w-full text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-black hover:file:bg-white transition-colors">
+            </div>
+
+            <!-- Video -->
+            <div class="mb-6">
+                <label class="block text-muted text-sm font-bold mb-2 uppercase">Vídeo (Opcional)</label>
+                <input type="file" @change="handleFileChange($event, 'video')" class="w-full text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-black hover:file:bg-white transition-colors">
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between mt-8">
+                <a href="{% url 'home' %}" class="text-muted hover:text-white transition-colors uppercase font-bold text-sm">Cancelar</a>
+                <button type="submit" class="bg-primary text-black font-bold uppercase py-3 px-8 hover:bg-white hover:scale-105 transition-all duration-300" :disabled="loading">
+                    <span x-show="!loading">Publicar</span>
+                    <span x-show="loading">Acelerando...</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'posts/post_form.js' %}"></script>
+{% endblock %}
