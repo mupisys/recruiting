@@ -406,28 +406,40 @@ O projeto segue a estrutura solicitada com `core` para configurações e `app` p
 
 ## Instalação e Inicialização
 
-1. **Instale as dependências:**
+1. **Crie e ative o ambiente virtual:**
+   ```bash
+   # Criar o ambiente virtual
+   python -m venv .venv
+
+   # Ativar no Windows
+   .venv\Scripts\activate
+
+   # Ativar no Linux/Mac
+   source .venv/bin/activate
+   ```
+
+2. **Instale as dependências:**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Execute as migrações:**
+3. **Execute as migrações:**
    ```bash
    python manage.py migrate
    ```
 
-3. **Carregue os dados iniciais (Fixtures):**
+4. **Carregue os dados iniciais (Fixtures):**
    O projeto conta com uma fixture contendo dados de exemplo (categorias, posts, usuários).
    ```bash
    python manage.py loaddata app/fixtures/initial_data.json
    ```
 
-4. **Crie um superusuário (Opcional):**
+5. **Crie um superusuário (Opcional):**
    ```bash
    python manage.py createsuperuser
    ```
 
-5. **Execute o servidor:**
+6. **Execute o servidor:**
    ```bash
    python manage.py runserver
    ```
