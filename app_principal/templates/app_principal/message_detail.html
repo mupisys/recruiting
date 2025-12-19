@@ -74,27 +74,24 @@
         </div>
 
         <div class="mt-8 flex flex-wrap justify-between gap-4 border-t border-slate-200 pt-6">
-
-            <div id="status-detail-{{ message.id }}">
-                {% include 'app_principal/partials/message_status_button.html' with message=message %}
-            </div>
-
             <div class="flex flex-wrap gap-2">
                 <a href="{% url 'app_principal:message_edit' message.id %}"
-                   class="rounded-lg border border-slate-300 bg-white px-4 py-2
-                          text-sm font-medium text-slate-700 hover:bg-slate-100 transition">
+                   class="inline-flex items-center justify-center
+                          rounded-lg border border-slate-300
+                          px-4 py-2 text-sm font-medium text-slate-700
+                          hover:bg-slate-100 transition">
                     Editar
                 </a>
-
+            
                 <a href="{% url 'app_principal:message_delete' message.id %}"
-                   class="rounded-lg bg-red-600 px-4 py-2
-                          text-sm font-medium text-white hover:bg-red-700 transition">
+                   class="inline-flex items-center justify-center
+                          rounded-lg border border-red-600
+                          px-4 py-2 text-sm font-medium text-red-600
+                          hover:bg-red-600 hover:text-white transition">
                     Excluir
                 </a>
             </div>
-
         </div>
-
     </div>
 </div>
 {% endblock %}
