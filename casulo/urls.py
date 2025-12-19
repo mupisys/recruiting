@@ -6,7 +6,7 @@ urlpatterns = [
     path("", views.landpage, name="landpage"),
     
      # painel (auth)
-    path("painel/login/", auth_views.LoginView.as_view(template_name="login.html"), name="login"),
+    path("painel/login/", auth_views.LoginView.as_view(template_name="login.html", redirect_authenticated_user=True), name="login"),
     path("painel/logout/", views.logout_confirm, name="logout_confirm"),
 
     path("painel/mensagens/", views.messages_list, name="messages_list"),
