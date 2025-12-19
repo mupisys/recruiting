@@ -137,13 +137,13 @@ python manage.py runserver
 |  createdAt |   DateTimeField     |  Data da criação da mensagem         |
 |  isRead    |   BooleanField      |  Status de leitura (default: False)  |
 
-# Rotas da Aplicação
+## Rotas da Aplicação
 
-## Públicas
+### Públicas
 - `/` : Landpage com formulário de contato
 - `/login/` : Tela de login
 
-## Protegidas (requer autenticação)
+### Protegidas (requer autenticação)
 - `/messages/` : Lista todas as mensagens
 - `/messages/<id>/` : Detalhes de uma mensagem
 - `/messages/<id>/edit/` : Editar mensagem
@@ -151,7 +151,7 @@ python manage.py runserver
 - `/messages/<id>/toggle-read/` : Marcar/desmarcar como lida (HTMX)
 - `/logout/` : Confirmar logout
 
-# Requisitos Mínimos Atendidos
+### Requisitos Mínimos Atendidos
 - Formulário público na landpage salvando mensagens
 - Login customizado (não usa admin padrão)
 - Área administrativa protegida com `@login_required`
@@ -163,7 +163,7 @@ python manage.py runserver
 - HTMX implementado (marcar como lida)
 - Alpine.js implementado (notificações e animações)
 
-# Diferenciais Implementados
+### Diferenciais Implementados
 - Fontes personalizadas - Google Fonts (Inter)
 - Contraste bem trabalhado - Paleta de cores acessível
 - Identidade visual consistente - Gradientes e cores harmoniosas
@@ -171,43 +171,43 @@ python manage.py runserver
 - Design mobile-first - Totalmente responsivo
 - Indicadores de loading - Feedback visual nas requisições HTMX
 
-# Decisões Técnicas
+## Decisões Técnicas
 
-## Por que Django?
+### Por que Django?
 - Framework robusto e maduro para desenvolvimento web
 - Sistema de autenticação nativo e seguro
 - ORM poderoso para interação com banco de dados
 - Templates integrados facilitam desenvolvimento
 
-## Por que HTMX?
+### Por que HTMX?
 - Permite interações assíncronas sem JavaScript complexo
 - Ideal para marcar mensagens como lidas sem recarregar a página
 - Reduz a complexidade do frontend mantendo o código no servidor
 
-## Por que Alpine.js?
+### Por que Alpine.js?
 - Framework JavaScript minimalista e leve
 - Perfeito para controlar modais e pequenas animações de interface
 - Complementa o HTMX sem necessidade de build process
 
-## Por que TailwindCSS?
+### Por que TailwindCSS?
 - Estilização rápida e consistente com classes utilitárias
 - Design responsivo facilitado
 - Manutenção simplificada do layout
 
-# Segurança
+### Segurança
 - Proteção CSRF em todos os formulários
 - Autenticação obrigatória para área administrativa
 - Validação de formulários no backend
 - Sanitização de dados de entrada
 
-# Próximos Passos (Melhorias Futuras)
+## Próximos Passos (Melhorias Futuras)
 - Adicionar filtros de busca na listagem
 - Implementar paginação para grandes volumes de dados
 - Adicionar exportação de mensagens (CSV/PDF)
 - Sistema de notificações por email
 - Suporte a múltiplos idiomas (i18n)
 
-# Licença
+## Licença
 Este projeto foi desenvolvido para fins de avaliação técnica.
 
 **Nota:** Este é um projeto de teste técnico. Para uso em produção, considere trocar o SQLite por PostgreSQL e configurar variáveis de ambiente para dados sensíveis.
