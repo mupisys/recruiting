@@ -48,3 +48,9 @@ def editMessageByIdView(request: HttpRequest, id):
         'form': form_obj
     }
     return render(request, 'editForm/editMessage.html', context)
+
+def loginPage(request):
+    return render(request, 'login/login.html')
+
+def registerPage(request):
+    return render(request, 'login/register.html')
