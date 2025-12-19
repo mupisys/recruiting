@@ -110,7 +110,7 @@ python manage.py runserver
 
 ## 🎨 TailwindCSS
 
-O CSS estará está em `static/css/output.css`. basta rodar `npm run tw:build` para compilar.
+O CSS estará em `static/css/output.css`. basta rodar `npm run tw:build` para compilar.
 
 ```bash
 npm run tw:build
