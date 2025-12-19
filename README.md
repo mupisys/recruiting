@@ -147,3 +147,102 @@ O sistema utiliza uma API REST para diversas funcionalidades dinâmicas. Abaixo 
 - `GET /api/messages/conversation/<username>/`: Obtém o histórico de mensagens com um usuário específico.
 - `DELETE /api/messages/<id>/`: Apaga uma mensagem (apenas o remetente).
 
+## Telas estilizadas
+
+---
+
+### 1️⃣ Hero da landing page
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/d3c066bb-7855-4201-84ee-7e0ef40759db"
+    alt="Hero da landing page"
+    width="100%"
+  />
+</p>
+
+---
+
+### 2️⃣ Section de cards de notícias
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/ba8a110a-c822-4d51-960f-3423dff7206f"
+    alt="Section de cards de notícias"
+    width="100%"
+  />
+</p>
+
+---
+
+### 3️⃣ Tela de comunidade no grid (troca de ideias)
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/ce04b7aa-46b0-48ec-8730-cc784bc243c2"
+    alt="Tela de comunidade no grid"
+    width="100%"
+  />
+</p>
+
+---
+
+### 4️⃣ Tela de criação de posts
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/2118ee38-b569-4744-8227-0c042e34ae8f"
+    alt="Tela de criação de posts"
+    width="100%"
+  />
+</p>
+
+---
+
+### 5️⃣ Tela de criação de mensagens
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/0f16f809-1a9e-4c01-b3a6-c718fa995108"
+    alt="Tela de criação de mensagens"
+    width="100%"
+  />
+</p>
+
+---
+
+### 6️⃣ Troca de mensagens entre usuários  
+<sub>(sem implementação de WebSockets, apenas HTTP)</sub>
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/b8361000-a221-4410-9538-d345f932d4c9"
+    alt="Troca de mensagens entre usuários"
+    width="100%"
+  />
+</p>
+
+---
+
+### 7️⃣ Tela de login
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/6179ff1d-3344-43da-a600-dc0e90b6c761"
+    alt="Tela de login"
+    width="100%"
+  />
+</p>
+
+---
+
+### 8️⃣ Tela de cadastro
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/1b6e9a09-8602-49ca-9fe3-c174e39b76e6"
+    alt="Tela de cadastro"
+    width="75%"
+  />
+</p>
+
