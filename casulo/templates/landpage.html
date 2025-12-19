@@ -362,18 +362,28 @@
 
 <!-- Contact Section -->
 <section id="contato" class="mx-auto max-w-6xl px-4 lg:px-8 py-12 scroll-mt-16 lg:scroll-mt-20">
-  <div class="rounded-2xl border border-border bg-card shadow-sm">
-    <div class="border-b border-border/60 px-6 py-5">
-      <h2 class="text-2xl font-semibold tracking-tight">Contato</h2>
-      <p class="mt-1 text-sm text-foreground/70">
-        Envie sua mensagem e nossa equipe retorna o mais rápido possível.
-      </p>
+  <div class="relative overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+    <div class="relative border-b border-border/60 px-6 py-6">
+      <div class="flex items-start gap-4">
+        <div class="min-w-0">
+          <p class="text-xs font-semibold uppercase tracking-wider text-foreground/50">
+            Fale com a Casulo
+          </p>
+          <h2 class="mt-1 text-3xl font-semibold tracking-tight">
+            Vamos conversar?
+          </h2>
+          <p class="mt-1 text-sm text-foreground/70">
+            Envie sua mensagem e nossa equipe retorna o mais rápido possível.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div id="contact-form">
+    <div class="relative" id="contact-form">
       {% include "partials/contact_form.html" %}
     </div>
   </div>
 </section>
+
 <!-- End Contact Section -->
 {% endblock %}
