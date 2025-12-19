@@ -1,0 +1,124 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if view.kwargs.pk %}Editar Mensagem{% else %}Nova Mensagem{% endif %} - Heritage Auto
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .message-form label {
+        display: block;
+        color: #b3b3b3;
+        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+    }
+    .message-form input[type="text"],
+    .message-form input[type="email"],
+    .message-form textarea {
+        width: 100%;
+        background-color: #0a0a0a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        color: white;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    .message-form input:focus,
+    .message-form textarea:focus {
+        border-color: #ccff00;
+        box-shadow: 0 0 0 1px #ccff00;
+    }
+    .error-msg {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12 flex justify-center">
+    <div class="w-full max-w-2xl" data-aos="fade-up">
+        <div class="bg-card border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+            
+            <div class="relative z-10">
+                <h2 class="text-3xl font-black italic uppercase text-white mb-8 tracking-wider border-b border-white/10 pb-4">
+                    {% if view.kwargs.pk %}Editar Mensagem{% else %}Nova Mensagem{% endif %}
+                </h2>
+                
+                <form @submit.prevent="submit" class="message-form space-y-6" x-data="messageForm({{ view.kwargs.pk|default:'null' }})">
+                    {% csrf_token %}
+                    
+                    <div class="relative">
+                        <label for="id_recipient_username">Destinatário</label>
+                        <input 
+                            type="text" 
+                            id="id_recipient_username" 
+                            x-model="search"
+                            @input.debounce.300ms="fetchUsers()"
+                            @focus="showResults = true"
+                            @click.outside="showResults = false"
+                            autocomplete="off"
+                            placeholder="Digite o nome do usuário..."
+                            class="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-[#ccff00] focus:shadow-[0_0_0_1px_#ccff00] transition-all duration-300"
+                        >
+                        
+                        <!-- Dropdown de Resultados -->
+                        <div 
+                            x-show="showResults && results.length > 0" 
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            class="absolute z-50 w-full bg-[#1a1a1a] border border-white/10 rounded-lg mt-1 shadow-2xl max-h-60 overflow-y-auto" 
+                            style="display: none;"
+                        >
+                            <template x-for="user in results" :key="user.id">
+                                <div @click="selectUser(user.username)" class="px-4 py-3 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-0 group">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-bold text-white group-hover:text-[#ccff00] transition-colors" x-text="user.username"></span>
+                                        <span class="text-xs text-gray-500 uppercase tracking-wider" x-text="user.full_name"></span>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div x-show="errors.recipient" class="error-msg" x-text="errors.recipient"></div>
+                    </div>
+
+                    <div>
+                        <label for="id_subject">Assunto</label>
+                        <input type="text" id="id_subject" x-model="formData.subject" required placeholder="Assunto da mensagem">
+                        <div x-show="errors.subject" class="error-msg" x-text="errors.subject"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="id_body">Mensagem</label>
+                        <textarea id="id_body" rows="6" x-model="formData.body" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                        <div x-show="errors.body" class="error-msg" x-text="errors.body"></div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 pt-4">
+                        <button type="submit" :disabled="isLoading" class="flex-1 bg-primary text-dark font-black uppercase tracking-widest py-3 rounded-lg hover:bg-white transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] hover:shadow-[0_0_25px_rgba(204,255,0,0.4)] disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span x-show="!isLoading">Salvar</span>
+                            <span x-show="isLoading">Salvando...</span>
+                        </button>
+                        <a href="{% url 'message_list' %}" class="px-6 py-3 bg-white/5 text-white font-bold uppercase tracking-widest rounded-lg hover:bg-white/10 transition-all duration-300 text-sm">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'messages/form.js' %}"></script>
+{% endblock %}

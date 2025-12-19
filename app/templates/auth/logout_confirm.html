@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Logout - Heritage Auto{% endblock %}
+
+{% block content %}
+<div class="min-h-[calc(100vh-6rem)] flex items-center justify-center p-4">
+    <div class="w-full max-w-md text-center" data-aos="fade-up">
+        <div class="bg-card border border-white/10 rounded-2xl p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+            
+            <div class="mb-8">
+                <div class="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center text-4xl mx-auto mb-6">
+                    <i class="bi bi-check-lg"></i>
+                </div>
+                <h2 class="text-3xl font-black italic uppercase text-white mb-2 tracking-wider">Logout</h2>
+                <p class="text-muted">Você saiu com sucesso.</p>
+            </div>
+            
+            <div class="flex flex-col space-y-3">
+                <a href="{% url 'home' %}" class="w-full bg-primary text-dark font-black uppercase tracking-widest py-3 rounded-lg hover:bg-white transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] hover:shadow-[0_0_25px_rgba(204,255,0,0.4)]">
+                    Voltar para Home
+                </a>
+                <a href="{% url 'login' %}" class="w-full bg-white/5 text-white font-bold uppercase tracking-widest py-3 rounded-lg hover:bg-white/10 transition-all duration-300 text-sm">
+                    Fazer Login novamente
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
