@@ -21,8 +21,8 @@ class Mensagem(models.Model):
     lido = models.BooleanField(_("Lido"), default=False)
 
     class Meta:
-        verbose_name = _("Messagem")
-        verbose_name_plural = _("Messagens")
+        verbose_name = _("Mensagem")
+        verbose_name_plural = _("Mensagens")
 
         ordering = ["-data_envio"]
 
