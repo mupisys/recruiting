@@ -9,6 +9,8 @@
     
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     
+    {% csrf_token %}
+    
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,6 +119,13 @@
     {% endblock %}
     
     <script>
+        document.body.addEventListener('htmx:configRequest', function(evt) {
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+            if (csrfToken) {
+                evt.detail.headers['X-CSRFToken'] = csrfToken.value;
+            }
+        });
+        
         document.body.addEventListener('htmx:beforeRequest', function(evt) {
             if (evt.detail.target) {
                 evt.detail.target.style.opacity = '0.6';

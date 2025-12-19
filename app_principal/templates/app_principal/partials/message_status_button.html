@@ -1,33 +1,11 @@
 <button
-    hx-post="{% url 'app_principal:toggle_read' message.id %}"
+    hx-post="{% url 'app_principal:toggle_read' message.id %}?from=detail"
     hx-target="#status-detail-{{ message.id }}"
     hx-swap="innerHTML"
-    hx-indicator="#loading-detail-{{ message.id }}"
-    class="inline-flex items-center justify-center gap-2 h-10 px-4 rounded-lg text-xs font-semibold transition-all
-    {% if message.isRead %}
-        bg-amber-500 text-white hover:bg-amber-600
-    {% else %}
-        bg-emerald-600 text-white hover:bg-emerald-700
-    {% endif %}"
+    hx-disabled-elt="this"
+    class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2
+           text-sm font-medium text-slate-700 hover:bg-slate-100 transition"
+    title="{% if message.isRead %}Marcar como não lida{% else %}Marcar como lida{% endif %}"
 >
-    <span id="loading-detail-{{ message.id }}" class="htmx-indicator">
-        <svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" stroke-opacity="0.25" stroke-width="4"/>
-            <path d="M22 12a10 10 0 00-10-10" stroke-width="4"/>
-        </svg>
-    </span>
-
-    <span class="htmx-indicator:hidden inline-flex items-center gap-1.5">
-        {% if message.isRead %}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18"/>
-            </svg>
-            Marcar como não lida
-        {% else %}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-            </svg>
-            Marcar como lida
-        {% endif %}
-    </span>
+    {% include 'app_principal/partials/message_status.html' with message=message %}
 </button>

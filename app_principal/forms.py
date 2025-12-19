@@ -2,11 +2,6 @@ from django import forms
 from .models import Message
 
 class MessageForm(forms.ModelForm):
-    """
-    Formulário para criação de mensagens na landpage.
-    
-    Usa ModelForm para facilitar a validação e criação do objeto Message.
-    """
     class Meta:
         model = Message
         fields = ['name', 'email', 'message']
@@ -32,11 +27,6 @@ class MessageForm(forms.ModelForm):
         }
 
 class MessageEditForm(forms.ModelForm):
-    """
-    Formulário para edição de mensagens na área administrativa.
-    
-    Permite editar todos os campos, incluindo o status de leitura.
-    """
     class Meta:
         model = Message
         fields = ['name', 'email', 'message', 'isRead']
