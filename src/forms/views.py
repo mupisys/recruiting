@@ -1,61 +1,83 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import HttpRequest
-from .forms import formModels
-from .models import dataFormModels
+from .forms import MensagemForm
+from .models import Mensagem
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
-def createMessageView(request: HttpRequest):
+def landpage_view(request: HttpRequest):
     if request.method == 'POST':
-        myForm = formModels(request.POST)
-        if myForm.is_valid():
-            myForm.save()
+        form = MensagemForm(request.POST)
+        if form.is_valid():
+            form.save()
             messages.success(request, 'Mensagem enviada com sucesso!')
-            return redirect('forms:Home')
+            return redirect('forms:landpage')
         else:
             messages.error(request, 'Erro ao enviar mensagem. Verifique os campos.')
-            context = {"form": myForm}
-            return render(request, 'homePage/index.html', context)
+            context = {"form": form}
+            return render(request, 'landpage.html', context)
     
     context = {
-        "form": formModels()
+        "form": MensagemForm()
     }
-    return render(request, 'homePage/index.html', context)
+    return render(request, 'landpage.html', context)
 
 @login_required(login_url='forms:login')
-def getAllMessagesView(request):
+def messages_list_view(request):
     context = {
-        "forms":dataFormModels.objects.all()
+        "mensagens": Mensagem.objects.all().order_by('-data_envio')
     }
-    return render(request, 'adminPanel/adminPanel.html', context)
+    return render(request, 'messages_list.html', context)
 
 @login_required(login_url='forms:login')
-def deleteMessageByIdView(request:HttpRequest, id):
-    form = get_object_or_404(dataFormModels, id=id)
-    form.delete()
-    return redirect('forms:mensagens')
+def message_detail_view(request, id):
+    mensagem = get_object_or_404(Mensagem, id=id)
+    # Opcional: Marcar como lida automaticamente ao abrir
+    if not mensagem.lido:
+        mensagem.lido = True
+        mensagem.save()
+    return render(request, 'message_detail.html', {'mensagem': mensagem})
 
 @login_required(login_url='forms:login')
-def editMessageByIdView(request: HttpRequest, id):
-    form_instance = get_object_or_404(dataFormModels, id=id)
+def message_delete_view(request: HttpRequest, id):
+    mensagem = get_object_or_404(Mensagem, id=id)
+    if request.method == "POST":
+        mensagem.delete()
+        messages.success(request, 'Mensagem excluída com sucesso.')
+        return redirect('forms:mensagens')
+    
+    return render(request, 'message_delete_confirm.html', {'mensagem': mensagem})
+
+@login_required(login_url='forms:login')
+def message_edit_view(request: HttpRequest, id):
+    mensagem = get_object_or_404(Mensagem, id=id)
     
     if request.method == "POST":
-        form_obj = formModels(request.POST, instance=form_instance)
-        if form_obj.is_valid():
-            form_obj.save()
+        form = MensagemForm(request.POST, instance=mensagem)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Mensagem atualizada.')
             return redirect('forms:mensagens')
     else:
-        form_obj = formModels(instance=form_instance)
+        form = MensagemForm(instance=mensagem)
     
     context = {
-        'form': form_obj
+        'form': form,
+        'mensagem': mensagem
     }
-    return render(request, 'editForm/editMessage.html', context)
+    return render(request, 'message_edit.html', context)
 
-def loginPage(request):
+@login_required(login_url='forms:login')
+def toggle_read_view(request, id):
+    mensagem = get_object_or_404(Mensagem, id=id)
+    mensagem.lido = not mensagem.lido
+    mensagem.save()
+    return redirect('forms:mensagens')
+
+def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -68,9 +90,13 @@ def loginPage(request):
         else:
             messages.error(request, 'Usuário ou senha inválidos.')
             
-    return render(request, 'login/login.html')
+    return render(request, 'login.html')
 
-def registerPage(request):
+def logout_view(request):
+    logout(request)
+    return render(request, 'logout_confirm.html')
+
+def register_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -79,15 +105,15 @@ def registerPage(request):
 
         if password != confirm_password:
             messages.error(request, 'As senhas não conferem.')
-            return render(request, 'login/register.html')
+            return render(request, 'register.html')
 
         if User.objects.filter(username=username).exists():
             messages.error(request, 'Usuário já existe.')
-            return render(request, 'login/register.html')
+            return render(request, 'register.html')
 
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         messages.success(request, 'Cadastro realizado com sucesso! Faça login.')
         return redirect('forms:login')
         
-    return render(request, 'login/register.html')
+    return render(request, 'register.html')
