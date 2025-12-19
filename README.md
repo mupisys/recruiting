@@ -364,3 +364,5 @@ Use IA como **ferramenta de apoio** e **acelera√ß√£o**, n√£o como substituto do 
 
 </div>
 
+#   M i n h a   i m p l e m e n t a Á „ o   d a   l a n d i n g   p a g e  
+ 
