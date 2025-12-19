@@ -74,8 +74,8 @@ testeMuPi/
 #### Clone o repositório
 
 ```bash
-git clone <url-do-repositorio>
-cd testeMuPi
+git clone -b feature/landingpage-admin https://github.com/JhonatanMotaDev/recruiting.git
+cd recruiting
 ```
 
 #### Crie e ative um ambiente virtual
