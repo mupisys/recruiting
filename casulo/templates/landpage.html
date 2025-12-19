@@ -247,6 +247,119 @@
 
 <!-- End Services Section -->
 
+<!-- Espace Section -->
+<section id="espaco" class="py-20 lg:py-28 bg-accent/30">
+  <div class="mx-auto max-w-7xl px-4 lg:px-8">
+    <div class="text-center mb-10 lg:mb-12">
+      <h2 class="text-balance text-3xl lg:text-5xl font-bold text-foreground">
+        Conheça nosso espaço
+      </h2>
+      <p class="mt-3 text-sm lg:text-base text-foreground/70">
+        Um ambiente pensado para acolher e cuidar — com conforto em cada detalhe.
+      </p>
+    </div>
+
+    {% if espaco_images %}
+      <div
+        x-data="carousel({ total: {{ espaco_images|length }} })" x-cloak class="relative"
+      >
+        <!-- viewport -->
+        <div
+          x-ref="viewport"
+          class="relative overflow-hidden rounded-2xl border border-border bg-card/60 shadow-sm
+                 cursor-grab active:cursor-grabbing select-none touch-pan-y"
+          @pointerdown.capture="onDown($event)"
+          @pointermove.capture="onMove($event)"
+          @pointerup.capture="onUp()"
+          @pointercancel.capture="onUp()"
+          @pointerleave.capture="onUp()"
+          @click.capture="onClickCapture($event)"
+        >
+          <div
+            class="flex ease-in-out"
+            :class="dragging ? '' : 'transition-transform duration-500'"
+            :style="`transform: translateX(${translate}%);`"
+          >
+            {% for img in espaco_images %}
+              <div class="w-full sm:w-1/2 lg:w-1/3 shrink-0 p-3">
+                <div class="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+                  <img
+                    src="{% static 'images/espaco/' %}{{ img }}"
+                    alt="Espaço da Clínica Casulo"
+                    class="h-64 sm:h-72 lg:h-80 w-full object-cover pointer-events-none"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- setas -->
+        <button
+          type="button"
+          @click="prev()"
+          :disabled="!canPrev()"
+          class="absolute left-2 top-1/2 -translate-y-1/2 z-10 hidden md:inline-flex
+                 h-10 w-10 items-center justify-center rounded-full border border-border bg-card/70
+                 text-foreground/80 shadow-sm backdrop-blur transition
+                 hover:bg-accent hover:text-foreground
+                 disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label="Anterior"
+          title="Anterior"
+        >
+          <i data-lucide="chevron-left" class="h-5 w-5"></i>
+        </button>
+
+        <button
+          type="button"
+          @click="next()"
+          :disabled="!canNext()"
+          class="absolute right-2 top-1/2 -translate-y-1/2 z-10 hidden md:inline-flex
+                 h-10 w-10 items-center justify-center rounded-full border border-border bg-card/70
+                 text-foreground/80 shadow-sm backdrop-blur transition
+                 hover:bg-accent hover:text-foreground
+                 disabled:opacity-40 disabled:cursor-not-allowed"
+          aria-label="Próximo"
+          title="Próximo"
+        >
+          <i data-lucide="chevron-right" class="h-5 w-5"></i>
+        </button>
+
+        <!-- dots (por “página”) -->
+        <div class="mt-5 flex items-center justify-center gap-2">
+          <template x-for="i in (max() + 1)" :key="i">
+            <button
+              type="button"
+              class="h-2.5 w-2.5 rounded-full border border-border transition hover:scale-110"
+              :class="(i-1) === current ? 'bg-primary border-primary' : 'bg-card/60'"
+              @click="go(i-1)"
+              :aria-label="`Ir para ${i}`"
+              :title="`Ir para ${i}`"
+            ></button>
+          </template>
+        </div>
+
+        <!-- contador -->
+        <p class="mt-3 text-center text-xs text-foreground/60">
+          <span x-text="(current + 1)"></span> / <span x-text="(max() + 1)"></span>
+        </p>
+
+        <p class="mt-2 text-center text-xs text-foreground/60 md:hidden">
+          Arraste para o lado para ver mais fotos.
+        </p>
+      </div>
+    {% else %}
+      <div class="rounded-2xl border border-border bg-card/60 p-6 text-center text-sm text-foreground/70">
+        Nenhuma foto encontrada em <span class="font-medium">static/images/espaco</span>.
+      </div>
+    {% endif %}
+  </div>
+</section>
+<!-- End Espace Section -->
+
+
 <!-- Contact Section -->
 <section id="contato" class="mx-auto max-w-6xl px-4 lg:px-8 py-12">
   <div class="rounded-2xl border border-border bg-card shadow-sm">

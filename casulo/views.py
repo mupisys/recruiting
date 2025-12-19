@@ -7,11 +7,24 @@ from django.urls import reverse
 from django.contrib import messages
 from django.http import HttpResponse
 from django.db.models import Q
+from pathlib import Path
+from django.conf import settings
+
 
 from .forms import MensagemForm , MensagemEditForm
 from .models import Mensagem, Service, ServiceCategory
 
 def landpage(request):
+    espaco_dir = Path(settings.BASE_DIR) / "static" / "images" / "espaco"
+    allowed = {".jpg", ".jpeg", ".png", ".webp"}
+
+    espaco_images = []
+    if espaco_dir.exists():
+        espaco_images = sorted(
+            [f.name for f in espaco_dir.iterdir()
+             if f.is_file() and f.suffix.lower() in allowed]
+        )
+
     active = request.GET.get("cat", "all")
 
     categories = ServiceCategory.objects.filter(is_active=True).order_by("order", "name")
@@ -47,6 +60,7 @@ def landpage(request):
         "categories": categories,
         "services": services,
         "active_cat": active,
+        "espaco_images": espaco_images,
     }
 
     return render(request, "landpage.html", context)
