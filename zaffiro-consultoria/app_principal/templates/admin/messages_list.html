@@ -24,15 +24,16 @@
 
     <main class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-            
+
             <div class="flex gap-4">
                 <a href="?status=nova{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
                     class="border px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2
                     {% if request.GET.status == 'nova' %}bg-blue-600 border-blue-600 text-white shadow-md{% else %}bg-white border-blue-200 text-blue-600 hover:bg-blue-50{% endif %}">
-                    <span class="w-2 h-2 rounded-full {% if request.GET.status == 'nova' %}bg-white{% else %}bg-blue-600{% endif %}"></span>
+                    <span
+                        class="w-2 h-2 rounded-full {% if request.GET.status == 'nova' %}bg-white{% else %}bg-blue-600{% endif %}"></span>
                     Apenas Novas
                 </a>
-                
+
                 <a href="{% url 'messages_list' %}{% if request.GET.search %}?search={{ request.GET.search }}{% endif %}"
                     class="border px-4 py-2 rounded-xl text-sm font-semibold transition-all
                     {% if not request.GET.status %}bg-gray-800 border-gray-800 text-white shadow-md{% else %}bg-white border-gray-200 text-gray-600 hover:bg-gray-50{% endif %}">
@@ -42,16 +43,17 @@
 
             <form method="GET" action="{% url 'messages_list' %}" class="relative w-full md:w-96">
                 {% if request.GET.status %}
-                    <input type="hidden" name="status" value="{{ request.GET.status }}">
+                <input type="hidden" name="status" value="{{ request.GET.status }}">
                 {% endif %}
-                
-                <input type="text" name="search" value="{{ request.GET.search|default:'' }}" 
-                       placeholder="Buscar por nome, empresa ou e-mail..."
-                       class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm text-sm">
-                
+
+                <input type="text" name="search" value="{{ request.GET.search|default:'' }}"
+                    placeholder="Buscar por nome, empresa ou e-mail..."
+                    class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm text-sm">
+
                 <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                 </div>
             </form>
@@ -63,16 +65,19 @@
                     <tr class="bg-gray-50 border-b border-gray-100">
                         <th class="p-5 text-gray-600 font-bold uppercase text-xs">Status</th>
                         <th class="p-5 text-gray-600 font-bold uppercase text-xs">Lead / Empresa</th>
-                        <th class="p-5 text-gray-600 font-bold uppercase text-xs hidden md:table-cell">Data de Envio</th>
+                        <th class="p-5 text-gray-600 font-bold uppercase text-xs hidden md:table-cell">Data de Envio
+                        </th>
                         <th class="p-5 text-gray-600 font-bold uppercase text-xs text-right">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     {% for msg in mensagens %}
-                    <tr class="hover:bg-blue-50/30 transition-colors {% if not msg.lida %}bg-blue-50/50 font-semibold{% endif %}">
+                    <tr
+                        class="hover:bg-blue-50/30 transition-colors {% if not msg.lida %}bg-blue-50/50 font-semibold{% endif %}">
                         <td class="p-5">
                             {% if not msg.lida %}
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
                                 <span class="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span> NOVA
                             </span>
                             {% else %}

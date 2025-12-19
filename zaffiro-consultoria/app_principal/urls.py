@@ -6,7 +6,7 @@ urlpatterns = [
     # Rota da Landpage (Página Inicial)
     path('', views.landpage, name='landpage'),
 
-    # Autenticação (Usando as views nativas, mas com SEUS templates personalizados)
+    # Autenticação
     path('login/', auth_views.LoginView.as_view(template_name='admin/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='admin/logout_confirm.html'), name='logout'),
 
@@ -16,6 +16,6 @@ urlpatterns = [
     path('mensagem/<int:pk>/editar/', views.MessageUpdateView.as_view(), name='message_edit'),
     path('mensagem/<int:pk>/deletar/', views.MessageDeleteView.as_view(), name='message_delete'),
     
-    # Rota para marcar como lida (Ação rápida que você pediu)
+    # Rota para marcar como lida
     path('mensagem/<int:pk>/marcar-lida/', views.marcar_lida, name='marcar_lida'),
 ]

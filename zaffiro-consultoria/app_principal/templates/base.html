@@ -80,12 +80,10 @@
             }
         }
 
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Loading HTMX */
         .htmx-request .htmx-indicator {
             display: inline-block;
         }
@@ -108,8 +106,9 @@
     {% if user.is_authenticated %}
     <nav class="bg-[#0f172a] text-white py-4 px-6 shadow-lg">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="{% url 'messages_list' %}" class="text-xl font-bold">Zaffiro <span class="text-blue-500">Admin</span></a>
-            
+            <a href="{% url 'messages_list' %}" class="text-xl font-bold">Zaffiro <span
+                    class="text-blue-500">Admin</span></a>
+
             <div class="flex items-center gap-6">
                 <a href="{% url 'logout' %}" class="text-gray-300 hover:text-white text-sm font-medium">Sair</a>
             </div>
@@ -121,4 +120,5 @@
 
     {% block extra_js %}{% endblock %}
 </body>
+
 </html>

@@ -9,12 +9,10 @@ class MensagemContato(models.Model):
     mensagem = models.TextField()
     data_envio = models.DateTimeField(auto_now_add=True)
     
-    # Alterado de 'lido' para 'lida' para bater com o código das suas Views
     lida = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.nome} - {self.email}"
 
-    # Método auxiliar caso queira usar o texto em algum lugar
     def status_leitura(self):
         return "Lida" if self.lida else "Não Lida"
