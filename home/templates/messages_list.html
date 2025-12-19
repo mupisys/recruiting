@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Crazy Comments • Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-up {
+            animation: fadeUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-950 text-gray-200 min-h-screen">
+
+<!-- HEADER -->
+<header class="fixed top-0 w-full bg-zinc-900/80 backdrop-blur border-b border-zinc-800 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold tracking-wide text-violet-400">
+            Crazy Comments
+        </h1>
+
+        <div class="flex items-center gap-4 text-sm">
+            <span class="text-gray-400">
+                Olá, {{ request.user.email }}
+            </span>
+        </div>
+    </div>
+</header>
+
+<!-- CONTEÚDO -->
+
+<main class="pt-28 max-w-6xl mx-auto px-6">
+
+    <!-- BANNER -->
+
+    <section class="mb-12 fade-up">
+        <h2 class="text-3xl font-bold mb-2">
+            Painel de Comentários
+        </h2>
+
+        <p class="text-gray-400">
+            Aqui estão todas as mensagens enviadas pelos usuários.
+        </p>
+    </section>
+
+    <!-- LISTA DE COMENTÁRIOS -->
+
+    <section class="grid md:grid-cols-2 gap-6">
+
+
+
+
+
+        {% if mensagens %}
+
+
+            {% for msg in mensagens %}
+
+
+                <article
+
+
+                    class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6
+
+
+                           hover:scale-[1.02] transition-transform duration-300
+
+
+                           fade-up"style="animation-delay: {{ forloop.counter|add:'1' }}00ms">
+
+
+                    <div class="flex justify-between items-center mb-3">
+
+
+                        <h3 class="font-semibold text-lg text-violet-400">
+
+
+                            {{ msg.nome }}
+
+
+                        </h3>
+
+
+                        <span class="text-xs text-gray-500">
+
+
+                            {{ msg.email }}
+
+
+                        </span>
+
+
+                    </div>
+
+
+
+
+
+                    <p class="text-gray-300 leading-relaxed">
+
+
+                        {{ msg.mensagem }}
+
+
+                    </p>
+
+
+
+
+
+                    <div class="mt-4 text-xs text-gray-500">
+
+
+                        Enviado em {{ msg.criado_em|date:"d/m/Y H:i" }}
+
+
+                    </div>
+
+
+                </article>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <!-- ESTADO VAZIO -->
+
+
+            <div class="col-span-full text-center text-gray-500 mt-20 fade-up">
+                <p class="text-lg">Nenhuma mensagem encontrada 😢</p>
+                <p class="text-sm mt-2">Assim que alguém comentar, aparecerá aqui.</p>
+            </div>
+        {% endif %}
+    </section>
+</main>
+<!-- FOOTER -->
+<footer class="mt-24 border-t border-zinc-800 py-6 text-center text-sm text-gray-500">
+    Crazy Comments © 2025 • Projeto para processo seletivo
+</footer>
+</body>
+</html>
