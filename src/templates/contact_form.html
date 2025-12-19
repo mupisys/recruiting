@@ -1,0 +1,41 @@
+<form id="contact-form" hx-post="{% url 'forms:landpage' %}" hx-swap="outerHTML"
+    class="space-y-6 bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-100">
+    {% csrf_token %}
+
+    <div>
+        <label for="id_nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+        <input type="text" name="nome" id="id_nome" required
+            class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-150"
+            placeholder="Seu nome completo" value="{{ form.nome.value|default:'' }}">
+        {% if form.nome.errors %}
+        <p class="mt-1 text-sm text-red-600">{{ form.nome.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <label for="id_email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input type="email" name="email" id="id_email" required
+            class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-150"
+            placeholder="seu@email.com" value="{{ form.email.value|default:'' }}">
+        {% if form.email.errors %}
+        <p class="mt-1 text-sm text-red-600">{{ form.email.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <label for="id_mensagem" class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+        <textarea name="mensagem" id="id_mensagem" rows="5" required
+            class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-150"
+            placeholder="Digite sua mensagem aqui...">{{ form.mensagem.value|default:'' }}</textarea>
+        {% if form.mensagem.errors %}
+        <p class="mt-1 text-sm text-red-600">{{ form.mensagem.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <button type="submit"
+            class="w-full py-3 px-6 border border-transparent rounded-lg text-lg font-bold text-white bg-green-600 hover:bg-green-700 transition duration-300 shadow-md">
+            Enviar Mensagem
+        </button>
+    </div>
+</form>

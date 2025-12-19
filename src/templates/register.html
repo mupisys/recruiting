@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - HDC Host</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+    <header class="bg-[#0f172a] py-4 px-6 sticky top-0 z-50 shadow-md">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="/#HOME" class="flex items-center transition hover:opacity-80">
+                <img src="{% static 'img/hdchostlogo.png' %}" alt="Logo HDC Host" class="h-10">
+            </a>
+
+            <ul class="flex items-center space-x-6 text-white text-sm font-medium">
+                <li class="hover:text-gray-400 transition"><a href="/#HOME">HOME</a></li>
+                <li class="hover:text-gray-400 transition"><a href="/#PRECOS">PREÇOS</a></li>
+                <li class="hover:text-gray-400 transition"><a href="/#CONTATO">CONTATO</a></li>
+                <li>
+                    <a href="{% url 'forms:login' %}" 
+                       class="bg-green-600 px-4 py-2 rounded-md font-bold hover:bg-green-700 transition shadow-lg shadow-green-900/20">
+                        ENTRAR
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="w-full max-w-md bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
+            
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Crie sua conta</h2>
+                <p class="text-gray-500 mt-2">Inicie sua jornada na HDC Host</p>
+            </div>
+
+            <form method="POST" class="space-y-5">
+                {% csrf_token %}
+                
+                {% if messages %}
+                    <div class="mb-4">
+                        {% for message in messages %}
+                        <div class="p-4 text-sm rounded-xl border {% if message.tags == 'success' %}bg-green-50 text-green-700 border-green-200{% else %}bg-red-50 text-red-700 border-red-200{% endif %}" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 ml-1">Usuário</label>
+                        <input type="text" name="username" required
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition-all text-sm"
+                            placeholder="Escolha um usuário">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 ml-1">E-mail</label>
+                        <input type="email" name="email" required
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition-all text-sm"
+                            placeholder="seu@email.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 ml-1">Senha</label>
+                        <input type="password" name="password" required
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition-all text-sm"
+                            placeholder="••••••••">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 ml-1">Confirmar Senha</label>
+                        <input type="password" name="confirm_password" required
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition-all text-sm"
+                            placeholder="Repita a senha">
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit"
+                        class="w-full py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg shadow-green-200 transition-all active:scale-95 uppercase tracking-widest text-sm">
+                        FINALIZAR CADASTRO
+                    </button>
+                </div>
+
+                <div class="text-center pt-6 border-t border-gray-50">
+                    <p class="text-sm text-gray-600">
+                        Já possui uma conta? 
+                        <a href="{% url 'forms:login' %}" class="font-bold text-green-600 hover:text-green-700 transition-colors ml-1">Entre aqui</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-[#0f172a] text-gray-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[11px] md:text-xs">
+                &copy; 2025 <span class="text-white font-semibold">HDC Host</span>. Todos os direitos reservados.
+            </p>
+            <nav class="flex space-x-6 text-[11px] md:text-xs uppercase tracking-wider">
+                <a href="/" class="hover:text-white transition">Home</a>
+                <a href="/#PRECOS" class="hover:text-white transition">Planos</a>
+                <a href="/#CONTATO" class="hover:text-white transition">Suporte</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

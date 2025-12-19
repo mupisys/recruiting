@@ -1,0 +1,441 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDC Host - Hospedagem Rápida e Segura</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+
+<body x-data="{ showSuccessModal: false }">
+    <header class="bg-slate-900 py-3 px-6 sticky top-0 z-50">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto text-white">
+
+            <a href="#HOME" class="flex items-center">
+                <img src="{% static 'img/hdchostlogo.png' %}" alt="Logo HDC Host" class="h-10">
+            </a>
+
+            <ul class="flex items-center space-x-6">
+                <li class="hover:text-gray-300 cursor-pointer text-sm font-medium transition"><a href="#HOME">HOME</a>
+                </li>
+                <li class="hover:text-gray-300 cursor-pointer text-sm font-medium transition"><a
+                        href="#PRECOS">PREÇOS</a></li>
+                <li class="hover:text-gray-300 cursor-pointer text-sm font-medium transition"><a
+                        href="#CONTATO">CONTATO</a></li>
+
+                <li
+                    class="bg-green-600 px-4 py-2 rounded-md font-semibold text-sm hover:bg-green-700 transition cursor-pointer shadow-md">
+                    <a href="{% url 'forms:login' %}">ENTRAR</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="bg-gray-900 min-h-[450px] flex items-center justify-center relative py-16" id="HOME">
+
+        <div class="absolute inset-0 bg-cover bg-center opacity-50 main-banner-bg">
+        </div>
+
+        <div class="text-center p-8 max-w-5xl relative z-10 text-white">
+
+            <h1 class="text-6xl font-extrabold leading-tight mb-4 md:text-7xl 
+                       [text-shadow:0_0_10px_rgba(0,0,0,0.9)]">
+                <span class="text-green-500">HDC</span> Host
+            </h1>
+
+            <p class="text-2xl text-gray-100 mb-10 font-light">
+                O melhor serviço de hospedagem para projetos de todos os tamanhos!
+            </p>
+
+            <button class="bg-green-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl 
+                       hover:bg-green-700 hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                <a href="#PRECOS">Conheça Nossos Planos</a>
+            </button>
+        </div>
+
+    </main>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">
+                    Soluções Robustas para o Seu Projeto
+                </h2>
+                <p class="mt-2 text-lg text-gray-600">
+                    Conheça a infraestrutura que impulsiona projetos de todos tamanhos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.275a1.2 1.2 0 010 1.697l-2.071 2.073a1.2 1.2 0 01-1.697 0L10 12l-3.536 3.536a1.2 1.2 0 01-1.697 0L2.382 13.925a1.2 1.2 0 010-1.697l2.071-2.073a1.2 1.2 0 011.697 0L12 16l3.536-3.536a1.2 1.2 0 011.697 0l2.071 2.073a1.2 1.2 0 010 1.697z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">Segurança Avançada</h3>
+                    <p class="mt-3 text-gray-500 text-sm leading-relaxed">
+                        Proteja seus dados com firewalls de última geração, certificados SSL gratuitos e backups
+                        automáticos diários. Foco total na integridade do seu projeto.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.5 10.5V6a2.25 2.25 0 00-4.5 0v4.5M10.5 13.5h.008v.008h-.008v-.008zm.008 2.25h.008v.008h-.008v-.008zm-2.25 0h.008v.008h-.008v-.008zm-2.25 0h.008v.008h-.008v-.008zM19.5 7.5a2.25 2.25 0 00-4.5 0v1.5a.75.75 0 01-.75.75H8.25a.75.75 0 01-.75-.75V7.5a2.25 2.25 0 00-4.5 0V18a2.25 2.25 0 004.5 0v-4.5h3.75a.75.75 0 01.75.75v1.5a2.25 2.25 0 004.5 0V18a2.25 2.25 0 004.5 0V7.5z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">Velocidade e Performance</h3>
+                    <p class="mt-3 text-gray-500 text-sm leading-relaxed">
+                        Utilizamos discos NVMe SSD ultrarrápidos e servidores otimizados com LiteSpeed, garantindo o
+                        melhor tempo de carregamento e alta disponibilidade.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="mx-auto w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.545A9.77 9.77 0 0112 3c4.97 0 9 3.582 9 8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">Suporte 24/7 Especializado</h3>
+                    <p class="mt-3 text-gray-500 text-sm leading-relaxed">
+                        Nossa equipe técnica está disponível 24 horas por dia, 7 dias por semana, para resolver qualquer
+                        problema e oferecer a ajuda que você precisa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50" id="PRECOS">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                    Escolha o Plano Perfeito para Você
+                </h2>
+                <p class="mt-4 text-xl text-gray-600">
+                    Soluções de hospedagem com o melhor custo-benefício do mercado.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border-2 border-gray-100 flex flex-col transition duration-300 hover:shadow-xl">
+                    <h3 class="text-2xl font-bold text-gray-900">Básico</h3>
+                    <p class="mt-4 text-gray-500">Ideal para sites e blogs pessoais.</p>
+                    <p class="mt-6 text-4xl font-extrabold text-gray-900">
+                        R$ 19,90<span class="text-xl font-medium text-gray-500">/mês</span>
+                    </p>
+
+                    <ul class="mt-6 space-y-3 grow">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> 1 Domínio
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> 5 GB SSD
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> 1 E-mail Profissional
+                        </li>
+                    </ul>
+
+                    <button class="mt-8 w-full py-3 px-6 border border-transparent rounded-lg text-lg font-medium 
+                               text-white bg-gray-500 hover:bg-gray-600 transition duration-300">
+                        Comprar Básico
+                    </button>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-2xl border-4 border-green-500 flex flex-col transform scale-105 z-10 relative">
+                    <div
+                        class="absolute top-0 right-0 bg-green-500 text-white text-sm font-semibold px-4 py-1 rounded-bl-lg">
+                        Recomendado
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Profissional</h3>
+                    <p class="mt-4 text-gray-500">Perfeito para PMEs e projetos em crescimento.</p>
+                    <p class="mt-6 text-5xl font-extrabold text-gray-900">
+                        R$ 49,90<span class="text-xl font-medium text-gray-500">/mês</span>
+                    </p>
+
+                    <ul class="mt-6 space-y-3 grow">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> Domínios Ilimitados
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> 50 GB NVMe SSD
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> E-mails Ilimitados
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> SSL Gratuito
+                        </li>
+                    </ul>
+
+                    <button class="mt-8 w-full py-3 px-6 border border-transparent rounded-lg text-lg font-medium 
+                               text-white bg-green-600 hover:bg-green-700 transition duration-300">
+                        Contratar Agora
+                    </button>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border-2 border-gray-100 flex flex-col transition duration-300 hover:shadow-xl">
+                    <h3 class="text-2xl font-bold text-gray-900">Avançado</h3>
+                    <p class="mt-4 text-gray-500">Máxima performance para e-commerce e tráfego intenso.</p>
+                    <p class="mt-6 text-4xl font-extrabold text-gray-900">
+                        R$ 99,90<span class="text-xl font-medium text-gray-500">/mês</span>
+                    </p>
+
+                    <ul class="mt-6 space-y-3 grow">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> Domínios Ilimitados
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> 200 GB NVMe SSD
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> E-mails Ilimitados
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg> Suporte 24/7 VIP
+                        </li>
+                    </ul>
+
+                    <button class="mt-8 w-full py-3 px-6 border border-transparent rounded-lg text-lg font-medium 
+                               text-white bg-gray-500 hover:bg-gray-600 transition duration-300">
+                        Contratar Avançado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white" id="CONTATO">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-gray-900">
+                    Fale Conosco
+                </h2>
+                <p class="mt-4 text-xl text-gray-600">
+                    Tem alguma dúvida ou precisa de um plano personalizado? Envie-nos uma mensagem!
+                </p>
+            </div>
+
+            {% if messages %}
+            <div class="mb-6">
+                {% for message in messages %}
+                {% if 'success' in message.tags %}
+                <!-- Inicializa o modal como aberto se houver sucesso -->
+                <div x-init="showSuccessModal = true"></div>
+                
+                <!-- Modal de Sucesso -->
+                <div x-show="showSuccessModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                        
+                        <div x-show="showSuccessModal" x-transition.opacity class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="showSuccessModal = false"></div>
+
+                        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+                        <div x-show="showSuccessModal" x-transition.scale class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                <div class="sm:flex sm:items-start">
+                                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                                        <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Sucesso!</h3>
+                                        <div class="mt-2">
+                                            <p class="text-sm text-gray-500">{{ message }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <button @click="showSuccessModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                                    Fechar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <!-- Alerta Vermelho para Erros -->
+                <div class="p-4 rounded-lg bg-red-100 text-red-800 border-red-300 border">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'forms:landpage' %}"
+                class="space-y-6 bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-100">
+                {% csrf_token %}
+
+                <div>
+                    <label for="id_nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                    <input type="text" name="nome" id="id_nome" required
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-150"
+                        placeholder="Seu nome completo" value="{{ form.nome.value|default:'' }}">
+                    {% if form.nome.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.nome.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <label for="id_email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" name="email" id="id_email" required
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-150"
+                        placeholder="seu@email.com" value="{{ form.email.value|default:'' }}">
+                    {% if form.email.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.email.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <label for="id_mensagem" class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                    <textarea name="mensagem" id="id_mensagem" rows="5" required
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-150"
+                        placeholder="Digite sua mensagem aqui...">{{ form.mensagem.value|default:'' }}</textarea>
+                    {% if form.mensagem.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.mensagem.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <button type="submit"
+                        class="w-full py-3 px-6 border border-transparent rounded-lg text-lg font-bold text-white bg-green-600 hover:bg-green-700 transition duration-300 shadow-md">
+                        Enviar Mensagem
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
+
+                <div class="md:col-span-1">
+                    <a href="#HOME" class="flex items-center mb-4">
+                        <img src="{% static 'img/hdchostlogo.png' %}" alt="Logo HDC Host"
+                            class="h-10 filter brightness-150">
+                    </a>
+                    <p class="text-sm text-gray-400 mt-2">
+                        Hospedagem de alta performance focada em velocidade, segurança e suporte 24/7.
+                    </p>
+                </div>
+
+                <div class="md:col-span-1">
+                    <h4 class="text-lg font-semibold mb-4 text-green-500">Navegação</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#HOME" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#PRECOS" class="text-gray-400 hover:text-white transition">Planos de Preços</a>
+                        </li>
+                        <li><a href="#CONTATO" class="text-gray-400 hover:text-white transition">Fale Conosco</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Termos de Serviço</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-1">
+                    <h4 class="text-lg font-semibold mb-4 text-green-500">Recursos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Registro de Domínio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Backups Diários</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">SSL Gratuito</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Ajuda & FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-1">
+                    <h4 class="text-lg font-semibold mb-4 text-green-500">Contato</h4>
+                    <p class="text-sm text-gray-400">
+                        Email: <a href="mailto:contato@hdchost.com" class="hover:text-white">contato@hdchost.com</a>
+                    </p>
+                    <p class="text-sm text-gray-400 mt-2">
+                        Telefone: (31) 99999-9999
+                    </p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white">FB</a>
+                        <a href="#" class="text-gray-400 hover:text-white">IG</a>
+                        <a href="#" class="text-gray-400 hover:text-white">LN</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-sm text-gray-500">
+                &copy; 2025 HDC Host. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhe da Mensagem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Detalhes da Mensagem</h1>
+        <div class="border-t border-gray-200 pt-4">
+            <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Nome</dt>
+                    <dd class="mt-1 text-lg text-gray-900">{{ mensagem.nome }}</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Email</dt>
+                    <dd class="mt-1 text-lg text-gray-900">{{ mensagem.email }}</dd>
+                </div>
+                <div class="sm:col-span-2">
+                    <dt class="text-sm font-medium text-gray-500">Data de Envio</dt>
+                    <dd class="mt-1 text-lg text-gray-900">{{ mensagem.data_envio|date:"d/m/Y \à\s H:i" }}</dd>
+                </div>
+                <div class="sm:col-span-2">
+                    <dt class="text-sm font-medium text-gray-500">Status</dt>
+                    <dd class="mt-1 text-lg">
+                        {% if mensagem.lido %}
+                            <span class="px-3 py-1 text-sm font-semibold rounded-full bg-green-100 text-green-800">Lida</span>
+                        {% else %}
+                            <span class="px-3 py-1 text-sm font-semibold rounded-full bg-red-100 text-red-800">Não Lida</span>
+                        {% endif %}
+                    </dd>
+                </div>
+                <div class="sm:col-span-2">
+                    <dt class="text-sm font-medium text-gray-500">Mensagem</dt>
+                    <dd class="mt-1 text-base text-gray-800 bg-gray-50 p-4 rounded-md whitespace-pre-wrap">{{ mensagem.mensagem }}</dd>
+                </div>
+            </dl>
+        </div>
+        <div class="mt-8 flex justify-end">
+            <a href="{% url 'forms:mensagens' %}" class="text-indigo-600 hover:text-indigo-800 font-medium">Voltar para a lista</a>
+        </div>
+    </div>
+</body>
+</html>

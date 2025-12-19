@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Logout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta http-equiv="refresh" content="3;url={% url 'forms:login' %}">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8 text-center">
+        <h1 class="text-2xl font-bold text-green-600 mb-4">Logout realizado com sucesso!</h1>
+        <p class="text-gray-600">Você será redirecionado para a página de login em 3 segundos.</p>
+        <div class="mt-6">
+            <a href="{% url 'forms:login' %}" class="text-indigo-600 hover:text-indigo-800 font-medium">Ir para o login agora</a>
+        </div>
+    </div>
+</body>
+</html>

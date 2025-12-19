@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Mensagem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Editar Mensagem</h1>
+
+        <div class="bg-white shadow-md rounded-lg overflow-hidden p-8">
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="grid grid-cols-1 gap-6">
+                    <div>
+                        <label for="id_nome" class="block text-sm font-medium text-gray-700">Nome</label>
+                        <input type="text" name="nome" id="id_nome" value="{{ form.nome.value|default_if_none:'' }}"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
+                            required>
+                        {% if form.nome.errors %}
+                        <p class="text-red-500 text-xs mt-1">{{ form.nome.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label for="id_email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" name="email" id="id_email" value="{{ form.email.value|default_if_none:'' }}"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
+                            required>
+                        {% if form.email.errors %}
+                        <p class="text-red-500 text-xs mt-1">{{ form.email.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label for="id_mensagem" class="block text-sm font-medium text-gray-700">Mensagem</label>
+                        <textarea name="mensagem" id="id_mensagem" rows="6"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
+                            required>{{ form.mensagem.value|default_if_none:'' }}</textarea>
+                        {% if form.mensagem.errors %}
+                        <p class="text-red-500 text-xs mt-1">{{ form.mensagem.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" name="lido" id="id_lido"
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" 
+                            {% if form.lido.value %}checked{% endif %}>
+                        <label for="id_lido" class="ml-2 block text-sm text-gray-900">
+                            Marcar como lido
+                        </label>
+                    </div>
+                    {% if form.instance.data_envio %}
+                    <div class="text-sm text-gray-500">
+                        Recebida em: {{ form.instance.data_envio|date:"d/m/Y H:i" }}
+                    </div>
+                    {% endif %}
+                    <div class="flex items-center justify-end space-x-4 mt-4">
+                        <a href="javascript:history.back()"
+                            class="text-sm font-medium text-gray-600 hover:text-gray-900">Cancelar</a>
+                        <button type="submit"
+                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
