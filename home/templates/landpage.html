@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crazy Comments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#0f172a',
+            darker: '#020617',
+            accent: '#7c3aed'
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'bounce-in': 'bounceIn 1s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(50px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            },
+            bounceIn: {
+              '0%': { transform: 'scale(0.3)', opacity: '0' },
+              '50%': { transform: 'scale(1.05)' },
+              '70%': { transform: 'scale(0.9)' },
+              '100%': { transform: 'scale(1)', opacity: '1' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-darker text-gray-200 font-sans animate-fade-in">
+
+  <!-- Header / Navbar -->
+  <header class="bg-dark shadow-lg sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-accent animate-bounce-in">Crazy Comments</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="/home" class="hover:text-accent transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Início</a>
+        <a href="/login/" class="hover:text-accent transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Login</a>
+        <a href="#destaques" class="hover:text-accent transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Destaques</a>
+        <a href="#comentarios" class="hover:text-accent transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Comentários</a>
+        <a href="#contato" class="hover:text-accent transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner / Hero -->
+  <section class="bg-gradient-to-br from-dark via-darker to-black relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-accent/10 to-transparent animate-pulse-slow"></div>
+    <div class="max-w-7xl mx-auto px-6 py-24 text-center relative z-10 animate-slide-up">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">
+        Tá afim de compartilhar suas <span class="text-accent animate-pulse">loucuras</span> com o mundo?
+      </h2>
+      <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-lg animate-fade-in" style="animation-delay: 0.5s">
+        Crazy Comments é uma plataforma simples e direta para compartilhar opiniões, feedbacks e pensamentos COMPLETAMENTE aleatórios (ou polêmicos) que, em situações
+        normais gerariam horas de discussão.
+      </p>
+      <a href="#comentarios" class="inline-block bg-accent hover:bg-violet-700 transition-all duration-300 px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-accent/50 hover:scale-105 animate-bounce-in" style="animation-delay: 1s">
+        Comentar agora
+      </a>
+    </div>
+  </section>
+    </div>
+  </section>
+
+  <!-- Destaques -->
+  <section id="destaques" class="py-20 bg-gradient-to-b from-darker to-dark">
+    <div class="max-w-7xl mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-12 text-center animate-slide-up">Destaques do Serviço</h3>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-dark p-6 rounded-2xl shadow-lg hover:shadow-accent/20 hover:scale-105 transition-all duration-500 animate-fade-in group" style="animation-delay: 0.2s">
+          <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:animate-pulse">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-accent">Interface Simples</h4>
+          <p class="text-gray-400">Design minimalista e focado no conteúdo, sem distrações.</p>
+        </div>
+        <div class="bg-dark p-6 rounded-2xl shadow-lg hover:shadow-accent/20 hover:scale-105 transition-all duration-500 animate-fade-in group" style="animation-delay: 0.4s">
+          <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:animate-pulse">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-accent">Comentários Rápidos</h4>
+          <p class="text-gray-400">Envie seu comentário em poucos segundos, sem burocracia.</p>
+        </div>
+        <div class="bg-dark p-6 rounded-2xl shadow-lg hover:shadow-accent/20 hover:scale-105 transition-all duration-500 animate-fade-in group" style="animation-delay: 0.6s">
+          <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:animate-pulse">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-semibold mb-2 text-accent">Visual Sombrio</h4>
+          <p class="text-gray-400">Tema escuro pensado para conforto visual e estilo moderno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comentários -->
+  <section id="comentarios" class="py-20 bg-gradient-to-b from-dark to-darker">
+    <div class="max-w-3xl mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-8 text-center animate-slide-up">Deixe seu Comentário</h3>
+      <form class="space-y-6 bg-dark p-8 rounded-3xl shadow-2xl animate-fade-in" style="animation-delay: 0.8s">
+        <div class="animate-slide-up" style="animation-delay: 1s">
+          <label class="block mb-1 text-sm font-medium">Nome</label>
+          <input type="text" placeholder="Seu nome" class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 hover:border-accent/50" />
+        </div>
+        <div class="animate-slide-up" style="animation-delay: 1.2s">
+          <label class="block mb-1 text-sm font-medium">Comentário</label>
+          <textarea rows="4" placeholder="Escreva sua opinião polêmica..." class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 hover:border-accent/50 resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-accent hover:bg-violet-700 active:scale-95 transition-all duration-300 transform px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-accent/50 animate-bounce-in" style="animation-delay: 1.4s">
+          Enviar Comentário
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="py-20 bg-gradient-to-b from-darker to-dark">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-8 text-center animate-slide-up">Contato</h3>
+      <form class="grid gap-6 md:grid-cols-2 bg-dark p-8 rounded-3xl shadow-2xl animate-fade-in" action="/home/" method="post" style="animation-delay: 1s"> {% csrf_token %}
+        <input type="text" name="nome" placeholder="Nome" class="bg-darker border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 hover:border-accent/50 animate-slide-up" style="animation-delay: 1.2s" />
+        <input type="email" name="email" placeholder="Email" class="bg-darker border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 hover:border-accent/50 animate-slide-up" style="animation-delay: 1.3s" />
+        <textarea name="mensagem" placeholder="Mensagem" rows="4" class="md:col-span-2 bg-darker border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 hover:border-accent/50 resize-none animate-slide-up" style="animation-delay: 1.4s"></textarea>
+        <button type="submit" class="md:col-span-2 bg-accent hover:bg-violet-700 transition-all duration-300 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-accent/50 hover:scale-105 animate-bounce-in" style="animation-delay: 1.5s">
+           Enviar
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark border-t border-gray-800 backdrop-blur-sm bg-opacity-90">
+    <div class="max-w-7xl mx-auto px-6 py-8 text-center text-gray-500 animate-fade-in">
+      <p class="text-lg">© 2025 Crazy Comments — Processo Seletivo mupi Sistemas</p>
+      <p class="text-sm mt-2 animate-pulse-slow">Desenvolvido por Amom</p>
+    </div>
+  </footer>
+
+</body>
+</html>

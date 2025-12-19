@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crazy Comments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#0f172a',
+            darker: '#020617',
+            accent: '#7c3aed'
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'bounce-in': 'bounceIn 1s ease-out',
+            'float': 'float 3s ease-in-out infinite'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(50px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            },
+            bounceIn: {
+              '0%': { transform: 'scale(0.3)', opacity: '0' },
+              '50%': { transform: 'scale(1.05)' },
+              '70%': { transform: 'scale(0.9)' },
+              '100%': { transform: 'scale(1)', opacity: '1' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-darker text-gray-200 font-sans animate-fade-in">
+
+  <!-- Header / Navbar -->
+  <header class="bg-dark shadow-lg sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-accent animate-bounce-in">Crazy Comments</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="/home" class="hover:text-accent transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Início</a>
+      </nav>
+    </div>
+  </header>
+
+
+
+<!-- Login Page -->
+<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-darker via-dark to-black px-6 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent animate-float"></div>
+  <div class="w-full max-w-md bg-dark rounded-3xl shadow-2xl p-8 relative z-10 animate-bounce-in">
+    <div class="text-center mb-8 animate-slide-up">
+      <h2 class="text-3xl font-extrabold text-accent mb-2">Bem-vindo de volta</h2>
+      <p class="text-gray-400 mt-2">Acesse a área de administração de mensagens.</p>
+    </div>
+
+    <form method="post" class="space-y-6 animate-fade-in" style="animation-delay: 0.5s">
+      {% csrf_token %}
+      <div class="animate-slide-up" style="animation-delay: 0.7s">
+        <label class="block text-sm mb-1 font-medium">Email</label>
+        <input name="email" type="email" placeholder="seu@email.com" class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 hover:border-accent/50" />
+      </div>
+
+      <div class="animate-slide-up" style="animation-delay: 0.8s">
+        <label class="block text-sm mb-1 font-medium">Senha</label>
+        <input name="senha" type="password" placeholder="••••••••" class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 hover:border-accent/50" />
+      </div>
+
+      <div class="flex items-center justify-between text-sm animate-slide-up" style="animation-delay: 0.9s">
+        <label class="flex items-center gap-2 hover:text-accent transition-colors cursor-pointer">
+          <input type="checkbox" class="accent-violet-600 scale-110" />
+          <span class="text-gray-400">Lembrar-me</span>
+        </label>
+        <a href="#" class="text-accent hover:underline hover:scale-105 transition-all duration-300">Esqueceu a senha?</a>
+      </div>
+
+      <button type="submit" class="w-full bg-accent hover:bg-violet-700 active:scale-95 transition-all duration-300 transform px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-accent/50 animate-bounce-in" style="animation-delay: 1s">
+        Entrar
+      </button>
+    </form>
+
+    <div class="mt-8 text-center text-sm text-gray-400 animate-fade-in" style="animation-delay: 1.2s">
+      <p>Não tem uma conta?</p>
+      <a href="#" class="text-accent hover:underline font-semibold hover:scale-105 transition-all duration-300">Criar conta</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

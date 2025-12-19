@@ -1,0 +1,47 @@
+Instruções para rodar o projeto (Python + Django)
+
+1) Requisitos do sistema
+- Python 3.11+ (ou 3.10 funciona em muitos casos)
+- pip, venv (instale via gerenciador da sua distro se necessário)
+
+2) Passos básicos (no Linux)
+
+# atualize pacotes e instale dependências do sistema (opcional)
+sudo apt update && sudo apt install -y python3 python3-venv python3-pip
+
+# entre na pasta do projeto (ajuste o caminho se necessário)
+cd /workspaces/Recruiting-mupi
+
+# criar e ativar virtualenv
+python3 -m venv venv
+source venv/bin/activate
+
+# atualizar pip e ferramentas
+pip install --upgrade pip setuptools wheel
+
+# instalar dependências
+# Se houver um requirements.txt, use-o. Caso contrário, instala Django (versão mínima recomendada: 4.2 LTS)
+if [ -f requirements.txt ]; then
+  pip install -r requirements.txt
+else
+  pip install Django==4.2
+fi
+
+3) Configurações de banco de dados
+- O projeto já inclui `db.sqlite3`, então normalmente não precisa configurar nada para desenvolvimento.
+- Se quiser usar outro DB (Postgres/MySQL), instale os drivers e atualize `crazy_comments/settings.py` conforme necessário.
+
+4) Migrações e usuário admin
+python manage.py migrate
+python manage.py createsuperuser
+
+5) Rodar o servidor de desenvolvimento
+python manage.py runserver 0.0.0.0:8000
+
+6) Notas úteis
+- Caso o projeto use pacotes extras, gere um `requirements.txt` com:
+  pip freeze > requirements.txt
+- Se receber erro de permissão com o socket ou porta, execute com uma porta diferente ou ajuste permissões.
+- Para desenvolvimento remoto em contêiner/WSL, usar `0.0.0.0` permite acessar externamente.
+
+Se quiser, eu também posso gerar um `requirements.txt` com as dependências atuais do projeto.
