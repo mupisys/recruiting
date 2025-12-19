@@ -225,8 +225,10 @@
         </div>
       </div>
     </nav>
-
-    {% block content %}{% endblock %}
+    <div class="min-h-screen">
+      {% block content %}{% endblock %}
+    </div>
+    {% include "partials/footer.html" %}
 
     <!-- Floating Theme Toggle -->
     <button

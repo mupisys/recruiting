@@ -1,0 +1,62 @@
+{% load static %}
+
+<footer class="border-t border-border bg-foreground/5">
+  <div class="mx-auto max-w-6xl px-4 lg:px-8 py-12">
+    <div class="grid gap-8 md:grid-cols-3 md:items-center">
+      <!-- Logo -->
+      <div class="flex justify-center md:justify-start">
+        <a href="{% url 'landpage' %}" class="inline-flex items-center">
+          <img
+            src="{% static 'images/LogoDinamico.gif' %}"
+            alt="Clínica Casulo"
+            class="h-14 w-auto"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <div class="text-center">
+        <p class="text-sm leading-relaxed text-foreground/70">
+          Av. Maroto Ferreira, 299 - Alvorada<br />
+          Salinas - MG, 39560-000
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 md:justify-end">
+        <a
+          href="https://instagram.com/casulo_clinica"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex h-12 w-12 items-center justify-center rounded-full border bg-card/50 text-muted-foreground
+                 transition-all duration-300
+                 hover:border-[#E1306C]/50 hover:bg-[#E1306C]/5 hover:text-[#E1306C]
+                 hover:-translate-y-1 hover:shadow-sm hover:shadow-[#E1306C]/20"
+          aria-label="Instagram"
+          title="Instagram"
+        >
+          <i data-lucide="instagram" class="h-5 w-5"></i>
+        </a>
+
+        <a
+          href="https://wa.me/5561999999999"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex h-12 w-12 items-center justify-center rounded-full border bg-card/50 text-muted-foreground
+                 transition-all duration-300
+                 hover:border-primary/50 hover:bg-primary/5 hover:text-primary
+                 hover:-translate-y-1 hover:shadow-sm hover:shadow-primary/20"
+          aria-label="WhatsApp"
+          title="WhatsApp"
+        >
+          <i data-lucide="message-circle" class="h-5 w-5"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8 border-t border-border pt-8 text-center">
+      <p class="text-sm text-foreground/60">
+        Clínica Casulo © {% now "Y" %} - Todos os direitos reservados
+      </p>
+    </div>
+  </div>
+</footer>
