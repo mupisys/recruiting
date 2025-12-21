@@ -1,0 +1,100 @@
+{% extends 'app_principal/base.html' %}
+
+{% block title %}Login - TechSolutions{% endblock %}
+
+{% block content %}
+<section class="min-h-[calc(100vh-6rem)] flex items-center">
+    <div class="shell flex justify-center">
+
+        <div class="w-full max-w-md">
+
+            <header class="text-center mb-10 fade-in-up">
+                <div class="flex justify-center mb-4">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-sm">
+                        <span class="text-white font-semibold text-xl">TS</span>
+                    </div>
+                </div>
+
+                <h1 class="text-2xl font-semibold text-slate-900">
+                    Área Administrativa
+                </h1>
+
+                <p class="mt-2 text-sm text-slate-600">
+                    Faça login para acessar o painel de mensagens
+                </p>
+            </header>
+
+            <div class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8 fade-in-up-delayed">
+
+                <form method="POST" action="{% url 'app_principal:login' %}" class="space-y-6">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                        <div class="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                            Usuário ou senha inválidos. Verifique os dados.
+                        </div>
+                    {% endif %}
+
+                    <div class="space-y-1.5">
+                        <label for="username" class="text-sm font-medium text-slate-700">
+                            Usuário
+                        </label>
+
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            required
+                            autofocus
+                            placeholder="Digite seu usuário"
+                            class="w-full rounded-xl border border-slate-200 bg-white/70 px-4 py-3 text-sm
+                                   focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20
+                                   outline-none transition"
+                        >
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="password" class="text-sm font-medium text-slate-700">
+                            Senha
+                        </label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            required
+                            placeholder="Digite sua senha"
+                            class="w-full rounded-xl border border-slate-200 bg-white/70 px-4 py-3 text-sm
+                                   focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20
+                                   outline-none transition"
+                        >
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn-primary-soft w-full rounded-xl bg-indigo-600 px-6 py-3
+                               text-sm font-medium text-white"
+                    >
+                        Entrar
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center">
+                    <a
+                        href="{% url 'app_principal:landpage' %}"
+                        class="text-sm text-indigo-600 hover:text-indigo-800 transition-colors"
+                    >
+                        ← Voltar para a página inicial
+                    </a>
+                </div>
+            </div>
+
+            <p class="mt-8 text-center text-xs text-slate-500">
+                Apenas administradores autorizados podem acessar esta área
+            </p>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

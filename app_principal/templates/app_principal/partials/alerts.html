@@ -1,0 +1,45 @@
+{% if messages %}
+<div class="fixed top-20 right-5 z-50 space-y-3 max-w-sm w-full">
+    {% for message in messages %}
+    <div
+        x-data="{ show: true }"
+        x-show="show"
+        x-init="setTimeout(() => show = false, 4500)"
+        x-transition
+        class="rounded-xl shadow-xl overflow-hidden"
+    >
+        <div class="flex items-start gap-3 px-4 py-3 text-sm font-medium
+            {% if message.tags == 'success' %}
+                bg-emerald-600 text-white
+            {% elif message.tags == 'error' or message.tags == 'danger' %}
+                bg-rose-600 text-white
+            {% elif message.tags == 'warning' %}
+                bg-amber-500 text-white
+            {% else %}
+                bg-indigo-600 text-white
+            {% endif %}
+        ">
+            <div class="mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+
+            <p class="flex-1 leading-relaxed">{{ message }}</p>
+
+            <button
+                @click="show = false"
+                class="rounded-md p-1 hover:bg-white/20 transition"
+                aria-label="Fechar"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}

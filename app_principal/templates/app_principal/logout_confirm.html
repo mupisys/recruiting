@@ -1,0 +1,62 @@
+{% extends 'app_principal/base.html' %}
+
+{% block title %}Confirmar Logout - TechSolutions{% endblock %}
+
+{% block content %}
+<section class="min-h-[calc(100vh-6rem)] flex items-center">
+    <div class="shell flex justify-center">
+
+        <div class="w-full max-w-md">
+
+            <div class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8 text-center fade-in-up">
+
+                <div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
+                    <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-9V4" />
+                    </svg>
+                </div>
+
+                <h1 class="text-xl font-semibold text-slate-900">
+                    Confirmar logout
+                </h1>
+
+                <p class="mt-2 text-sm text-slate-600">
+                    Você será desconectado da área administrativa.
+                </p>
+
+                <div class="mt-8 flex gap-3">
+
+                    <a
+                        href="{% url 'app_principal:messages_list' %}"
+                        class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2.5
+                               text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
+                    >
+                        Cancelar
+                    </a>
+
+                    <form method="POST" action="{% url 'app_principal:logout' %}" class="flex-1">
+                        {% csrf_token %}
+                        <button
+                            type="submit"
+                            class="w-full rounded-xl bg-slate-900 px-4 py-2.5
+                                   text-sm font-medium text-white hover:bg-slate-800 transition"
+                        >
+                            Sair
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}
