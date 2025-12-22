@@ -1,0 +1,87 @@
+{% load static %}
+
+<footer class="border-t border-border bg-foreground/5">
+  <div class="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+    
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:items-start lg:gap-12">
+      
+      <div class="flex flex-col items-center text-center md:items-start md:text-left lg:col-span-5 xl:col-span-4">
+        
+        <a href="{% url 'landpage' %}" class="mb-6 inline-flex items-center transition-opacity hover:opacity-80">
+          <img
+            src="{% static 'images/LogoDinamico.gif' %}"
+            alt="Clínica Casulo"
+            class="h-16 w-auto" 
+            loading="lazy"
+          />
+        </a>
+
+        <div class="space-y-4">
+          <p class="text-sm leading-relaxed text-foreground/70">
+            <strong>Clínica Casulo</strong><br/>
+            Av. Maroto Ferreira, 299 - Alvorada<br />
+            Salinas - MG, 39560-000
+          </p>
+          
+          <p class="text-xs font-medium text-primary/80">
+            Toque no mapa para traçar a rota!
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+          
+          <a
+            href="https://instagram.com/casulo_clinica"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-12 w-12 items-center justify-center rounded-full border bg-card/50 text-muted-foreground
+                   transition-all duration-300
+                   hover:border-[#E1306C]/50 hover:bg-[#E1306C]/5 hover:text-[#E1306C]
+                   hover:-translate-y-1 hover:shadow-sm hover:shadow-[#E1306C]/20"
+            aria-label="Instagram"
+            title="Instagram"
+          >
+            <i data-lucide="instagram" class="h-5 w-5"></i>
+          </a>
+
+          <a
+            href="https://wa.me/5561999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-12 w-12 items-center justify-center rounded-full border bg-card/50 text-muted-foreground
+                   transition-all duration-300
+                   hover:border-primary/50 hover:bg-primary/5 hover:text-primary
+                   hover:-translate-y-1 hover:shadow-sm hover:shadow-primary/20"
+            aria-label="WhatsApp"
+            title="WhatsApp"
+          >
+            <i data-lucide="message-circle" class="h-5 w-5"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="w-full lg:col-span-7 xl:col-span-8">
+        <div class="group relative overflow-hidden rounded-2xl border border-border bg-card/60 shadow-sm transition-transform duration-300 md:hover:scale-[1.01]">
+          <div class="aspect-16/11 w-full md:aspect-16/12 lg:aspect-21/9">
+            <iframe
+              title="Localização Clínica Casulo"
+              class="h-full w-full grayscale-15 contrast-105 saturate-90 transition-all duration-500 hover:grayscale-0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3832.0611928167527!2d-42.29895332386525!3d-16.16579438452776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x74deb59818f68d5%3A0xd6bbd1158e96a027!2sCasulo%20-%20Espa%C3%A7o%20Terap%C3%AAutico%20da%20Crian%C3%A7a%20e%20do%20Adolescente!5e0!3m2!1spt-BR!2sbr!4v1766168959077!5m2!1spt-BR!2sbr"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div aria-hidden="true" class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-border/20 rounded-2xl"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-12 border-t border-border pt-8 text-center">
+      <p class="text-sm text-foreground/60">
+        © {% now "Y" %} Clínica Casulo - Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

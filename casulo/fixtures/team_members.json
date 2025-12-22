@@ -1,0 +1,104 @@
+[
+  {
+    "model": "casulo.teammember",
+    "pk": 1,
+    "fields": {
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "is_active": true,
+      "nome": "Ana Carvalho",
+      "slug": "ana-carvalho",
+      "cargo": "Psicóloga",
+      "registro": "CRP 00/00000",
+      "bio": "Atendimento com foco em acolhimento, organização emocional e estratégias práticas para o dia a dia.",
+      "tags": "Infantil, Adulto, Online, Ansiedade",
+      "foto": "",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "casulo.teammember",
+    "pk": 2,
+    "fields": {
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "is_active": true,
+      "nome": "Bruno Almeida",
+      "slug": "bruno-almeida",
+      "cargo": "Fisioterapeuta",
+      "registro": "CREFITO 00/000000",
+      "bio": "Reabilitação com plano claro, foco em postura, mobilidade e retorno seguro às atividades.",
+      "tags": "Dor na coluna, Postura, Mobilidade, Reabilitação",
+      "foto": "",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "casulo.teammember",
+    "pk": 3,
+    "fields": {
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "is_active": true,
+      "nome": "Larissa Souza",
+      "slug": "larissa-souza",
+      "cargo": "Nutricionista",
+      "registro": "CRN 0/00000",
+      "bio": "Nutrição realista: metas possíveis, rotina prática e ajustes inteligentes sem terrorismo alimentar.",
+      "tags": "Emagrecimento, Performance, Reeducação alimentar, Rotina",
+      "foto": "",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "casulo.teammember",
+    "pk": 4,
+    "fields": {
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "is_active": true,
+      "nome": "Camila Ribeiro",
+      "slug": "camila-ribeiro",
+      "cargo": "Fonoaudióloga",
+      "registro": "CREFONO 0/00000",
+      "bio": "Avaliação e intervenção em linguagem e comunicação com estratégias personalizadas e acompanhamento contínuo.",
+      "tags": "Linguagem, Comunicação, Infantil, Avaliação",
+      "foto": "",
+      "ordem": 4
+    }
+  },
+  {
+    "model": "casulo.teammember",
+    "pk": 5,
+    "fields": {
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "is_active": true,
+      "nome": "Felipe Martins",
+      "slug": "felipe-martins",
+      "cargo": "Terapeuta Ocupacional",
+      "registro": "CREFITO 00/000000-TO",
+      "bio": "Desenvolvimento de autonomia e habilidades funcionais com plano terapêutico centrado na rotina da família.",
+      "tags": "Autonomia, Rotina, Infantil, Funções executivas",
+      "foto": "",
+      "ordem": 5
+    }
+  },
+  {
+    "model": "casulo.teammember",
+    "pk": 6,
+    "fields": {
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "is_active": true,
+      "nome": "Mariana Lopes",
+      "slug": "mariana-lopes",
+      "cargo": "Pediatra",
+      "registro": "CRM 00/000000",
+      "bio": "Acompanhamento pediátrico com orientação clara para famílias e foco em prevenção, crescimento e bem-estar.",
+      "tags": "Consulta, Preventivo, Desenvolvimento, Família",
+      "foto": "",
+      "ordem": 6
+    }
+  }
+]

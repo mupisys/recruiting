@@ -1,0 +1,65 @@
+{% if messages %}
+  <div class="px-6 pt-6">
+    {% for message in messages %}
+      {% if "success" in message.tags %}
+        <div class="mb-3 rounded-xl border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary transition-opacity duration-300" role="status" data-auto-dismiss="4500">
+          {{ message }}
+        </div>
+      {% elif "error" in message.tags %}
+        <div class="mb-3 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-2 text-sm text-destructive" role="alert">
+          {{ message }}
+        </div>
+      {% else %}
+        <div class="mb-3 rounded-xl border border-border bg-card/70 px-4 py-2 text-sm text-foreground" role="status">
+          {{ message }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+<div class="px-6 py-2">
+  <form
+    method="post"
+    class="space-y-4"
+    hx-post="{% url 'landpage' %}"
+    hx-target="#contact-form"
+    hx-swap="innerHTML"
+    hx-disabled-elt="button"
+  >
+    {% csrf_token %}
+
+    <div
+      class="
+        **:max-w-full
+        [&_p]:space-y-2 [&_p]:mb-4 last:[&_p]:mb-0
+        [&_label]:block [&_label]:text-sm [&_label]:font-medium [&_label]:text-foreground/80
+        [&_input,&_textarea]:w-full
+        [&_input,&_textarea]:rounded-xl
+        [&_input,&_textarea]:border [&_input,&_textarea]:border-input
+        [&_input,&_textarea]:bg-background
+        [&_input,&_textarea]:px-3 [&_input,&_textarea]:py-2.5
+        [&_input,&_textarea]:text-sm
+        [&_input,&_textarea]:placeholder:text-foreground/40
+        [&_input,&_textarea]:focus-visible:outline-none
+        [&_input,&_textarea]:focus-visible:ring-2
+        [&_input,&_textarea]:focus-visible:ring-primary/30
+        [&_input,&_textarea]:focus-visible:border-primary/40
+        [&_textarea]:min-h-32 sm:[&_textarea]:min-h-40
+        [&_textarea]:resize-none
+
+        [&_.errorlist]:mt-2
+        [&_.errorlist]:list-disc [&_.errorlist]:pl-5
+        [&_.errorlist]:text-sm [&_.errorlist]:text-destructive/90
+      "
+    >
+      {{ form.as_p }}
+    </div>
+
+    <button
+      type="submit"
+      class="btn w-full sm:w-auto bg-primary mb-4 text-primary-foreground hover:opacity-90"
+    >
+      Enviar
+    </button>
+  </form>
+</div>

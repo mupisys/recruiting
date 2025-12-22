@@ -1,0 +1,186 @@
+[
+  {
+    "model": "casulo.servicecategory",
+    "pk": 1,
+    "fields": {"name": "Terapias", "slug": "terapias", "order": 10, "is_active": true, "created_at": "2025-12-17T00:00:00Z", "updated_at": "2025-12-17T00:00:00Z"}
+  },
+  {
+    "model": "casulo.servicecategory",
+    "pk": 2,
+    "fields": {"name": "Medicina", "slug": "medicina", "order": 20, "is_active": true, "created_at": "2025-12-17T00:00:00Z", "updated_at": "2025-12-17T00:00:00Z"}
+  },
+  {
+    "model": "casulo.servicecategory",
+    "pk": 3,
+    "fields": {"name": "Educação", "slug": "educacao", "order": 30, "is_active": true, "created_at": "2025-12-17T00:00:00Z", "updated_at": "2025-12-17T00:00:00Z"}
+  },
+
+  {
+    "model": "casulo.service",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "title": "TERAPEUTA OCUPACIONAL",
+      "description": "Visa promover a prevenção, o tratamento e a reabilitação de crianças que apresentem quadros de alterações sensoriais, afetivas, cognitivas e psicomotoras.",
+      "icon": "hand",
+      "order": 10,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 2,
+    "fields": {
+      "category": 2,
+      "title": "PEDIATRIA",
+      "description": "A atuação desse especialista está voltada ao processo que envolve toda a saúde de bebês, crianças e adolescentes, buscando a melhor forma de tratar o pequeno paciente e orientar seus responsáveis.",
+      "icon": "baby",
+      "order": 10,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "title": "CONSULTORIA EM AMAMENTAÇÃO",
+      "description": "Busca promover e apoiar o aleitamento materno, fornecendo cuidados no momento da amamentação por meio de avaliação da mãe e do lactante.",
+      "icon": "heart",
+      "order": 20,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "title": "CONSULTORIA DO SONO",
+      "description": "O cuidado do sono envolve análise do ambiente de dormir, rotina e hábitos conforme a idade. Requer paciência e consistência para estabelecer bons hábitos.",
+      "icon": "moon",
+      "order": 30,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 5,
+    "fields": {
+      "category": 3,
+      "title": "NEUROPSICOPEDAGOGIA",
+      "description": "Ajuda alunos, pais e professores a entenderem a relação entre o sistema nervoso e a aprendizagem em diferentes fases da vida.",
+      "icon": "brain",
+      "order": 10,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "title": "NEUROPEDIATRIA",
+      "description": "Dedica-se ao estudo das doenças do desenvolvimento e da maturação do sistema nervoso, com foco no cuidado neurológico infantil.",
+      "icon": "stethoscope",
+      "order": 20,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 7,
+    "fields": {
+      "category": 2,
+      "title": "ORTOPEDIA",
+      "description": "A ortopedia trata lesões e doenças relacionadas aos ossos, músculos e articulações, visando restaurar função e mobilidade.",
+      "icon": "bone",
+      "order": 30,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 8,
+    "fields": {
+      "category": 1,
+      "title": "FONOAUDIOLOGIA",
+      "description": "Cuidados da audição, articulação da fala e voz, linguagem oral e apoio ao desenvolvimento comunicativo.",
+      "icon": "mic",
+      "order": 40,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 9,
+    "fields": {
+      "category": 1,
+      "title": "PSICOLOGIA",
+      "description": "Apoio ao desenvolvimento emocional, cognitivo e social, promovendo bem-estar e saúde mental.",
+      "icon": "users",
+      "order": 50,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 10,
+    "fields": {
+      "category": 1,
+      "title": "FISIOTERAPIA NEUROFUNCIONAL",
+      "description": "Destinada a melhorar qualidade de vida e funcionalidade de pacientes com desafios neurológicos.",
+      "icon": "zap",
+      "order": 60,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 11,
+    "fields": {
+      "category": 2,
+      "title": "NUTRICIONISTA",
+      "description": "Prescrição de dietas e orientações para hábitos alimentares saudáveis, respeitando cada fase do desenvolvimento.",
+      "icon": "apple",
+      "order": 40,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  },
+  {
+    "model": "casulo.service",
+    "pk": 12,
+    "fields": {
+      "category": 1,
+      "title": "OSTEOPATIA",
+      "description": "A osteopatia infantil pode auxiliar em disfunções como cólicas, refluxos e desconfortos, com abordagem manual especializada.",
+      "icon": "activity",
+      "order": 70,
+      "is_active": true,
+      "created_at": "2025-12-17T00:00:00Z",
+      "updated_at": "2025-12-17T00:00:00Z"
+    }
+  }
+]

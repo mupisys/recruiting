@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Editar{% endblock %}
+{% block content %}
+
+<main class="mx-auto w-full max-w-6xl px-4 py-8 pt-20 lg:pt-30 lg:py-10">
+  <!-- topo -->
+  <header class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <div>
+      <div class="flex items-center gap-2 text-sm text-muted-foreground">
+        <a href="{% url 'messages_list' %}" class="hover:opacity-90">Mensagens</a>
+        <span aria-hidden="true">/</span>
+        <a href="{% url 'message_detail' msg.pk %}" class="hover:opacity-90">Detalhe</a>
+        <span aria-hidden="true">/</span>
+        <span class="text-foreground">Editar</span>
+      </div>
+
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Editar mensagem</h1>
+      <p class="text-sm text-muted-foreground">Ajuste o conteúdo e salve as alterações.</p>
+    </div>
+
+    <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+      <a href="{% url 'message_detail' msg.pk %}" class="btn btn-ghost w-full sm:w-auto">
+        Cancelar
+      </a>
+
+      <button form="edit-form" type="submit"
+        class="btn w-full sm:w-auto bg-primary text-primary-foreground hover:opacity-90">
+        Salvar
+        <i data-lucide="save" class="h-4 w-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <section class="space-y-4">
+    <!-- metadados -->
+    <div class="rounded-2xl border border-border bg-card/70 backdrop-blur shadow-sm">
+      <div class="p-5 sm:p-6">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Nome</p>
+            <p class="mt-1 text-sm font-medium">{{ msg.nome }}</p>
+          </div>
+
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Email</p>
+            <p class="mt-1 text-sm font-medium break-all">{{ msg.email }}</p>
+          </div>
+
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Enviada em</p>
+            <p class="mt-1 text-sm font-medium">{{ msg.data_envio }}</p>
+          </div>
+
+          <div>
+            <p class="text-xs font-medium text-muted-foreground">Status</p>
+            <div class="mt-1">
+              <ul class="m-0 list-none p-0">
+                {% include "partials/message_row.html" with m=msg status="all" variant="detail" %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- form -->
+    <div class="rounded-2xl border border-border bg-card/70 backdrop-blur shadow-sm">
+      <div class="border-b border-border px-5 py-4 sm:px-6">
+        <h2 class="text-sm font-semibold">Editar conteúdo</h2>
+      </div>
+
+      <div class="px-5 py-4 sm:px-6">
+        {% if form.non_field_errors %}
+          <div class="mb-4 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <form id="edit-form" method="post" class="space-y-4">
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+          <div class="rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+            {{ form.non_field_errors }}
+          </div>
+          {% endif %}
+
+          <div class="[&_p]:space-y-2
+                      [&_label]:block [&_label]:text-sm [&_label]:pt-2 [&_label]:font-medium
+
+                      [&_input]:w-full
+                      [&_input]:rounded-xl
+                      [&_input]:border [&_input]:border-input
+                      [&_input]:bg-background
+                      [&_input]:px-3 [&_input]:py-2
+
+                      [&_textarea]:w-full
+                      [&_textarea]:max-h-40
+                      [&_textarea]:rounded-xl [&_textarea]:border [&_textarea]:border-input
+                      [&_textarea]:bg-background [&_textarea]:px-3 [&_textarea]:py-2
+
+                      [&_ul.errorlist]:mt-1.5 [&_ul.errorlist]:space-y-1
+                      [&_ul.errorlist]:text-xs [&_ul.errorlist]:text-destructive
+          ">
+            {{ form.as_p }}
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% load static %}
+<section class="relative pt-30 pb-20 lg:pt-40 lg:pb-32 bg-linear-to-br from-accent via-background to-accent/30">
+  <div class="mx-auto max-w-6xl px-4 lg:px-8">
+    <div class="grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
+      <!-- Image -->
+      <div
+        class="order-1 lg:order-2 relative h-56 sm:h-72 overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl lg:h-125 border border-border bg-card"
+      >
+        <img
+          src="{% static 'images/hero.png' %}"
+          alt="Clínica Casulo"
+          class="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-105"
+        />
+      </div>
+
+      <!-- Text-->
+      <div
+        class="order-2 lg:order-1 space-y-6 lg:space-y-8 text-center lg:text-left"
+      >
+        <div
+          class="inline-block rounded-full bg-primary/10 px-4 py-2 mx-auto lg:mx-0"
+        >
+          <span class="text-sm font-semibold text-primary">
+            Cuidando do futuro com carinho
+          </span>
+        </div>
+        <h1 class="text-balance text-4xl font-bold leading-tight text-foreground lg:text-6xl">
+          <span class="uppercase">Clínica</span>
+
+          <span class="font-barrio block mt-1 sm:mt-2 lg:mt-0 lg:inline">
+            <span class="text-foreground">M</span><span class="text-primary">u</span><span class="text-secondary">l</span><span class="text-foreground">t</span><span class="text-primary">i</span><span class="text-secondary">d</span><span class="text-foreground">i</span><span class="text-primary">s</span><span class="text-secondary">c</span><span class="text-foreground">i</span><span class="text-primary">p</span><span class="text-secondary">l</span><span class="text-foreground">i</span><span class="text-primary">n</span><span class="text-secondary">a</span><span class="text-foreground">r</span>
+          </span>
+        </h1>
+        <p
+          class="text-pretty text-lg leading-relaxed text-foreground/70 lg:text-xl mx-auto lg:mx-0 max-w-[38ch] lg:max-w-none"
+        >
+          Na Casulo, oferecemos uma ampla gama de serviços,
+          desde consultas médicas até terapias complementares, para atender a
+          todas as suas necessidades de saúde.
+        </p>
+
+        <div
+          class="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start"
+        >
+          <a
+            href="#contato"
+            class="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-lg font-medium text-primary-foreground shadow-sm transition hover:opacity-90 no-underline"
+          >
+            Agendar Consulta
+            <span class="ml-2 text-xl">
+              <i data-lucide="arrow-right" class="h-5 w-5"></i>
+            </span>
+          </a>
+
+<div class="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+  <a
+    href="https://instagram.com/casulo_clinica"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex h-12 w-12 items-center justify-center rounded-full border bg-card/50 text-muted-foreground transition-all duration-300 hover:border-[#E1306C]/50 hover:bg-[#E1306C]/5 hover:text-[#E1306C] hover:-translate-y-1 hover:shadow-sm hover:shadow-[#E1306C]/20"
+    aria-label="Instagram"
+  >
+    <i data-lucide="instagram" class="h-5 w-5"></i>
+  </a>
+
+  <a
+    href="https://wa.me/5561999999999"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex h-12 w-12 items-center justify-center rounded-full border  bg-card/50 text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:-translate-y-1 hover:shadow-sm hover:shadow-primary/20"
+    aria-label="WhatsApp"
+  >
+    <i data-lucide="message-circle" class="h-5 w-5"></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

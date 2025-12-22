@@ -1,0 +1,99 @@
+<li id="msg-{{ m.pk }}" class="list-none group">
+  {% if variant == "detail" %}
+    <div class="flex items-center justify-between rounded-2xl  bg-card/40 ">
+      <div class="flex items-center gap-3 px-2">
+        <div class="relative flex h-2.5 w-2.5">
+          {% if not m.lido %}
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary"></span>
+          {% else %}
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-muted-foreground/30"></span>
+          {% endif %}
+        </div>
+        <span class="text-sm font-bold tracking-tight text-foreground/70">
+          {% if not m.lido %}Aguardando leitura{% else %}Mensagem lida{% endif %}
+        </span>
+      </div>
+
+      <button
+        type="button"
+        class="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2 text-xs font-bold transition-all hover:bg-accent hover:border-primary/30 active:scale-95"
+        hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}&variant=detail"
+        hx-target="#msg-{{ m.pk }}"
+        hx-swap="outerHTML"
+      >
+        {% if m.lido %}
+          <i data-lucide="mail" class="h-4 w-4"></i>
+          Marcar como nova
+        {% else %}
+          <i data-lucide="check" class="h-4 w-4 text-primary"></i>
+          Marcar como lida
+        {% endif %}
+      </button>
+    </div>
+
+  {% else %}
+    <div class="relative flex items-center justify-between gap-4 rounded-2xl border border-border bg-card/70 p-4 transition-all hover:border-primary/40 group
+    {% if not m.lido %}
+      bg-secondary/5
+    {% endif %}
+    ">
+      
+      {% if not m.lido %}
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 h-10 w-1.5 rounded-r-full bg-primary"></div>
+      {% endif %}
+
+      <div class="flex min-w-0 flex-1 flex-col gap-0.5">
+        <div class="flex items-center gap-2">
+          <span class="truncate text-sm font-bold {% if not m.lido %}text-foreground{% else %}text-muted-foreground{% endif %}">
+            {{ m.nome }}
+          </span>
+          <span class="text-[10px] text-muted-foreground/30">•</span>
+          <span class="whitespace-nowrap text-[11px] font-medium text-muted-foreground/80">
+            {{ m.data_envio|date:"d/m/Y H:i" }}
+          </span>
+        </div>
+        <span class="truncate text-xs text-muted-foreground/60">{{ m.email }}</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          class="flex h-10 w-10 items-center justify-center rounded-xl transition-all
+          {% if not m.lido %} bg-primary/5 text-primary hover:bg-primary/20 {% else %} text-muted-foreground/40 hover:bg-muted hover:text-foreground {% endif %}"
+          hx-post="{% url 'message_toggle_read' m.pk %}?status={{ status }}"
+          hx-target="#msg-{{ m.pk }}"
+          hx-swap="outerHTML"
+          title="{% if m.lido %}Marcar como nova{% else %}Marcar como lida{% endif %}"
+        >
+          {% if m.lido %}
+            <i data-lucide="mail-open" class="h-5 w-5"></i>
+          {% else %}
+            <i data-lucide="mail" class="h-5 w-5"></i>
+          {% endif %}
+        </button>
+
+        <button 
+          type="button"
+          class="flex h-10 w-10 items-center justify-center rounded-xl transition-all text-red-500 hover:bg-red-500/10 active:scale-95"
+          title="Excluir"
+          @click="$dispatch('confirm', {
+            title: 'Excluir mensagem',
+            text: 'Tem certeza que deseja excluir a mensagem de {{ m.nome }}?',
+            action: '{% url 'message_delete_confirm' m.pk %}'
+          })"
+        >
+          <i data-lucide="trash-2" class="h-5 w-5"></i>
+        </button>
+
+        <a
+          href="{% url 'message_detail' m.pk %}"
+          class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-all hover:scale-105 active:scale-95 shadow-sm"
+          title="Ver detalhes"
+        >
+          <i data-lucide="arrow-right" class="h-5 w-5"></i>
+        </a>
+      </div>
+    </div>
+  {% endif %}
+</li>

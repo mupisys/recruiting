@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Mensagens{% endblock %}
+{% block content %}
+
+<main class="mx-auto w-full max-w-6xl px-4 py-8 pt-20 lg:pt-30 lg:py-10">
+  <!-- Header -->
+  <header class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight">Mensagens</h1>
+      <p class="text-sm text-muted-foreground">
+        Filtre por status e pesquise por nome ou e-mail.
+      </p>
+    </div>
+
+  </header>
+
+  <!-- Filtros + Busca -->
+  <section
+    class="rounded-2xl border border-border bg-card/70 backdrop-blur shadow-sm"
+    x-data="{
+      status: '{{ status }}',
+      data_envio: '{{ data_envio|default:'' }}',
+      clearAndRefresh() {
+        this.$refs.q.value = '';
+        this.data_envio = '';
+
+        htmx.ajax(
+          'GET',
+          '{% url 'messages_list' %}?status=' + this.status,
+          { target: '#messages-container', swap: 'innerHTML' }
+        );
+
+        history.replaceState(
+          null,
+          '',
+          '{% url 'messages_list' %}?status=' + this.status
+        );
+
+        this.$nextTick(() => this.$refs.q.focus());
+      }
+    }"
+  >
+    <div class="p-4 sm:p-5">
+      <form id="filters-form" class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+        <input type="hidden" name="status" x-model="status" />
+
+        <!-- Busca -->
+        <div class="relative w-full lg:max-w-md">
+          <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+            <i data-lucide="search" class="h-5 w-5"></i>
+          </span>
+
+          <input
+            x-ref="q"
+            id="q"
+            name="q"
+            value="{{ q }}"
+            placeholder="Buscar por nome ou email..."
+            class="w-full rounded-xl border border-input bg-background pl-11 pr-24 py-2.5 text-sm
+                   placeholder:text-muted-foreground/80
+                   focus-visible:ring-2 focus-visible:ring-ring/50"
+            hx-get="{% url 'messages_list' %}"
+            hx-trigger="keyup changed delay:400ms"
+            hx-target="#messages-container"
+            hx-swap="innerHTML"
+            hx-include="#filters-form"
+            hx-push-url="true"
+          />
+
+          <button
+            type="button"
+            class="btn btn-ghost absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5"
+            @click="clearAndRefresh()"
+          >
+            Limpar
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+            <!-- Date Filter -->
+            <input 
+                type="date" 
+                name="data_envio"
+                x-model="data_envio"
+                class="rounded-xl border border-input bg-background px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-ring/50"
+                hx-get="{% url 'messages_list' %}"
+                hx-trigger="change"
+                hx-target="#messages-container"
+                hx-swap="innerHTML"
+                hx-include="#filters-form"
+                hx-push-url="true"
+            />
+
+            <!-- Chips de status -->
+            <div class="flex flex-wrap gap-2">
+            <button
+                type="button"
+                class="btn px-3 py-2"
+                :class="status === 'all' ? 'bg-primary text-primary-foreground' : 'btn-ghost'"
+                @click="status='all'"
+                hx-get="{% url 'messages_list' %}"
+                hx-target="#messages-container"
+                hx-swap="innerHTML"
+                hx-include="#filters-form"
+                hx-push-url="true"
+            >
+                Todas
+            </button>
+
+            <button
+                type="button"
+                class="btn px-3 py-2"
+                :class="status === 'unread' ? 'bg-primary text-primary-foreground' : 'btn-ghost'"
+                @click="status='unread'"
+                hx-get="{% url 'messages_list' %}"
+                hx-target="#messages-container"
+                hx-swap="innerHTML"
+                hx-include="#filters-form"
+                hx-push-url="true"
+            >
+                Não lidas
+            </button>
+
+            <button
+                type="button"
+                class="btn px-3 py-2"
+                :class="status === 'read' ? 'bg-primary text-primary-foreground' : 'btn-ghost'"
+                @click="status='read'"
+                hx-get="{% url 'messages_list' %}"
+                hx-target="#messages-container"
+                hx-swap="innerHTML"
+                hx-include="#filters-form"
+                hx-push-url="true"
+            >
+                Lidas
+            </button>
+            </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Lista -->
+    <div class="border-t border-border">
+      <div
+        id="messages-container"
+        class="p-4 sm:p-5"
+        hx-indicator="#messages-loading"
+      >
+        {% include "partials/messages_ul.html" %}
+      </div>
+
+      <!-- Loading do HTMX -->
+      <div id="messages-loading" class="hidden p-4 sm:p-5">
+        <div class="flex items-center gap-3 text-sm text-muted-foreground">
+          <i data-lucide="loader-2" class="h-5 w-5 animate-spin"></i>
+          Carregando mensagens...
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

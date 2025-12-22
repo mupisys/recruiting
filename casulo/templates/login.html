@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<main class="relative min-h-screen flex items-center justify-center px-4 py-12">
+  
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute top-45 left-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/15 blur-3xl"></div>
+    <div class="absolute top-1/4 right-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-secondary/15 blur-3xl"></div>
+    <div class="absolute -bottom-28 left-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl"></div>
+    <div class="absolute -bottom-28 right-10 h-72 w-72 rounded-full bg-secondary/15 blur-3xl"></div>
+  </div>
+
+  <section class="relative w-full max-w-md">
+    <div class="rounded-2xl border border-border bg-card/80 backdrop-blur shadow-xl shadow-foreground/5">
+      <header class="p-6 sm:p-8 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground">
+            <i data-lucide="user" class="h-5 w-5"></i>
+          </div>
+
+          <div>
+            <h1 class="text-xl font-semibold tracking-tight">Entrar</h1>
+            <p class="text-sm text-muted-foreground">Acesse sua conta para continuar</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="px-6 sm:px-8 pb-6">
+        <!-- erros gerais -->
+        {% if form.non_field_errors %}
+          <div class="mb-4 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+
+        <form method="post" class="space-y-4" x-data="{ show:false }">
+          {% csrf_token %}
+          {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+          {% endif %}
+
+          <!-- username -->
+          <div>
+            <label for="id_username" class="mb-1.5 block text-sm font-medium">
+              Usuário
+            </label>
+
+            <input
+              id="id_username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              value="{{ form.username.value|default_if_none:'' }}"
+              placeholder="Seu usuário"
+              class="w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm
+                     placeholder:text-muted-foreground/80
+                     focus-visible:ring-2 focus-visible:ring-ring/50"
+              required
+            />
+
+            {% if form.username.errors %}
+              <p class="mt-1.5 text-xs text-destructive">{{ form.username.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- password -->
+          <div>
+            <label for="id_password" class="mb-1.5 block text-sm font-medium">
+              Senha
+            </label>
+
+            <div class="relative">
+              <input
+                id="id_password"
+                name="password"
+                :type="show ? 'text' : 'password'"
+                autocomplete="current-password"
+                placeholder="Sua senha"
+                class="w-full rounded-xl border border-input bg-background px-3 py-2.5 pr-11 text-sm
+                       placeholder:text-muted-foreground/80
+                       focus-visible:ring-2 focus-visible:ring-ring/50"
+                required
+              />
+
+              <button
+                type="button"
+                @click="show = !show"
+                class="absolute inset-y-0 right-2 my-auto grid h-9 w-9 place-items-center rounded-lg
+                       text-muted-foreground hover:bg-accent hover:text-foreground transition"
+                :aria-label="show ? 'Ocultar senha' : 'Mostrar senha'"
+              >
+                <span x-show="!show" aria-hidden="true">
+                  <i data-lucide="eye" class="h-5 w-5"></i>
+                </span>
+
+                <span x-show="show" x-cloak aria-hidden="true">
+                  <i data-lucide="eye-off" class="h-5 w-5"></i>
+                </span>
+              </button>
+            </div>
+
+            {% if form.password.errors %}
+              <p class="mt-1.5 text-xs text-destructive">{{ form.password.errors }}</p>
+            {% endif %}
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="btn w-full bg-primary text-primary-foreground hover:opacity-90">
+              Entrar
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </button>
+          </div>
+
+          <div class="pt-2 text-center">
+            <a href="{% url 'landpage' %}" class="text-sm text-muted-foreground hover:text-foreground">
+              Voltar para a página inicial
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
