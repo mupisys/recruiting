@@ -50,28 +50,52 @@ def login_view(request):
 def messages_list(request):
     qs = Mensagem.objects.all().order_by('-data_envio')
 
-    # filtro por nome (search)
-    search = request.GET.get('q')
-    if search:
-        qs = qs.filter(nome__icontains=search)
+    q = request.GET.get('q', '').strip()
+    if q:
+        qs = qs.filter(
+            Q(nome__icontains=q) |
+            Q(email__icontains=q) |
+            Q(mensagem__icontains=q)
+        )
 
-    # filtro por status booleano
-    status = request.GET.get('status')
-    if status == "true":      # string "true"
-        qs = qs.filter(lida=True)
-    elif status == "false":   # string "false"
-        qs = qs.filter(lida=False)
+    start_date = request.GET.get('start_date', '').strip()
+    if start_date:
+        parsed = parse_date(start_date)
+        if parsed:
+            qs = qs.filter(data_envio__date__gte=parsed)
+
+    end_date = request.GET.get('end_date', '').strip()
+    if end_date:
+        parsed = parse_date(end_date)
+        if parsed:
+            qs = qs.filter(data_envio__date__lte=parsed)
+
+    # ✅ STATUS PADRONIZADO
+    status = request.GET.get('status', 'todas').strip()
+
+    if status == 'lida':
+        qs = qs.filter(lido=True)
+    elif status == 'nao_lida':
+        qs = qs.filter(lido=False)
+    else:
+        status = 'todas'
 
     context = {
-        "mensagens": qs,
-        "search": search or "",
-        "status": status or "",
+        'mensagens': qs,
+        'request': request,
+        'status': status,
     }
 
     if request.headers.get("HX-Request"):
-        return render(request, "partials/messages_table.html", context)
+        is_mobile = request.GET.get('mobile') == '1'
+        template = (
+            'partials/messages_cards.html'
+            if is_mobile
+            else 'partials/messages_table.html'
+        )
+        return render(request, template, context)
 
-    return render(request, "messages_list.html", context)
+    return render(request, 'messages_list.html', context)
 
 
 
@@ -126,6 +150,8 @@ def marcar_lida(request, pk):
 
 @login_required
 def counters(request):
+    status = request.GET.get('status', 'todas').strip()
+
     total = Mensagem.objects.count()
     lidas = Mensagem.objects.filter(lido=True).count()
     nao_lidas = Mensagem.objects.filter(lido=False).count()
@@ -133,8 +159,12 @@ def counters(request):
     return render(request, 'partials/counters.html', {
         'total': total,
         'lidas': lidas,
-        'nao_lidas': nao_lidas
+        'nao_lidas': nao_lidas,
+        'status': status,
     })
+
+
+
 
 
 @login_required
