@@ -14,7 +14,57 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body x-data class="selection:bg-secondary/70 selection:text-secondary-foreground">
+    <!-- Scroll progress (vertical) -->
+    <div
+      x-data="{
+        p: 0,
+        visible: false,
+        t: null,
 
+        calc() {
+          const d = document.documentElement
+          const sh = d.scrollHeight - d.clientHeight
+          const st = window.scrollY || d.scrollTop || 0
+          this.p = sh > 0 ? st / sh : 0
+        },
+
+        showTemporarily() {
+          this.visible = true
+          clearTimeout(this.t)
+          this.t = setTimeout(() => { this.visible = false }, 900) // tempo sem scroll
+        },
+
+        onScroll() {
+          this.calc()
+          this.showTemporarily()
+        },
+
+        init() {
+          const on = () => requestAnimationFrame(() => this.onScroll())
+          window.addEventListener('scroll', on, { passive: true })
+          window.addEventListener('resize', on)
+          this.calc()
+          // começa escondido (só aparece quando rolar)
+          this.visible = false
+        }
+      }"
+      class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:block pointer-events-none"
+      x-cloak
+      x-show="visible"
+      x-transition.opacity.duration.200ms
+    >
+      <div class="h-56 w-1.5 rounded-full bg-muted overflow-hidden">
+        <div
+          class="h-full w-full origin-top rounded-full bg-primary"
+          :style="`transform: scaleY(${p})`"
+          role="progressbar"
+          aria-label="Progresso da página"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          :aria-valuenow="Math.round(p*100)"
+        ></div>
+      </div>
+    </div>
     <nav
       x-data="{
     open:false,
