@@ -97,9 +97,8 @@ python manage.py createsuperuser
 
 ### 6) Carregar dados iniciais de Serviços/Categorias
 ```bash
-python manage.py loaddata casulo/fixtures/initial_services.json
+python manage.py loaddata casulo/fixtures/initial_services.json casulo/fixtures/team_members.json
 ```
-
 
 ### 7) Rode o servidor
 ```bash
