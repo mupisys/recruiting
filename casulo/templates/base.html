@@ -13,7 +13,8 @@
     <script defer src="https://unpkg.com/htmx.org@1.9.12"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
-  <body x-data>
+  <body x-data class="selection:bg-secondary/70 selection:text-secondary-foreground">
+
     <nav
       x-data="{
     open:false,
@@ -73,42 +74,42 @@
           <!-- Desktop CTA + auth -->
           <div class="hidden items-center gap-4 lg:flex">
             {% if request.path|slice:":8" == "/painel/" %}
-              <a
-                href="{% url 'landpage' %}"
-                class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
-              >
-                Voltar ao site
-              </a>
+            <a
+              href="{% url 'landpage' %}"
+              class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+            >
+              Voltar ao site
+            </a>
 
-              {% if user.is_authenticated %}
-              <button
-                type="button"
-                class="btn btn-danger rounded-full"
-                @click="$dispatch('confirm', {
+            {% if user.is_authenticated %}
+            <button
+              type="button"
+              class="btn btn-danger rounded-full"
+              @click="$dispatch('confirm', {
                 title: 'Sair',
                 text: 'Tem certeza que deseja sair?',
                 action: '{% url 'logout_confirm' %}'
               })"
-              >
-                Sair
-              </button>
+            >
+              Sair
+            </button>
               {% else %}
               {% if request.resolver_match.url_name != 'login' %}
-              <a
-                href="{% url 'login' %}"
-                class="rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition"
-              >
-                Entrar
-              </a>
+            <a
+              href="{% url 'login' %}"
+              class="rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition"
+            >
+              Entrar
+            </a>
               {% endif %}
               {% endif %}
             {% else %}
-              <a
-                href="#contato"
-                class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
-              >
-                Agendar Consulta
-              </a>
+            <a
+              href="#contato"
+              class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+            >
+              Agendar Consulta
+            </a>
             {% endif %}
           </div>
 
@@ -171,45 +172,45 @@
               <div class="my-2 border-t border-border"></div>
 
               {% if request.path|slice:":8" == "/painel/" %}
-                <a
-                  @click="open=false"
-                  href="{% url 'landpage' %}"
-                  class="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
-                >
-                  Voltar ao site
-                </a>
+              <a
+                @click="open=false"
+                href="{% url 'landpage' %}"
+                class="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+              >
+                Voltar ao site
+              </a>
               {% else %}
-                <a
-                  @click="open=false"
-                  href="#contato"
-                  class="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
-                >
-                  Agendar Consulta
-                </a>
+              <a
+                @click="open=false"
+                href="#contato"
+                class="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+              >
+                Agendar Consulta
+              </a>
               {% endif %}
 
               {% if request.path|slice:":8" == "/painel/" %}
                 {% if user.is_authenticated %}
-                <button
-                  type="button"
-                  class="mt-2 btn btn-danger rounded-full"
-                  @click="open=false; $dispatch('confirm', {
+              <button
+                type="button"
+                class="mt-2 btn btn-danger rounded-full"
+                @click="open=false; $dispatch('confirm', {
                   title: 'Sair',
                   text: 'Tem certeza que deseja sair?',
                   action: '{% url 'logout_confirm' %}'
                 })"
-                >
-                  Sair
-                </button>
+              >
+                Sair
+              </button>
                 {% else %}
                 {% if request.resolver_match.url_name != 'login' %}
-                <a
-                  @click="open=false"
-                  href="{% url 'login' %}"
-                  class="mt-2 rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition text-center"
-                >
-                  Entrar
-                </a>
+              <a
+                @click="open=false"
+                href="{% url 'login' %}"
+                class="mt-2 rounded-full px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition text-center"
+              >
+                Entrar
+              </a>
                 {% endif %}
                 {% endif %}
               {% endif %}
