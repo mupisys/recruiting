@@ -15,7 +15,7 @@ from django.views.decorators.http import require_POST
 
 # Local Imports
 from .forms import MensagemEditForm, MensagemForm
-from .models import Mensagem, Service, ServiceCategory
+from .models import Mensagem, Service, ServiceCategory, TeamMember
 
 
 # --- Helpers ---
@@ -58,7 +58,10 @@ def landpage(request):
     if active != "all":
         services = services.filter(category__slug=active)
 
-    # 3. Handle Contact Form
+    # 3. Load team members
+    team = TeamMember.objects.filter(is_active=True).order_by("ordem", "nome")
+
+    # 4. Handle Contact Form
     is_htmx = request.headers.get("HX-Request") == "true"
     
     if request.method == "POST":
@@ -86,6 +89,7 @@ def landpage(request):
         "services": services,
         "active_cat": active,
         "espaco_images": espaco_images,
+        "team": team,
     }
 
     return render(request, "landpage.html", context)
