@@ -59,9 +59,12 @@
 
 </section>
 
+<!-- função para nao deixar o elemento "clicavel"   -->
 <script>
 document.addEventListener("mousedown", function (e) {
+    // Verifica se o elemento clicado é um INPUT ou TEXTAREA
     const isInput = e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA";
+    // se nao é um campo de entrada remove o foco dele "tracinho q pisca "
     if (!isInput) {
         document.activeElement.blur();
     }

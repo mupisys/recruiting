@@ -11,11 +11,11 @@
                border border-[#cacaca]
                shadow-[0_0_25px_#cacaca]"
     >
-
+               
         <!-- LOGOUT COM ALPINE -->
+        <!-- cria uma um estado q ja comeca em false -->
         <div x-data="{ open: false }" class="absolute top-4 right-4">
-
-            <!-- BOTÃO LOGOUT -->
+             <!-- quando clicado passa a ser True e abre uma pequena pagina -->
             <button
                 @click="open = true"
                 class="flex items-center gap-2 
@@ -33,7 +33,7 @@
                 Sair
             </button>
 
-            <!-- OVERLAY -->
+
             <div
                 x-show="open"
                 x-transition.opacity
@@ -41,7 +41,7 @@
                 @keydown.escape.window="open = false"
                 class="fixed inset-0 bg-[#f1ebeb]/80 flex items-center justify-center z-50"
             >
-                <!-- MODAL -->
+
                 <div
                     @click.outside="open = false"
                     class="w-full max-w-sm p-6 sm:p-8 rounded-[30px]
@@ -56,7 +56,7 @@
                     <p class="text-center text-gray-600 mb-6">
                         Tem certeza que deseja sair da área administrativa?
                     </p>
-
+                    
                     <form method="post" action="{% url 'logout' %}" class="space-y-4">
                         {% csrf_token %}
 
@@ -85,12 +85,10 @@
             </div>
         </div>
 
-        <!-- TÍTULO -->
         <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-[#24c0eb]">
             Mensagens recebidas
         </h1>
 
-        <!-- TABELA RESPONSIVA -->
         <div class="overflow-x-auto rounded-[30px] border border-[#cacaca] shadow-[0_0_15px_#cacaca]">
             <table class="min-w-[600px] w-full bg-[#f1ebeb] text-gray-800">
                 <thead class="bg-[#eee8e8] border-b border-[#cacaca]">
@@ -104,21 +102,23 @@
                 </thead>
 
                 <tbody>
+                    <!-- faz um loop das msg q a view enviou -->
                     {% for msg in mensagens %}
                     <tr class="border-b border-[#cacaca] hover:bg-[#eee8e8] transition">
                         <td class="p-3">
+                            <!--Isso cria o link para abrir os detalhes de cada mensagem -->
                             <a href="{% url 'message_detail' msg.id %}"
                                class="text-[#24c0eb] underline hover:text-[#5cceee] transition">
-                                {{ msg.nome }}
+                                {{ msg.nome }} <!-- variavel q o django substitui com o valor real -->
                             </a>
                         </td>
 
                         <td class="p-3">{{ msg.email }}</td>
                         <td class="p-3">
-                            {{ msg.data_envio|date:"d/m/Y H:i" }}
+                            {{ msg.data_envio|date:"d/m/Y H:i" }} <!-- formato BR de data -->
                         </td>
 
-
+                        <!-- condiciona a cor verde para lido e vermelho caso contrario -->
                         <td class="p-3">
                             {% if msg.lido %}
                                 <span class="text-green-600">Lida</span>

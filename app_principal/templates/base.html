@@ -12,13 +12,15 @@
 </head>
 
 <body class="bg-gray-100 text-gray-900">
-
-
+    
+    
+    <!--espaço para o conteudo das paginas filhas  -->
     {% block content %}
     {% endblock %}
 
-
+    <!-- importa o htmx -->
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <!-- importa o js da pasta static  -->
     <script src="{% static 'js/main.js' %}" defer></script>
 
 </body>

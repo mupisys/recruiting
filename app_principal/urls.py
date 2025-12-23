@@ -1,6 +1,10 @@
 from django.urls import path
 from . import views
 
+''' 
+caminhos url para identificar views
+algumas funçoes sao referenciadas por identação
+'''
 urlpatterns = [
     path('', views.landpage, name='landpage'),
     path('login/', views.login_view, name='login'),

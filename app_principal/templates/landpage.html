@@ -1,7 +1,10 @@
+<!-- tudo q o base tem sera carregado aqui  -->
 {% extends "base.html" %}
 
+<!-- substitui o titulo do base.html  -->
 {% block title %}Landing Page{% endblock %}
 
+<!-- preenche o bloco block content do base.html  -->
 {% block content %}
 <section class="min-h-screen flex items-center justify-center bg-[#f1ebeb] text-gray-800 cursor-pointer">
 
@@ -23,8 +26,12 @@
         </p>
 
         <div id="form-container" class="cursor-pointer" tabindex="-1" onfocus="this.blur()">
-           <form 
-                hx-post="."
+            <!-- HTMX aquiiiii  -->
+            <!-- 34- envia o formulario sem recarregar a pagina (sem o htmx a pagina recarregava toda) -->
+            <!-- 35- isso diz onde vai a informaçao q o htmx esta levando  -->
+            <!-- 36- coloca a mensagem de sucesso no lugar do form -->
+            <form 
+                hx-post="." 
                 hx-target="#form-container"
                 hx-swap="outerHTML"
                 method="post"
@@ -32,7 +39,7 @@
                 tabindex="-1"
                 onfocus="this.blur()"
             >
-
+                <!-- protegido contra ataques CSRF  -->
                 {% csrf_token %}
 
                 <input

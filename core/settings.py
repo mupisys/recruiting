@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Definição para identificar meu app
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -116,12 +116,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 
-#identifica o css
+# identifica o css
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-#funcionalidade para logar obrigatoriamente (superuser)
-#isso traz segurança para a area administrativa
+# funcionalidade para logar obrigatoriamente (superuser)
+# isso traz segurança para a area administrativa
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/mensagens/'
 LOGOUT_REDIRECT_URL = '/login/'
