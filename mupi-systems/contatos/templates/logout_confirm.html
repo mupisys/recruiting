@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white p-6 rounded-lg shadow max-w-md w-full">
+    <h2 class="text-xl font-semibold mb-4">
+      Confirmar logout
+    </h2>
+
+    <p class="mb-6 text-gray-700">
+      Deseja realmente sair do sistema?
+    </p>
+
+    <form method="post" class="flex justify-between">
+      {% csrf_token %}
+      <a href="{% url 'messages_list' %}"
+         class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+        Cancelar
+      </a>
+
+      <button type="submit"
+              class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Sair
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

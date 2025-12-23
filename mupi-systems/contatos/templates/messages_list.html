@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mensagens Recebidas{% endblock %}
+
+{% block content %}
+<div class="min-h-screen overflow-x-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 p-4 md:p-6">
+
+    <!-- HEADER -->
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
+        <div>
+            <h1 class="text-3xl font-extrabold text-white">
+                Mensagens Recebidas
+            </h1>
+            <p class="text-gray-300">
+                Gerencie todas as mensagens de contato
+            </p>
+        </div>
+
+        <!-- LOGOUT -->
+        <div x-data="{ open: false }">
+            <button @click="open = true"
+                class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2">
+                🔒 Sair
+            </button>
+
+            <!-- MODAL -->
+            <div x-show="open" x-cloak class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+                <div @click.outside="open = false"
+                    class="bg-slate-800 rounded-xl p-6 w-full max-w-md mx-4 border border-white/10">
+                    <h2 class="text-xl font-bold text-white mb-4">
+                        Confirmar logout
+                    </h2>
+
+                    <p class="text-gray-300 mb-6">
+                        Deseja realmente sair do sistema?
+                    </p>
+
+                    <div class="flex gap-3">
+                        <button @click="open = false"
+                            class="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">
+                            Cancelar
+                        </button>
+
+                        <form method="post" action="{% url 'logout_confirm' %}" class="flex-1">
+                            {% csrf_token %}
+                            <button type="submit"
+                                class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+                                Confirmar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTADORES (HTMX) -->
+    <div id="counters"
+     hx-get="{% url 'counters' %}?status={{ request.GET.status|default:'todas' }}"
+     hx-trigger="load, atualizarcounters from:body"
+     hx-swap="innerHTML">
+</div>
+
+    <!-- BUSCAS E FILTROS -->
+    <div class="mb-6 mt-6">
+        <form id="filter-form" method="get">
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <!-- Busca por texto -->
+                <input type="text" name="q" placeholder="Buscar..."
+                    class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto" 
+                    value="{{ request.GET.q }}">
+
+                <!-- Filtro de data inicial -->
+                <input type="date" name="start_date"
+                    class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto"
+                    value="{{ request.GET.start_date }}">
+
+                <!-- Filtro de data final -->
+                <input type="date" name="end_date" 
+                    class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto"
+                    value="{{ request.GET.end_date }}">
+
+                <!-- Filtro por Status -->
+                <select name="status" class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto">
+                    <option value="">Todos Status</option>
+                    {% with request.GET.status as s %}
+                    {% if s %}
+                    {% if s|lower == "lida" %}
+                    <option value="lida" selected>Lida</option>
+                    {% else %}
+                    <option value="lida">Lida</option>
+                    {% endif %}
+
+                    {% if s|lower == "nao_lida" %}
+                    <option value="nao_lida" selected>Não Lida</option>
+                    {% else %}
+                    <option value="nao_lida">Não Lida</option>
+                    {% endif %}
+                    {% else %}
+                    <option value="lida">Lida</option>
+                    <option value="nao_lida">Não Lida</option>
+                    {% endif %}
+                    {% endwith %}
+                </select>
+
+                <!-- Botão Desktop -->
+                <button type="submit"
+                    class="hidden md:block bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"
+                    hx-get="{% url 'messages_list' %}" 
+                    hx-include="#filter-form"
+                    hx-target="#msgs-table"
+                    hx-swap="innerHTML">
+                    🔍 Filtrar
+                </button>
+
+                <!-- Botão Mobile -->
+                <button type="submit"
+                    class="md:hidden bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white w-full"
+                    hx-get="{% url 'messages_list' %}?mobile=1" 
+                    hx-include="#filter-form"
+                    hx-target="#msgs-cards"
+                    hx-swap="innerHTML">
+                    🔍 Filtrar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ================= DESKTOP (TABELA COM HTMX) ================= -->
+    <div class="hidden md:block overflow-x-auto bg-slate-800/40 backdrop-blur-md rounded-xl border border-white/10">
+        <div id="msgs-table"
+            hx-get="{% url 'messages_list' %}?q={{ request.GET.q|urlencode }}&start_date={{ request.GET.start_date }}&end_date={{ request.GET.end_date }}&status={{ request.GET.status }}"
+            hx-trigger="load" 
+            hx-swap="innerHTML">
+            {% include 'partials/messages_table.html' %}
+        </div>
+    </div>
+
+    <!-- ================= MOBILE (CARDS COM HTMX) ================= -->
+    <div class="md:hidden w-full overflow-x-hidden">
+        <div id="msgs-cards"
+             hx-get="{% url 'messages_list' %}?mobile=1&q={{ request.GET.q|urlencode }}&start_date={{ request.GET.start_date }}&end_date={{ request.GET.end_date }}&status={{ request.GET.status }}"
+             hx-trigger="load" 
+             hx-swap="innerHTML">
+            {% include 'partials/messages_cards.html' %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
