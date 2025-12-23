@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="min-h-screen p-8 bg-[#f1ebeb] text-gray-800 flex justify-center">
+
+    <div
+        class="w-full max-w-3xl p-8 rounded-[40px]
+               bg-[#eee8e8]
+               border border-[#cacaca]
+               shadow-[0_0_30px_#cacaca]"
+    >
+
+        <h1 class="text-3xl font-bold mb-6 text-center text-[#24c0eb] rounded-full py-2">
+            Mensagem
+        </h1>
+
+        <div class="rounded-[30px] border border-[#cacaca] shadow-[0_0_10px_#cacaca] p-6 bg-[#f1ebeb] space-y-4 select-text">
+
+            <p class="text-lg">
+                <strong class="text-[#24c0eb]">Nome:</strong> {{ mensagem.nome }}
+            </p>
+
+            <p class="text-lg">
+                <strong class="text-[#24c0eb]">Email:</strong> {{ mensagem.email }}
+            </p>
+
+            <p class="text-lg">
+                <strong class="text-[#24c0eb]">Mensagem:</strong>
+            </p>
+
+            <p class="rounded-[20px] border border-[#cacaca] shadow-[0_0_3px_#cacaca] p-4 bg-[#eee8e8] select-text">
+                {{ mensagem.mensagem }}
+            </p>
+        </div>
+
+        <p class="mt-6 text-lg">
+            <strong class="text-[#24c0eb]">Status:</strong>
+            {% if mensagem.lido %}
+                <span class="text-green-600">Lida</span>
+            {% else %}
+                <span class="text-red-600">Não lida</span>
+            {% endif %}
+        </p>
+
+        <div class="mt-8 space-y-6">
+
+            <a href="{% url 'messages_list' %}"
+               class="block w-full text-center bg-[#24c0eb] text-white py-3 rounded-full
+                      shadow-[0_0_5px_#24c0eb] hover:bg-[#5cceee] hover:shadow-[0_0_12px_#5cceee] transition">
+                Voltar para lista
+            </a>
+
+            <a href="{% url 'message_edit' mensagem.pk %}"
+               class="block w-full text-center bg-[#24c0eb] text-white py-3 rounded-full
+                      shadow-[0_0_5px_#24c0eb] hover:bg-[#5cceee] hover:shadow-[0_0_12px_#5cceee] transition">
+                Editar mensagem
+            </a>
+
+            <a href="{% url 'message_delete' mensagem.pk %}"
+               class="block w-full text-center bg-red-500 text-white py-4 rounded-full
+                      shadow-[0_0_7px_#ff0000] hover:bg-red-600 hover:shadow-[0_0_12px_#ff0000] transition">
+                Excluir mensagem
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

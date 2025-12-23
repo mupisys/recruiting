@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="min-h-screen p-8 bg-[#f1ebeb] text-gray-800 flex justify-center">
+
+    <div
+        class="w-full max-w-3xl p-8 rounded-[40px]
+               bg-[#eee8e8]
+               border border-[#cacaca]
+               shadow-[0_0_25px_#cacaca]"
+    >
+
+        <h1 class="text-3xl font-bold mb-6 text-center text-[#24c0eb] rounded-full py-2">
+            Editar Mensagem
+        </h1>
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="nome"
+                value="{{ mensagem.nome }}"
+                class="w-full bg-[#f1ebeb] border border-[#cacaca] text-gray-800 
+                       rounded-full px-6 py-3 shadow-[0_0_5px_#cacaca]
+                       focus:outline-none focus:border-[#24c0eb] focus:shadow-[0_0_12px_#24c0eb]"
+                required
+            >
+
+            <input
+                type="email"
+                name="email"
+                value="{{ mensagem.email }}"
+                class="w-full bg-[#f1ebeb] border border-[#cacaca] text-gray-800 
+                       rounded-full px-6 py-3 shadow-[0_0_5px_#cacaca]
+                       focus:outline-none focus:border-[#24c0eb] focus:shadow-[0_0_12px_#24c0eb]"
+                required
+            >
+
+            <textarea
+                name="mensagem"
+                rows="4"
+                class="w-full bg-[#f1ebeb] border border-[#cacaca] text-gray-800 
+                       rounded-[30px] px-6 py-3 shadow-[0_0_5px_#cacaca]
+                       focus:outline-none focus:border-[#24c0eb] focus:shadow-[0_0_12px_#24c0eb]"
+                required
+            >{{ mensagem.mensagem }}</textarea>
+
+            <div class="flex gap-4">
+
+                <button
+                    type="submit"
+                    class="w-full bg-[#24c0eb] text-white py-3 rounded-full
+                           shadow-[0_0_6px_#24c0eb]
+                           transition transform 
+                           hover:-translate-y-1 hover:bg-[#5cceee] hover:shadow-[0_0_12px_#5cceee]"
+                >
+                    Salvar
+                </button>
+
+                <a href="{% url 'message_detail' mensagem.pk %}"
+                   class="w-full text-center bg-red-500 text-white py-3 rounded-full
+                          shadow-[0_0_6px_#ff0000]
+                          hover:bg-red-600 hover:shadow-[0_0_12px_#ff0000] transition">
+                    Cancelar
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</section>
+{% endblock %}

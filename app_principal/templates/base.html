@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Projeto{% endblock %}</title>
+
+    <!-- Django nao estava reconhecendo o css, tive que fazer assim -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    
+    
+    <!--espaço para o conteudo das paginas filhas  -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- importa o htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <!-- importa o js da pasta static  -->
+    <script src="{% static 'js/main.js' %}" defer></script>
+
+</body>
+</html>

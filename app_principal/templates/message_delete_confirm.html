@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="min-h-screen p-24 bg-[#f1ebeb] text-gray-800 flex justify-center">
+
+    <div
+        class="w-full max-w-xl p-8 rounded-[40px]
+               bg-[#eee8e8]
+               border border-[#cacaca]
+               shadow-[0_0_25px_#cacaca]"
+    >
+
+        <h1 class="text-3xl font-bold text-center text-red-600 rounded-full py-2 mb-6">
+            Confirmar exclusão
+        </h1>
+
+        <p class="text-lg mb-6 text-center">
+            Tem certeza que deseja excluir a mensagem de  
+            <strong class="text-[#24c0eb]">{{ mensagem.nome }}</strong>?
+        </p>
+
+        <form method="post" class="flex flex-col gap-6">
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="w-full bg-red-500 text-white py-3 rounded-full
+                       shadow-[0_0_9px_#ff0000]
+                       hover:bg-red-600 hover:shadow-[0_0_12px_#ff0000]
+                       transition"
+            >
+                Sim, excluir
+            </button>
+
+            <a href="{% url 'message_detail' mensagem.pk %}"
+               class="w-full text-center bg-[#24c0eb] text-white py-3 rounded-full
+                      shadow-[0_0_9px_#24c0eb]
+                      hover:bg-[#5cceee] hover:shadow-[0_0_12px_#5cceee] transition">
+                Cancelar
+            </a>
+        </form>
+
+    </div>
+
+</section>
+{% endblock %}
