@@ -4,7 +4,21 @@
 {% block title %}Mensagens Recebidas{% endblock %}
 
 {% block content %}
+<!--
+    Template Django que herda a estrutura base do site (base.html).
+    Carrega a tag static para uso de arquivos estáticos (CSS, JS, imagens).
+    Define o título da página como "Mensagens Recebidas".
+    Inicia o bloco de conteúdo principal que será inserido no layout base.
+-->
 <div class="min-h-screen overflow-x-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 p-4 md:p-6">
+<!--
+    Container principal da página.
+    Garante altura mínima da tela inteira (min-h-screen),
+    evita rolagem horizontal (overflow-x-hidden),
+    aplica um fundo em gradiente diagonal (bg-gradient-to-br)
+    com cores escuras para o layout,
+    e adiciona espaçamento interno responsivo (p-4 no mobile e p-6 em telas médias+).
+-->
 
     <!-- HEADER -->
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
@@ -23,6 +37,16 @@
                 class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2">
                 🔒 Sair
             </button>
+            <!--
+    Componente interativo usando Alpine.js.
+    x-data inicializa o estado local com a variável "open" como false.
+    O botão altera o estado para true ao ser clicado (@click),
+    normalmente usado para abrir um modal ou confirmação de saída.
+    O botão é estilizado com Tailwind CSS, possui efeito hover,
+    texto em branco, espaçamento interno, bordas arredondadas
+    e ícone para indicar ação de logout ("Sair").
+-->
+
 
             <!-- MODAL -->
             <div x-show="open" x-cloak class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
@@ -31,6 +55,16 @@
                     <h2 class="text-xl font-bold text-white mb-4">
                         Confirmar logout
                     </h2>
+                    <!--
+    Modal de confirmação controlado pelo Alpine.js.
+    x-show="open" exibe o modal quando a variável open for true.
+    x-cloak impede que o modal apareça antes do Alpine.js ser carregado.
+    O fundo cobre toda a tela (fixed inset-0) com overlay escuro e centraliza o conteúdo.
+    O clique fora do modal (@click.outside) fecha o modal definindo open como false.
+    O conteúdo do modal possui estilo escuro, bordas arredondadas e largura limitada.
+    O título informa ao usuário que é uma confirmação de logout.
+-->
+
 
                     <p class="text-gray-300 mb-6">
                         Deseja realmente sair do sistema?
@@ -44,6 +78,11 @@
 
                         <form method="post" action="{% url 'logout_confirm' %}" class="flex-1">
                             {% csrf_token %}
+                            <!--
+    Gera um token CSRF (Cross-Site Request Forgery) para proteger formulários POST.
+    Necessário para que o Django valide a requisição e evite ataques maliciosos.
+-->
+
                             <button type="submit"
                                 class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
                                 Confirmar
@@ -56,11 +95,16 @@
     </div>
 
     <!-- CONTADORES (HTMX) -->
-    <div id="counters"
-     hx-get="{% url 'counters' %}?status={{ request.GET.status|default:'todas' }}"
-     hx-trigger="load, atualizarcounters from:body"
-     hx-swap="innerHTML">
-</div>
+    <div id="counters" hx-get="{% url 'counters' %}?status={{ request.GET.status|default:'todas' }}"
+        hx-trigger="load, atualizarcounters from:body" hx-swap="innerHTML">
+    </div>
+    <!--
+    Container para exibir contadores dinâmicos de mensagens ou itens.
+    hx-get: faz requisição GET via HTMX para a view 'counters', enviando o filtro de status (ou 'todas' se não houver).
+    hx-trigger: dispara a requisição ao carregar a página (load) e também quando o evento personalizado 'atualizarcounters' é emitido no body.
+    hx-swap="innerHTML": substitui o conteúdo interno do container pelo HTML retornado pela view.
+-->
+
 
     <!-- BUSCAS E FILTROS -->
     <div class="mb-6 mt-6">
@@ -69,8 +113,7 @@
             <div class="flex flex-col md:flex-row gap-4">
                 <!-- Busca por texto -->
                 <input type="text" name="q" placeholder="Buscar..."
-                    class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto" 
-                    value="{{ request.GET.q }}">
+                    class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto" value="{{ request.GET.q }}">
 
                 <!-- Filtro de data inicial -->
                 <input type="date" name="start_date"
@@ -78,8 +121,7 @@
                     value="{{ request.GET.start_date }}">
 
                 <!-- Filtro de data final -->
-                <input type="date" name="end_date" 
-                    class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto"
+                <input type="date" name="end_date" class="px-3 py-2 rounded-lg bg-slate-700 text-white w-full md:w-auto"
                     value="{{ request.GET.end_date }}">
 
                 <!-- Filtro por Status -->
@@ -104,13 +146,22 @@
                     {% endif %}
                     {% endwith %}
                 </select>
+                <!--
+    Campo de seleção (dropdown) para filtrar mensagens pelo status.
+    Estilizado com Tailwind CSS (padding, borda arredondada, fundo escuro e texto branco).
+    Opção padrão: "Todos Status" (value vazio).
+    Usa template tags do Django para marcar a opção selecionada de acordo com request.GET.status:
+        - Se status for "lida", essa opção aparece selecionada.
+        - Se status for "nao_lida", essa opção aparece selecionada.
+        - Caso nenhum status esteja definido, exibe ambas opções sem seleção.
+    Permite ao usuário filtrar mensagens por "Lida", "Não Lida" ou todos.
+-->
+
 
                 <!-- Botão Desktop -->
                 <button type="submit"
                     class="hidden md:block bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"
-                    hx-get="{% url 'messages_list' %}" 
-                    hx-include="#filter-form"
-                    hx-target="#msgs-table"
+                    hx-get="{% url 'messages_list' %}" hx-include="#filter-form" hx-target="#msgs-table"
                     hx-swap="innerHTML">
                     🔍 Filtrar
                 </button>
@@ -118,9 +169,7 @@
                 <!-- Botão Mobile -->
                 <button type="submit"
                     class="md:hidden bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white w-full"
-                    hx-get="{% url 'messages_list' %}?mobile=1" 
-                    hx-include="#filter-form"
-                    hx-target="#msgs-cards"
+                    hx-get="{% url 'messages_list' %}?mobile=1" hx-include="#filter-form" hx-target="#msgs-cards"
                     hx-swap="innerHTML">
                     🔍 Filtrar
                 </button>
@@ -132,21 +181,37 @@
     <div class="hidden md:block overflow-x-auto bg-slate-800/40 backdrop-blur-md rounded-xl border border-white/10">
         <div id="msgs-table"
             hx-get="{% url 'messages_list' %}?q={{ request.GET.q|urlencode }}&start_date={{ request.GET.start_date }}&end_date={{ request.GET.end_date }}&status={{ request.GET.status }}"
-            hx-trigger="load" 
-            hx-swap="innerHTML">
+            hx-trigger="load" hx-swap="innerHTML">
             {% include 'partials/messages_table.html' %}
         </div>
     </div>
+    <!--
+    hx-get: faz uma requisição GET assíncrona (HTMX) sem recarregar a página.
+    {% url 'messages_list' %}: gera a URL da view Django responsável pela lista de mensagens.
+    q={{ request.GET.q|urlencode }}: envia o termo de busca atual, codificado para URL.
+    start_date={{ request.GET.start_date }}: envia a data inicial do filtro.
+    end_date={{ request.GET.end_date }}: envia a data final do filtro.
+    status={{ request.GET.status }}: envia o status selecionado.
+    Todos os parâmetros mantêm os filtros ativos ao atualizar a tabela dinamicamente.
+-->
 
     <!-- ================= MOBILE (CARDS COM HTMX) ================= -->
     <div class="md:hidden w-full overflow-x-hidden">
         <div id="msgs-cards"
-             hx-get="{% url 'messages_list' %}?mobile=1&q={{ request.GET.q|urlencode }}&start_date={{ request.GET.start_date }}&end_date={{ request.GET.end_date }}&status={{ request.GET.status }}"
-             hx-trigger="load" 
-             hx-swap="innerHTML">
+            hx-get="{% url 'messages_list' %}?mobile=1&q={{ request.GET.q|urlencode }}&start_date={{ request.GET.start_date }}&end_date={{ request.GET.end_date }}&status={{ request.GET.status }}"
+            hx-trigger="load" hx-swap="innerHTML">
             {% include 'partials/messages_cards.html' %}
         </div>
     </div>
 
 </div>
+<!--
+    Bloco exclusivo para mobile (md:hidden) que exibe as mensagens em formato de cards.
+    O conteúdo é carregado dinamicamente via HTMX ao carregar a página (hx-trigger="load"),
+    fazendo uma requisição GET para a view Django 'messages_list'.
+    O parâmetro mobile=1 informa ao backend que deve retornar o layout em cards.
+    Os filtros atuais (busca, data inicial, data final e status) são mantidos na requisição.
+    O HTML retornado substitui o conteúdo interno do container (hx-swap="innerHTML"),
+    com um template fallback inicial ('messages_cards.html').
+-->
 {% endblock %}
