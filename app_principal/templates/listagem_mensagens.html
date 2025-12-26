@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Mensagens - Layout Estático</title>
+    <title>Gerenciamento de mensagens</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen p-6">
+<body class="bg-gray-100 min-h-screen p-6" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 
     <div class="max-w-6xl mx-auto">
         <h1 class="text-2xl font-bold text-gray-800 mb-6">
@@ -17,19 +17,20 @@
 
         <div class="bg-white rounded-lg shadow p-6 mb-8">
             <h2 class="text-lg font-semibold text-gray-700 mb-4">Filtrar mensagens</h2>
-            <form action="{% url 'lista_mensagens'%}" method="GET">
+            <form method="GET" hx-get="{% url 'lista_mensagens' %}" hx-target="#lista-container"
+                hx-trigger="change from:select, submit">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
                         <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
                         <input type="text" id="nome" name="nome" value="{{request.GET.nome}}"
-                            placeholder="Ex: João Silva"
+                            hx-trigger="keyup changed delay:500ms" placeholder="Ex: João Silva"
                             class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
 
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                         <input type="email" id="email" value="{{request.GET.email}}" name="email"
-                            placeholder="Ex: joao@email.com"
+                            hx-trigger="keyup changed delay:500ms" placeholder="Ex: joao@email.com"
                             class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
 
@@ -52,8 +53,8 @@
                     <div class="md:col-span-2 lg:col-span-4">
                         <label for="texto" class="block text-sm font-medium text-gray-700 mb-1">Conteúdo da
                             mensagem</label>
-                        <input type="text" id="texto" name="texto" value="{{request.GET.texto}}"
-                            placeholder="Buscar por palavras-chave na mensagem..."
+                        <input type="text" id="texto" hx-trigger="keyup changed delay:500ms" name="texto"
+                            value="{{request.GET.texto}}" placeholder="Buscar por palavras-chave na mensagem..."
                             class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
 
@@ -65,55 +66,16 @@
                     <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md">
                         🔍 Buscar
                     </button>
+                    <span class="htmx-indicator text-indigo-600 text-sm ml-2">Buscando...</span>
                 </div>
             </form>
         </div>
 
-        {%for i in mensagens%}
-        <div class="bg-white rounded-lg shadow divide-y">
-
-            <div class="p-5 flex flex-col md:flex-row justify-between gap-4 transition bg-indigo-50">
-                <div class="flex-1">
-                    <div class="flex items-center gap-3">
-                        <h2 class="text-lg font-semibold text-gray-800">{{i.nome}}</h2>
-                        <span class="text-xs font-medium px-2 py-1 rounded-full bg-indigo-600 text-white">
-                            Não lida
-                        </span>
-                    </div>
-
-                    <p class="text-sm text-gray-600">{{i.email}}</p>
-
-                    <p class="mt-2 text-gray-700">
-                        {{i.mensagem}}
-                    </p>
-                </div>
-
-                <div class="flex flex-col md:items-end gap-3">
-                    <span class="text-sm text-gray-500">18/12/2025</span>
-
-                    <div class="flex gap-2 flex-wrap">
-
-
-                        <button
-                            class="flex items-center gap-1 px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 focus:ring-2 focus:ring-blue-400">
-                            👁 Visualizar
-                        </button>
-
-                        <button
-                            class="flex items-center gap-1 px-3 py-2 text-sm bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-400">
-                            ✏️ Marcar
-                        </button>
-
-                        <button
-                            class="flex items-center gap-1 px-3 py-2 text-sm bg-red-600 text-white rounded hover:bg-red-700 focus:ring-2 focus:ring-red-400">
-                            🗑 Apagar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
+        <div id="lista-container">
+            {% include "_mensagens_partial.html" %}
         </div>
-        {% endfor %}
+
+        <div id="modal-container"></div>
 
 </body>
 

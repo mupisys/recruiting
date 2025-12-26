@@ -29,9 +29,8 @@ def cria_mensagem(request):
 
 
 def lista_mensagens(request):
-    mensagens = Message.objects.all()
-    #  mensagens = Message.objects.all()
-     
+    mensagens = Message.objects.all().order_by('-id')
+    
     data_mensagem = request.GET.get('data')
     texto_mensagem = request.GET.get('texto')
     status_mensagem = request.GET.get('status')
@@ -39,28 +38,49 @@ def lista_mensagens(request):
     email_mensagem = request.GET.get('email')
 
     if data_mensagem:
-             mensagens = mensagens.filter(data_envio = data_mensagem)
-
+        mensagens = mensagens.filter(data_envio=data_mensagem)
     if texto_mensagem:
-             mensagens = mensagens.filter(mensagem__icontains = texto_mensagem)
-             
+        mensagens = mensagens.filter(mensagem__icontains=texto_mensagem)
     if status_mensagem:
-             if status_mensagem == 'lida':
-                    mensagens = mensagens.filter(lido=True)
-             elif status_mensagem == 'Não lida':
-                    mensagens = mensagens.filter(lido=False)
-           
+        if status_mensagem == 'lida':
+            mensagens = mensagens.filter(lido=True)
+        elif status_mensagem == 'nao_lida':
+            mensagens = mensagens.filter(lido=False)
     if contato_mensagem:
-             mensagens = mensagens.filter(nome__icontains = contato_mensagem)
-
+        mensagens = mensagens.filter(nome__icontains=contato_mensagem)
     if email_mensagem:
-             mensagens = mensagens.filter(email__icontains = email_mensagem)
+        mensagens = mensagens.filter(email__icontains=email_mensagem)
 
-    return render(request, 'listagem_mensagens.html', {'mensagens':mensagens})
+    context = {'mensagens': mensagens}
 
-# def apaga_mensagem(request, id):
-#     pass
+    if request.headers.get('HX-Request'):
+        return render(request, '_mensagens_partial.html', context)
+    
+    return render(request, 'listagem_mensagens.html', context)
+
+def apaga_mensagem(request, id):
+    mensagem = get_object_or_404(Message, id=id)
+    mensagem.delete()
+    return HttpResponse("")
 
 
-# def atualiza_mensagem(request, id):
-#     pass
+def atualiza_status(request, id):
+    mensagem = get_object_or_404(Message, id=id) 
+    mensagem.lido = not mensagem.lido
+    mensagem.save()
+    return render(request, '_mensagens_partial.html', {'mensagens': [mensagem]})
+
+
+def editar_mensagem(request, id):
+    mensagem = get_object_or_404(Message, id=id)
+    
+    
+    if request.method == 'POST':
+        novo_conteudo = request.POST.get('conteudo_mensagem')
+        
+        
+        if novo_conteudo:
+            mensagem.mensagem = novo_conteudo
+            mensagem.save()
+            
+    return render(request, '_mensagens_partial.html', {'mensagens': [mensagem]})
