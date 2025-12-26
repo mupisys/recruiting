@@ -1,0 +1,100 @@
+{% for i in mensagens %}
+<div class="bg-white rounded-lg shadow divide-y mb-4" id="linha-mensagem-{{ i.id }}">
+
+    <div class="p-5 flex flex-col md:flex-row justify-between gap-4 transition bg-indigo-50">
+        <div class="flex-1 cursor-pointer group"
+            onclick="document.getElementById('modal-{{ i.id }}').classList.remove('hidden'); document.getElementById('modal-{{ i.id }}').classList.add('flex')">
+            <div class="flex items-center gap-3">
+                <h2 class="text-lg font-semibold text-gray-800">{{ i.nome }}</h2>
+                {% if i.lido %}
+                <span class="text-xs font-medium px-2 py-1 rounded-full bg-green-100 text-green-800">Lida</span>
+                {% else %}
+                <span class="text-xs font-medium px-2 py-1 rounded-full bg-indigo-600 text-white">Não lida</span>
+                {% endif %}
+            </div>
+            <p class="text-sm text-gray-600">{{ i.email }}</p>
+            <p class="mt-2 text-gray-700">{{ i.mensagem|truncatechars:80 }}</p>
+        </div>
+
+        <div class="flex flex-col md:items-end gap-3">
+            <span class="text-sm text-gray-500">{{ i.data_envio|date:"d/m/Y" }}</span>
+
+            <div class="flex gap-2 flex-wrap">
+
+                <button
+                    onclick="document.getElementById('modal-editar-{{ i.id }}').classList.remove('hidden'); document.getElementById('modal-editar-{{ i.id }}').classList.add('flex')"
+                    class="flex items-center gap-1 px-3 py-2 text-sm bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                    Editar
+                </button>
+
+                <button hx-post="{% url 'atualiza_status' i.id %}" hx-target="#linha-mensagem-{{ i.id }}"
+                    hx-swap="outerHTML"
+                    class="flex items-center gap-1 px-3 py-2 text-sm bg-yellow-500 text-white rounded hover:bg-yellow-600">
+                    Marcar
+                </button>
+
+                <button hx-delete="{% url 'apaga_mensagem' i.id %}"
+                    hx-confirm="Tem certeza que deseja apagar a mensagem de {{ i.nome }}?"
+                    hx-target="#linha-mensagem-{{ i.id }}" hx-swap="delete"
+                    class="flex items-center gap-1 px-3 py-2 text-sm bg-red-600 text-white rounded hover:bg-red-700">
+                    Apagar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-{{ i.id }}" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white w-full max-w-lg rounded-lg shadow-xl p-6 m-4 relative">
+
+            <h2 class="text-xl font-bold text-gray-800 mb-1">{{ i.nome }}</h2>
+            <p class="text-sm text-gray-500 mb-4">{{ i.email }}</p>
+
+            <div class="bg-gray-50 p-4 rounded-md text-gray-700 mb-6 max-h-60 overflow-y-auto">
+                {{ i.mensagem }}
+            </div>
+
+            <div class="flex justify-end">
+                <button
+                    onclick="document.getElementById('modal-{{ i.id }}').classList.add('hidden'); document.getElementById('modal-{{ i.id }}').classList.remove('flex')"
+                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-editar-{{ i.id }}"
+        class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 cursor-default">
+        <div class="bg-white w-full max-w-lg rounded-lg shadow-xl p-6 m-4 relative" onclick="event.stopPropagation()">
+
+            <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Editar Mensagem</h3>
+
+            <form hx-post="{% url 'editar_mensagem' i.id %}" hx-target="#linha-mensagem-{{ i.id }}" hx-swap="outerHTML">
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Conteúdo da Mensagem</label>
+                    <textarea name="conteudo_mensagem" rows="6"
+                        class="w-full rounded-md border border-gray-300 p-3 text-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none">{{ i.mensagem }}</textarea>
+                </div>
+
+                <div class="flex justify-end gap-3 bg-gray-50 -mx-6 -mb-6 p-4 rounded-b-lg mt-4">
+                    <button type="button"
+                        onclick="document.getElementById('modal-editar-{{ i.id }}').classList.add('hidden'); document.getElementById('modal-editar-{{ i.id }}').classList.remove('flex')"
+                        class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-medium">
+                        Cancelar
+                    </button>
+
+                    <button type="submit"
+                        class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 font-medium shadow-sm">
+                         Salvar Alterações
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+{% empty %}
+<div class="text-center p-6 text-gray-500">Nenhuma mensagem encontrada.</div>
+{% endfor %}

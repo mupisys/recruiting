@@ -1,0 +1,130 @@
+ <!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software House - Soluções Digitais</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            900: '#1e1b4b', // Indigo profundo
+                            800: '#312e81',
+                            600: '#4f46e5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 font-sans antialiased">
+
+    <section class="relative bg-brand-900 overflow-hidden">
+        <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-32 lg:pb-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-8">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-indigo-400/30 bg-indigo-400/10 text-indigo-300 text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-indigo-400 mr-2"></span>
+                        Disponível para novos projetos
+                    </div>
+                    
+                    <h1 class="text-4xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Transformamos ideias complexas em <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Software de Alto Impacto</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-300 max-w-xl">
+                        Desenvolvimento sob medida, arquitetura escalável e consultoria especializada. Levamos sua empresa para o próximo nível digital com tecnologia de ponta.
+                    </p>
+
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Desenvolvimento Full-Stack Ágil
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Integração de Sistemas & API
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Suporte 24/7 Especializado
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
+                    <div class="absolute inset-0 bg-indigo-600 transform rotate-3 rounded-2xl opacity-30 blur-sm"></div>
+                    
+                    <div class="relative w-full bg-white rounded-2xl shadow-2xl p-8" x-data="formcadastro()">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-gray-900">Fale com um Especialista</h3>
+                            <p class="text-gray-500 text-sm mt-1">Preencha os dados abaixo para iniciar seu atendimento.</p>
+                        </div>
+
+                        <form class="space-y-4" hx-post="{% url 'enviar_mensagem'%}" method="POST">
+                            {% csrf_token %} <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                                <input name="nome" type="text" x-model="form.nome"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
+                                    placeholder="Seu nome completo" />
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input name="email" type="email" x-model="form.email"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
+                                    placeholder="seu@empresa.com">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                                <textarea name="mensagem" rows="5" 
+                                    class="w-full min-h-[120px] px-4 py-2 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none resize-y transition-all leading-normal" 
+                                    placeholder="Descreva seu projeto ou necessidade..."></textarea>
+                            </div>
+                            
+                            <button type="submit"
+                                class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+                                Enviar Mensagem
+                            </button>
+
+                            <div class="htmx-indicator text-center text-sm text-indigo-600 mt-2">
+                                Enviando...
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function formcadastro() {
+            return {
+                form: {
+                    nome: '',
+                    email: ''
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

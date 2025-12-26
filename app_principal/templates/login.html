@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Login - Sistema{% endblock %}
+
+{% block conteudo %}
+
+<div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+    <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
+
+    <div id="div-erro" class="mb-4">
+        <h3></h3>
+    </div>
+
+    <form hx-post="{% url 'valida_login' %}" hx-target="#div-erro" hx-swap="innerHTML" class="space-y-4">{% csrf_token%}
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Usuário</label>
+            <input type="text" name="username"
+                class="mt-1 p-2 w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                placeholder="Seu usuário" required />
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Senha</label>
+            <input type="password" name="password"
+                class="mt-1 p-2 w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
+            Entrar
+        </button>
+        <div class="htmx-indicator flex justify-center mt-2">
+            <span class="text-indigo-600 text-sm">Validando...</span>
+        </div>
+    </form>
+</div>
+{% endblock %}
