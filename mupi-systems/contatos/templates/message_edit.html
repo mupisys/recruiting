@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-purple-500/20 px-6 py-4">
+        <div class="container mx-auto">
+            <a href="{% url 'messages_list' %}" class="text-purple-400 hover:text-purple-300">← Voltar para lista</a>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8 max-w-3xl">
+        <div class="bg-slate-800/50 backdrop-blur-md rounded-2xl border border-purple-500/20 p-8">
+            <h2 class="text-3xl font-bold text-white mb-8">Editar Mensagem</h2>
+            
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+                
+                <div>
+                    <label class="block text-gray-300 mb-2 font-semibold">Nome</label>
+                    <input 
+                        type="text" 
+                        name="nome" 
+                        value="{{ mensagem.nome }}"
+                        required 
+                        class="w-full bg-slate-900/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500"
+                    >
+                </div>
+
+                <div>
+                    <label class="block text-gray-300 mb-2 font-semibold">E-mail</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        value="{{ mensagem.email }}"
+                        required 
+                        class="w-full bg-slate-900/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500"
+                    >
+                </div>
+
+                <div>
+                    <label class="block text-gray-300 mb-2 font-semibold">Mensagem</label>
+                    <textarea 
+                        name="mensagem" 
+                        rows="8" 
+                        required 
+                        class="w-full bg-slate-900/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500"
+                    >{{ mensagem.mensagem }}</textarea>
+                </div>
+
+                <div class="flex gap-4">
+                    <button 
+                        type="submit" 
+                        class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all"
+                    >
+                        💾 Salvar Alterações
+                    </button>
+                    <a 
+                        href="{% url 'messages_list' %}" 
+                        class="flex-1 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all"
+                    >
+                        ❌ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

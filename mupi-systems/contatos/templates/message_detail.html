@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-purple-500/20 px-6 py-4">
+        <div class="container mx-auto">
+            <a href="{% url 'messages_list' %}" class="text-purple-400 hover:text-purple-300">
+                ← Voltar para lista
+            </a>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8 max-w-3xl">
+        <div class="bg-slate-800/50 backdrop-blur-md rounded-2xl border border-purple-500/20 p-8">
+            <h2 class="text-3xl font-bold text-white mb-8">
+                Detalhes da Mensagem
+            </h2>
+
+            <div class="space-y-6">
+
+                <div>
+                    <label class="text-gray-400 text-sm font-semibold">Nome</label>
+                    <p class="text-white text-xl">{{ mensagem.nome }}</p>
+                </div>
+
+                <div>
+                    <label class="text-gray-400 text-sm font-semibold">E-mail</label>
+                    <p class="text-white text-xl">{{ mensagem.email }}</p>
+                </div>
+
+                <div>
+                    <label class="text-gray-400 text-sm font-semibold">Data de Envio</label>
+                    <p class="text-white text-xl">
+                        {{ mensagem.data_envio|date:"d/m/Y às H:i" }}
+                    </p>
+                </div>
+
+                <!-- STATUS + BOTÃO LIDO (HTMX) -->
+                <div>
+                    <label class="text-gray-400 text-sm font-semibold">Status</label>
+
+                    <div class="flex items-center gap-4 mt-2">
+                        <span class="px-4 py-2 rounded-full text-lg
+                            {% if mensagem.lido %}
+                                bg-green-500/20 text-green-400
+                            {% else %}
+                                bg-orange-500/20 text-orange-400
+                            {% endif %}
+                        ">
+                            {% if mensagem.lido %}
+                                ✓ Lida
+                            {% else %}
+                                ⚠ Não lida
+                            {% endif %}
+                        </span>
+
+                        <!-- BOTÃO ÚNICO REUTILIZÁVEL -->
+                        <div id="container-lido-{{ mensagem.id }}">
+                            {% include '<partials>
+                            <botao_lida></botao_lida>.html' %}
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-gray-400 text-sm font-semibold">Mensagem</label>
+                    <div class="mt-2 p-4 bg-slate-900/50 rounded-lg">
+                        <p class="text-white text-lg leading-relaxed">
+                            {{ mensagem.mensagem }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 mt-8">
+                    <a href="{% url 'message_edit' mensagem.pk %}"
+                       class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all">
+                        ✏️ Editar
+                    </a>
+
+                    <a href="{% url 'message_delete' mensagem.pk %}"
+                       class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all">
+                        🗑️ Excluir
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
