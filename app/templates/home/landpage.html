@@ -1,0 +1,155 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}Home - Heritage Auto{% endblock %}
+
+{% block content %}
+<div x-data="appData()" x-init="init()" class="min-h-screen">
+    <!-- Hero Section -->
+    <div class="relative h-[80vh] flex items-center justify-center overflow-hidden -mt-24 pt-24 mb-20">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-[-1]">
+            <source src="{% static 'assets/porsche-background.mp4' %}" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 z-[-1] bg-black/60 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
+        
+        <div class="text-center px-4" data-aos="fade-up">
+            <h1 class="text-6xl md:text-8xl font-black italic uppercase leading-none mb-6">
+                Heritage <span class="text-primary block md:inline">Auto</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-muted mb-10 font-light tracking-wide">Paixão por velocidade. Legado pela performance.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a class="bg-primary text-black font-bold uppercase py-3 px-8 hover:bg-white hover:scale-105 transition-all duration-300" href="{% url 'post_create' %}">
+                    Ligar motores
+                </a>
+                <a class="border border-white text-white font-bold uppercase py-3 px-8 hover:bg-white hover:text-black transition-all duration-300" href="{% url 'message_create' %}">
+                    Fale Conosco
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-screen-xl mx-auto px-4">
+        <!-- Official News Section -->
+        <div class="mb-20" x-show="news.length > 0" style="display: none;">
+            <div class="mb-10 border-b-2 border-primary inline-block pr-5" data-aos="fade-right">
+                <h2 class="text-3xl font-black italic uppercase">Notícias Oficiais</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <template x-for="(post, index) in news" :key="post.id">
+                    <div class="bg-card group hover:-translate-y-2 transition-transform duration-300 shadow-lg hover:shadow-black/50" data-aos="fade-up" :data-aos-delay="index * 100">
+                        <div class="bg-primary text-black font-bold uppercase px-4 py-2 text-sm tracking-wider">Oficial</div>
+                        <template x-if="post.image">
+                            <div class="h-48 overflow-hidden">
+                                <img :src="post.image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" :alt="post.title">
+                            </div>
+                        </template>
+                        <div class="p-6">
+                            <h5 class="text-xl font-bold mb-2">
+                                <a :href="'/post/' + post.id + '/'" class="hover:text-primary transition-colors" x-text="post.title"></a>
+                            </h5>
+                            <h6 class="text-sm text-muted mb-4 uppercase tracking-wide" x-text="post.category ? post.category.name : ''"></h6>
+                            <p class="text-gray-400 mb-4 line-clamp-3" x-text="truncate(post.content, 100)"></p>
+                            <div class="text-xs text-muted border-t border-white/10 pt-4" x-text="formatDate(post.created_at)"></div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            
+            <!-- Load More News -->
+            <div class="text-center mt-8" x-show="newsNext">
+                <button @click="loadMoreNews()" class="bg-transparent border border-primary text-primary hover:bg-primary hover:text-black font-bold py-2 px-6 rounded transition-colors duration-300 uppercase text-sm tracking-wider">
+                    Carregar mais notícias
+                </button>
+            </div>
+        </div>
+
+        <!-- Community Feed -->
+        <div class="mb-20">
+            <div class="mb-10 border-b-2 border-primary inline-block pr-5" data-aos="fade-right">
+                <h2 class="text-3xl font-black italic uppercase">Comunidade no grid</h2>
+            </div>
+            
+            <div class="space-y-12">
+                <template x-for="post in communityPosts" :key="post.id">
+                    <div class="bg-card group hover:shadow-2xl transition-shadow duration-300" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row">
+                            <!-- Media Handling -->
+                            <template x-if="post.image">
+                                <div class="md:w-1/3 h-64 md:h-auto overflow-hidden">
+                                    <img :src="post.image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" :alt="post.title">
+                                </div>
+                            </template>
+                            <template x-if="!post.image && post.video">
+                                <div class="md:w-1/3 bg-black">
+                                    <div class="aspect-video h-full">
+                                        <video controls class="w-full h-full object-cover">
+                                            <source :src="post.video" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </template>
+                            <template x-if="!post.image && !post.video">
+                                <div class="hidden md:block md:w-0"></div>
+                            </template>
+
+                            <!-- Content -->
+                            <div :class="{'md:w-2/3': post.image || post.video, 'w-full': !post.image && !post.video}" class="p-8 flex flex-col">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-2xl font-bold hover:text-primary transition-colors">
+                                        <a :href="'/post/' + post.id + '/'" x-text="post.title"></a>
+                                    </h3>
+                                    <span class="bg-gray-700 text-xs font-bold px-2 py-1 rounded uppercase" x-text="post.category ? post.category.name : ''"></span>
+                                </div>
+                                
+                                <div class="text-sm text-muted mb-6">
+                                    por <span class="text-white font-semibold" x-text="post.author"></span>
+                                </div>
+                                
+                                <p class="text-gray-300 mb-6 flex-grow" x-text="truncate(post.content, 300)"></p>
+                                
+                                <div class="flex items-center gap-6 pt-6 border-t border-white/10 mt-auto">
+                                    <a :href="'/post/' + post.id + '/'" class="text-primary text-sm font-bold uppercase hover:text-white transition-colors">Read More</a>
+                                    
+                                    <!-- Like Button -->
+                                    <button @click="likePost(post)" class="flex items-center gap-2 text-muted hover:text-primary transition-colors group/like">
+                                        <i class="bi" :class="post.is_liked ? 'bi-heart-fill text-primary' : 'bi-heart group-hover/like:text-primary'"></i>
+                                        <span x-text="post.likes_count"></span>
+                                    </button>
+
+                                    <div class="flex items-center gap-2 text-muted">
+                                        <i class="bi bi-chat-dots"></i>
+                                        <span x-text="post.comments_count"></span>
+                                    </div>
+                                    <small class="text-muted ml-auto" x-text="timeSince(post.created_at) + ' ago'"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Load More Community -->
+                <div class="text-center mt-12" x-show="communityNext">
+                    <button @click="loadMoreCommunity()" class="bg-transparent border border-white text-white hover:bg-white hover:text-black font-bold py-3 px-8 rounded transition-colors duration-300 uppercase tracking-wider">
+                        Carregar mais posts
+                    </button>
+                </div>
+
+                <!-- Empty State -->
+                <div x-show="communityPosts.length === 0 && !loading" class="text-center py-20 bg-card/50 border border-white/5" style="display: none;">
+                    <p class="text-muted text-xl mb-6">Ainda não há publicações na comunidade. Seja o primeiro!</p>
+                    <a href="{% url 'post_create' %}" class="bg-primary text-black font-bold uppercase py-3 px-8 hover:bg-white transition-colors">
+                        Criar postagem
+                    </a>
+                </div>
+                
+                <!-- Loading State -->
+                <div x-show="loading" class="text-center py-20">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'home/landpage.js' %}"></script>
+{% endblock %}

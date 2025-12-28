@@ -1,0 +1,1044 @@
+[
+    {
+        "model": "app.category",
+        "pk": 32,
+        "fields": {
+            "name": "Superesportivos",
+            "slug": "superesportivos"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 33,
+        "fields": {
+            "name": "Clßssicos",
+            "slug": "classicos"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 34,
+        "fields": {
+            "name": "SUVs & Off-Road",
+            "slug": "suvs-off-road"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 35,
+        "fields": {
+            "name": "Motos Esportivas",
+            "slug": "motos-esportivas"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 36,
+        "fields": {
+            "name": "Custom & Chopper",
+            "slug": "custom-chopper"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 37,
+        "fields": {
+            "name": "ElÚtricos & HÝbridos",
+            "slug": "elÚtricos-hibridos"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 38,
+        "fields": {
+            "name": "F¾rmula 1",
+            "slug": "formula-1"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 39,
+        "fields": {
+            "name": "ManutenþÒo & Dicas",
+            "slug": "manutenþÒo-dicas"
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 223,
+        "fields": {
+            "title": "A nova Ferrari SF90 Stradale",
+            "author": 3,
+            "category": 32,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o A nova Ferrari SF90 Stradale Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Superesportivos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_1_5qt9dV5.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:04:15.768Z",
+            "updated_at": "2025-12-18T22:04:15.768Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 224,
+        "fields": {
+            "title": "Hist¾ria do Ford Mustang 1967",
+            "author": 3,
+            "category": 33,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Hist¾ria do Ford Mustang 1967 Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Clßssicos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_2_JYjLAIh.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:19.608Z",
+            "updated_at": "2025-12-18T22:04:19.608Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 225,
+        "fields": {
+            "title": "Teste do novo Jeep Compass 4xe",
+            "author": 3,
+            "category": 34,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Teste do novo Jeep Compass 4xe Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria SUVs & Off-Road.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_3_AhlITCA.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:23.902Z",
+            "updated_at": "2025-12-18T22:04:23.902Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 226,
+        "fields": {
+            "title": "Ducati Panigale V4: Uma fera nas pistas",
+            "author": 3,
+            "category": 35,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Ducati Panigale V4: Uma fera nas pistas Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Motos Esportivas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_4_XRQLQK0.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:27.725Z",
+            "updated_at": "2025-12-18T22:04:27.725Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 227,
+        "fields": {
+            "title": "Harley-Davidson Sportster S: Review completo",
+            "author": 5,
+            "category": 36,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Harley-Davidson Sportster S: Review completo Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Custom & Chopper.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_5_eeqJRwm.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:04:31.236Z",
+            "updated_at": "2025-12-18T22:04:31.236Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 228,
+        "fields": {
+            "title": "Tesla Model S Plaid chega ao Brasil",
+            "author": 5,
+            "category": 37,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Tesla Model S Plaid chega ao Brasil Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ElÚtricos & HÝbridos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_6_qnCXZtX.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:37.111Z",
+            "updated_at": "2025-12-18T22:04:37.111Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 229,
+        "fields": {
+            "title": "Verstappen domina o GP da Holanda",
+            "author": 3,
+            "category": 38,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Verstappen domina o GP da Holanda Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria F¾rmula 1.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_7_H0RffEi.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:43.664Z",
+            "updated_at": "2025-12-18T22:04:43.664Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 230,
+        "fields": {
+            "title": "Como cuidar da pintura do seu carro",
+            "author": 5,
+            "category": 39,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Como cuidar da pintura do seu carro Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ManutenþÒo & Dicas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_8_tbFxr5h.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:47.155Z",
+            "updated_at": "2025-12-18T22:04:47.155Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 231,
+        "fields": {
+            "title": "Porsche 911 GT3 RS: O rei de N³rburgring",
+            "author": 5,
+            "category": 32,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Porsche 911 GT3 RS: O rei de N³rburgring Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Superesportivos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_9_zi9A2Tr.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:04:50.419Z",
+            "updated_at": "2025-12-18T22:04:50.419Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 232,
+        "fields": {
+            "title": "Fusca Itamar: Vale a pena colecionar?",
+            "author": 5,
+            "category": 33,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Fusca Itamar: Vale a pena colecionar? Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Clßssicos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_10_fUlNDeJ.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:54.015Z",
+            "updated_at": "2025-12-18T22:04:54.015Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 233,
+        "fields": {
+            "title": "Toyota Hilux GR-Sport: Brutalidade e conforto",
+            "author": 5,
+            "category": 34,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Toyota Hilux GR-Sport: Brutalidade e conforto Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria SUVs & Off-Road.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_11_4SjXHV3.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:04:57.614Z",
+            "updated_at": "2025-12-18T22:04:57.614Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 234,
+        "fields": {
+            "title": "Kawasaki Ninja ZX-10R atualizada",
+            "author": 3,
+            "category": 35,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Kawasaki Ninja ZX-10R atualizada Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Motos Esportivas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_12_1uk9T8f.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:05:02.428Z",
+            "updated_at": "2025-12-18T22:05:02.428Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 235,
+        "fields": {
+            "title": "Indian Scout Bobber: Estilo e potÛncia",
+            "author": 3,
+            "category": 36,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Indian Scout Bobber: Estilo e potÛncia Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Custom & Chopper.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_13_GoSp6Lk.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:05:05.902Z",
+            "updated_at": "2025-12-18T22:05:05.902Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 236,
+        "fields": {
+            "title": "BYD Dolphin: O elÚtrico popular?",
+            "author": 3,
+            "category": 37,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o BYD Dolphin: O elÚtrico popular? Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ElÚtricos & HÝbridos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_14_nGlsREM.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:05:13.766Z",
+            "updated_at": "2025-12-18T22:05:13.766Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 237,
+        "fields": {
+            "title": "Hamilton renova com a Mercedes",
+            "author": 3,
+            "category": 38,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Hamilton renova com a Mercedes Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria F¾rmula 1.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_15_gSQidBJ.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:05:17.691Z",
+            "updated_at": "2025-12-18T22:05:17.691Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 238,
+        "fields": {
+            "title": "Quando trocar os pneus da moto?",
+            "author": 5,
+            "category": 39,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Quando trocar os pneus da moto? Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ManutenþÒo & Dicas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_16_ynRbMdv.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:05:24.308Z",
+            "updated_at": "2025-12-18T22:05:24.308Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 239,
+        "fields": {
+            "title": "Lamborghini Revuelto: O sucessor do Aventador",
+            "author": 5,
+            "category": 32,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Lamborghini Revuelto: O sucessor do Aventador Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Superesportivos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_17_m3MoBo0.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:05:42.840Z",
+            "updated_at": "2025-12-18T22:05:42.840Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 240,
+        "fields": {
+            "title": "Opala SS: O muscle car brasileiro",
+            "author": 5,
+            "category": 33,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Opala SS: O muscle car brasileiro Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Clßssicos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_18_Qsjb0L4.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:05:46.742Z",
+            "updated_at": "2025-12-18T22:05:46.742Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 241,
+        "fields": {
+            "title": "Land Rover Defender 130: Espaþo para 8",
+            "author": 3,
+            "category": 34,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Land Rover Defender 130: Espaþo para 8 Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria SUVs & Off-Road.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_19_88RxH6y.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:05:51.702Z",
+            "updated_at": "2025-12-18T22:05:51.702Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 242,
+        "fields": {
+            "title": "Yamaha R1M: Tecnologia de MotoGP",
+            "author": 5,
+            "category": 35,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Yamaha R1M: Tecnologia de MotoGP Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Motos Esportivas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_20_Oj9cuKA.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:05:55.147Z",
+            "updated_at": "2025-12-18T22:05:55.147Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 243,
+        "fields": {
+            "title": "Royal Enfield Super Meteor 650",
+            "author": 3,
+            "category": 36,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Royal Enfield Super Meteor 650 Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Custom & Chopper.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_21_ci18E39.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:05:58.528Z",
+            "updated_at": "2025-12-18T22:05:58.528Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 244,
+        "fields": {
+            "title": "Volvo EX30: O SUV compacto elÚtrico",
+            "author": 3,
+            "category": 37,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Volvo EX30: O SUV compacto elÚtrico Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ElÚtricos & HÝbridos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_22_qFEBcJp.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:02.108Z",
+            "updated_at": "2025-12-18T22:06:02.108Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 245,
+        "fields": {
+            "title": "Calendßrio da F1 2026 revelado",
+            "author": 3,
+            "category": 38,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Calendßrio da F1 2026 revelado Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria F¾rmula 1.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_23_IfTkVyi.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:05.812Z",
+            "updated_at": "2025-12-18T22:06:05.812Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 246,
+        "fields": {
+            "title": "Mitos e verdades sobre ¾leo de motor",
+            "author": 3,
+            "category": 39,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Mitos e verdades sobre ¾leo de motor Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ManutenþÒo & Dicas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_24_8E0mEt0.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:06:09.216Z",
+            "updated_at": "2025-12-18T22:06:09.216Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 247,
+        "fields": {
+            "title": "McLaren 750S: Mais leve e potente",
+            "author": 3,
+            "category": 32,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o McLaren 750S: Mais leve e potente Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Superesportivos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_25_gemtu8a.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:06:13.871Z",
+            "updated_at": "2025-12-18T22:06:13.871Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 248,
+        "fields": {
+            "title": "Kombi Corujinha: RestauraþÒo passo a passo",
+            "author": 5,
+            "category": 33,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Kombi Corujinha: RestauraþÒo passo a passo Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Clßssicos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_26_NyVtPAi.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:21.668Z",
+            "updated_at": "2025-12-18T22:06:21.668Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 249,
+        "fields": {
+            "title": "Ford Bronco Sport: Aventureiro urbano",
+            "author": 3,
+            "category": 34,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Ford Bronco Sport: Aventureiro urbano Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria SUVs & Off-Road.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_27_cFD16ZL.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:24.747Z",
+            "updated_at": "2025-12-18T22:06:24.747Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 250,
+        "fields": {
+            "title": "BMW S1000RR: A rainha das superbikes",
+            "author": 5,
+            "category": 35,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o BMW S1000RR: A rainha das superbikes Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Motos Esportivas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_28_PmtpCY6.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:28.437Z",
+            "updated_at": "2025-12-18T22:06:28.437Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 251,
+        "fields": {
+            "title": "Triumph Bonneville T120 Black",
+            "author": 3,
+            "category": 36,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Triumph Bonneville T120 Black Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Custom & Chopper.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_29_dNXYYHo.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:06:32.919Z",
+            "updated_at": "2025-12-18T22:06:32.919Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 252,
+        "fields": {
+            "title": "GWM Haval H6 GT: O SUV cupÛ hÝbrido",
+            "author": 3,
+            "category": 37,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o GWM Haval H6 GT: O SUV cupÛ hÝbrido Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ElÚtricos & HÝbridos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_30_htoYk46.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:36.013Z",
+            "updated_at": "2025-12-18T22:06:36.013Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 253,
+        "fields": {
+            "title": "As novas regras aerodinÔmicas da F1",
+            "author": 3,
+            "category": 38,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o As novas regras aerodinÔmicas da F1 Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria F¾rmula 1.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_31_2Bnfwix.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:41.012Z",
+            "updated_at": "2025-12-18T22:06:41.012Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 254,
+        "fields": {
+            "title": "Como limpar o carburador da moto",
+            "author": 3,
+            "category": 39,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Como limpar o carburador da moto Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ManutenþÒo & Dicas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_32_phrcldx.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:06:47.243Z",
+            "updated_at": "2025-12-18T22:06:47.243Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 255,
+        "fields": {
+            "title": "Bugatti Chiron: O adeus ao W16",
+            "author": 3,
+            "category": 32,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Bugatti Chiron: O adeus ao W16 Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Superesportivos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_33_0WIbFe3.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:06:50.874Z",
+            "updated_at": "2025-12-18T22:06:50.874Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 256,
+        "fields": {
+            "title": "Maverick V8: O clßssico desejado",
+            "author": 3,
+            "category": 33,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Maverick V8: O clßssico desejado Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Clßssicos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_34_RIGD0mj.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:06:54.352Z",
+            "updated_at": "2025-12-18T22:06:54.352Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 257,
+        "fields": {
+            "title": "Mitsubishi Pajero Sport Legend",
+            "author": 3,
+            "category": 34,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Mitsubishi Pajero Sport Legend Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria SUVs & Off-Road.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_35_99qN1Z2.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:06:58.118Z",
+            "updated_at": "2025-12-18T22:06:58.118Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 258,
+        "fields": {
+            "title": "Honda CBR 1000RR-R Fireblade SP",
+            "author": 5,
+            "category": 35,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Honda CBR 1000RR-R Fireblade SP Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Motos Esportivas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_36_BNteWjq.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:02.511Z",
+            "updated_at": "2025-12-18T22:07:02.511Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 259,
+        "fields": {
+            "title": "Harley Breakout 117: O retorno",
+            "author": 5,
+            "category": 36,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Harley Breakout 117: O retorno Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Custom & Chopper.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_37_FIxD9n5.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:05.756Z",
+            "updated_at": "2025-12-18T22:07:05.756Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 260,
+        "fields": {
+            "title": "Renault Megane E-Tech: 100% elÚtrico",
+            "author": 5,
+            "category": 37,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Renault Megane E-Tech: 100% elÚtrico Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ElÚtricos & HÝbridos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_38_KnLveFm.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:07:09.480Z",
+            "updated_at": "2025-12-18T22:07:09.480Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 261,
+        "fields": {
+            "title": "Senna: O legado eterno na F1",
+            "author": 5,
+            "category": 38,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Senna: O legado eterno na F1 Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria F¾rmula 1.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_39_4bg0KzQ.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:12.012Z",
+            "updated_at": "2025-12-18T22:07:12.012Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 262,
+        "fields": {
+            "title": "Freios ABS vs CBS: Qual a diferenþa?",
+            "author": 3,
+            "category": 39,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Freios ABS vs CBS: Qual a diferenþa? Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ManutenþÒo & Dicas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_40_7sBA8xB.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:07:15.069Z",
+            "updated_at": "2025-12-18T22:07:15.069Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 263,
+        "fields": {
+            "title": "Aston Martin Valhalla: HÝbrido de 950cv",
+            "author": 5,
+            "category": 32,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Aston Martin Valhalla: HÝbrido de 950cv Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Superesportivos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_41_ysXddBB.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:07:18.402Z",
+            "updated_at": "2025-12-18T22:07:18.402Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 264,
+        "fields": {
+            "title": "Dodge Charger R/T 1970",
+            "author": 3,
+            "category": 33,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Dodge Charger R/T 1970 Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Clßssicos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_42_oMMNxRU.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:07:22.307Z",
+            "updated_at": "2025-12-18T22:07:22.307Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 265,
+        "fields": {
+            "title": "Suzuki Jimny Sierra: Pequeno gigante",
+            "author": 5,
+            "category": 34,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Suzuki Jimny Sierra: Pequeno gigante Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria SUVs & Off-Road.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_43_Kdkwfa5.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:07:27.806Z",
+            "updated_at": "2025-12-18T22:07:27.806Z",
+            "likes": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 266,
+        "fields": {
+            "title": "Suzuki Hayabusa: O falcÒo peregrino",
+            "author": 3,
+            "category": 35,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Suzuki Hayabusa: O falcÒo peregrino Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Motos Esportivas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_44_r5sO0Q3.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:07:34.566Z",
+            "updated_at": "2025-12-18T22:07:34.566Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 267,
+        "fields": {
+            "title": "Honda Shadow 750: Ainda vale a pena?",
+            "author": 5,
+            "category": 36,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Honda Shadow 750: Ainda vale a pena? Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Custom & Chopper.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_45_0UeB56O.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:39.694Z",
+            "updated_at": "2025-12-18T22:07:39.694Z",
+            "likes": [
+                3,
+                5
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 268,
+        "fields": {
+            "title": "Nissan Leaf: O pioneiro dos elÚtricos",
+            "author": 5,
+            "category": 37,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Nissan Leaf: O pioneiro dos elÚtricos Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ElÚtricos & HÝbridos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_46_EKOEBtA.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:42.981Z",
+            "updated_at": "2025-12-18T22:07:42.981Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 269,
+        "fields": {
+            "title": "GP de Interlagos: Ingressos esgotados",
+            "author": 5,
+            "category": 38,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o GP de Interlagos: Ingressos esgotados Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria F¾rmula 1.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_47_aopB1UU.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:45.964Z",
+            "updated_at": "2025-12-18T22:07:45.964Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 270,
+        "fields": {
+            "title": "Polimento tÚcnico: O que Ú?",
+            "author": 3,
+            "category": 39,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Polimento tÚcnico: O que Ú? Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria ManutenþÒo & Dicas.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_48_NML8IOi.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:50.947Z",
+            "updated_at": "2025-12-18T22:07:50.947Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 271,
+        "fields": {
+            "title": "Koenigsegg Jesko: Velocidade mßxima",
+            "author": 5,
+            "category": 32,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Koenigsegg Jesko: Velocidade mßxima Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Superesportivos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_49_uk9L8YM.jpg",
+            "video": "",
+            "is_official": true,
+            "created_at": "2025-12-18T22:07:54.237Z",
+            "updated_at": "2025-12-18T22:07:54.237Z",
+            "likes": []
+        }
+    },
+    {
+        "model": "app.post",
+        "pk": 272,
+        "fields": {
+            "title": "Chevrolet Chevette: O clßssico de entrada",
+            "author": 3,
+            "category": 33,
+            "content": "\nO mundo automotivo estß sempre em evoluþÒo, e o Chevrolet Chevette: O clßssico de entrada Ú a prova disso.\n\nCom design arrojado e performance impressionante, este modelo chega para redefinir os padr§es da categoria Clßssicos.\n\nDestaques:\n- MotorizaþÒo potente e eficiente\n- Acabamento premium em todos os detalhes\n- Tecnologia embarcada de ·ltima geraþÒo\n\nNÒo deixe de conferir as fotos exclusivas e o vÝdeo de avaliaþÒo completa.\n        ",
+            "image": "posts/post_50_1rfGytK.jpg",
+            "video": "",
+            "is_official": false,
+            "created_at": "2025-12-18T22:07:58.108Z",
+            "updated_at": "2025-12-18T22:07:58.108Z",
+            "likes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$cKaFuUngiwPnX4mXAjFvAh$HIV/Q51eFkWpw3I21zuDAfiZp2AuWZnGYSkJFfkoXWw=",
+            "last_login": "2025-12-18T22:02:26.392Z",
+            "is_superuser": true,
+            "username": "matheusmoc456",
+            "first_name": "",
+            "last_name": "",
+            "email": "matheusandrade009@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2025-12-18T18:13:06.679Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "testuser",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-12-18T20:56:45.472Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$qbg07u7Q5HERbOAF72OxCZ$lbLEpQhL7TUpAw2xmNEXbARaiWg2gOf4EzB6ZVmlbaA=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@example.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2025-12-18T21:53:14.686Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$hH7BZ9K7I9ct50ttU9uGoy$GSkOD3Q6x7T4/lgi8VgZ3N5srqwSEI9w5kD6gAGrF1c=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "user",
+            "first_name": "",
+            "last_name": "",
+            "email": "user@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-12-18T21:53:14.956Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$hTsALYZUvmmpCrejLzJBZr$fG0bgvJBqpvp+9QXZgX+4kasRQAhhxUj1l2Cr2Tq2BQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "leitor",
+            "first_name": "",
+            "last_name": "",
+            "email": "leitor@heritage.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-12-18T21:58:10.377Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
