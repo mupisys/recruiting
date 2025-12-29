@@ -62,6 +62,18 @@ testeMuPi/
 └── media/                                               # Uploads de arquivos
 ```
 
+## Demo: Capturas de tela do projeto
+
+### Landing Page e Público
+| Página Inicial | Formulário de Contato | Serviços |
+|---|---|---|
+| ![Página Inicial](app_screenshots/Página%20Inicial.png) | ![Contato](app_screenshots/Formulário%20de%20Contato.png) | ![Serviços](app_screenshots/Serviços%20Oferecidos.png) |
+
+### Área Administrativa
+| Login | Mensagens Recebidas | Edição |
+|---|---|---|
+| ![Login](app_screenshots/Login%20Administrativo.png) | ![Mensagens](app_screenshots/Mensagens%20Recebidas.png) | ![Editar](app_screenshots/Editar%20Mensagem.png) |
+
 ## Como Rodar o Projeto
 
 ### Pré-requisitos
