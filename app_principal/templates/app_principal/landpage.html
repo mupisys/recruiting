@@ -1,0 +1,368 @@
+<script src="https://unpkg.com/lucide@latest"></script>
+
+{% extends 'app_principal/base.html' %}
+
+{% block title %}TechSolutions - Transformando Ideias em Soluções Digitais{% endblock %}
+
+{% block content %}
+<section class="pt-20 md:pt-28 pb-16">
+    <div class="shell grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-10 lg:gap-16 items-center">
+        <div class="space-y-6 fade-in-up">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs font-medium text-indigo-700 shadow-sm ring-1 ring-indigo-100">
+                <span class="inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-sky-400"></span>
+                Software house focada em experiência
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900">
+                TechSolutions
+                <span class="block bg-gradient-to-r from-indigo-500 via-sky-500 to-purple-500 bg-clip-text text-transparent">
+                    plataforma digital sob medida
+                </span>
+            </h1>
+            <p class="text-base md:text-lg text-slate-600 max-w-xl">
+                Projetamos produtos digitais com o mesmo cuidado de quem projeta hardware de ponta:
+                foco em detalhes, fluidez nas interações e uma experiência que simplesmente funciona.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+                <a href="#contato"
+                   class="btn-primary-soft inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 hover:bg-black">
+                    Falar com o time
+                    <svg class="ml-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a href="#servicos"
+                   class="inline-flex items-center justify-center rounded-full border border-slate-300/80 bg-white/70 px-6 py-3 text-sm font-medium text-slate-700 hover:border-slate-400 hover:bg-white">
+                    Ver soluções
+                </a>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 pt-4 text-xs text-slate-500">
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                        ✓
+                    </span>
+                    <span>Arquitetura escalável e segura</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-100 text-sky-600">
+                        ●
+                    </span>
+                    <span>Interfaces inspiradas em grandes produtos</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative fade-in-up-delayed">
+            <div class="absolute -top-10 -right-6 h-32 w-32 rounded-full bg-gradient-to-br from-indigo-300/40 via-sky-200/40 to-transparent blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-[-2rem] left-[-3rem] h-40 w-40 rounded-full bg-gradient-to-tr from-purple-300/40 via-pink-200/40 to-transparent blur-3xl pointer-events-none"></div>
+
+            <div class="relative rounded-3xl bg-white/80 p-6 md:p-7 lg:p-8 card-elevated border border-slate-200/80 backdrop-blur">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-slate-900 text-xs font-semibold text-white">
+                            TS
+                        </span>
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Dashboard</p>
+                            <p class="text-sm font-semibold text-slate-900">Inbox de projetos</p>
+                        </div>
+                    </div>
+                    <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-medium text-emerald-700">
+                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                        Online
+                    </span>
+                </div>
+
+                <div class="space-y-2.5 text-xs">
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-slate-50/80 px-3 py-2.5">
+                        <div>
+                            <p class="font-medium text-slate-900">Nova proposta SaaS</p>
+                            <p class="text-[11px] text-slate-500">TechNova • há 5 minutos</p>
+                        </div>
+                        <span class="inline-flex h-6 items-center rounded-full bg-indigo-100 px-3 text-[10px] font-medium text-indigo-700">
+                            Não lida
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-white px-3 py-2.5">
+                        <div>
+                            <p class="font-medium text-slate-900">App interno para squads</p>
+                            <p class="text-[11px] text-slate-500">FinBank • hoje, 10:12</p>
+                        </div>
+                        <span class="inline-flex h-6 items-center rounded-full bg-emerald-50 px-3 text-[10px] font-medium text-emerald-700">
+                            Em andamento
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-white px-3 py-2.5">
+                        <div>
+                            <p class="font-medium text-slate-900">Landing page para lançamento</p>
+                            <p class="text-[11px] text-slate-500">StartupX • ontem</p>
+                        </div>
+                        <span class="inline-flex h-6 items-center rounded-full bg-slate-100 px-3 text-[10px] font-medium text-slate-700">
+                            Concluído
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-5 grid grid-cols-3 gap-3 border-t border-slate-100 pt-4 text-[11px] text-slate-500">
+                    <div>
+                        <p class="font-medium text-slate-900 text-sm">+120</p>
+                        <p>projetos entregues</p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-slate-900 text-sm">98%</p>
+                        <p>satisfação</p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-slate-900 text-sm">24/7</p>
+                        <p>acompanhamento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sobre" class="py-18 md:py-20 bg-white/90">
+    <div class="shell">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sobre a TechSolutions</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Somos uma software house especializada em desenvolver soluções tecnológicas inovadoras
+                que transformam desafios em oportunidades de crescimento.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-left p-6 rounded-2xl border border-slate-200/80 bg-white card-elevated">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">Agilidade</h3>
+                <p class="text-sm text-gray-600 mt-1">Entregas rápidas sem comprometer a estabilidade e a experiência do usuário.</p>
+            </div>
+            <div class="text-left p-6 rounded-2xl border border-slate-200/80 bg-white card-elevated">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">Qualidade</h3>
+                <p class="text-sm text-gray-600 mt-1">Código limpo, testado e pensado para ser fácil de manter e evoluir.</p>
+            </div>
+            <div class="text-left p-6 rounded-2xl border border-slate-200/80 bg-white card-elevated">
+                <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">Suporte</h3>
+                <p class="text-sm text-gray-600 mt-1">Acompanhamento próximo, com um time que fala a linguagem do negócio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="servicos" class="py-20">
+    <div class="shell">
+
+        <header class="max-w-2xl mb-14 fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+                Nossos Serviços
+            </h2>
+
+            <p class="mt-4 text-base md:text-lg text-slate-600 leading-relaxed">
+                Oferecemos soluções completas para transformar sua presença digital.
+            </p>
+        </header>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 fade-in-up-delayed">
+
+            <article class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8">
+                <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <i data-lucide="layout"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">
+                    Desenvolvimento Web
+                </h3>
+                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Sites e aplicações web modernas, responsivas e de alta performance.
+                </p>
+            </article>
+
+            <article class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8">
+                <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <i data-lucide="smartphone"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">
+                    Apps Mobile
+                </h3>
+                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Aplicativos nativos e híbridos para iOS e Android.
+                </p>
+            </article>
+
+            <article class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8">
+                <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <i data-lucide="cloud"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">
+                    Cloud Solutions
+                </h3>
+                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Infraestrutura e soluções em nuvem escaláveis.
+                </p>
+            </article>
+
+            <article class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8">
+                <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <i data-lucide="cpu"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">
+                    Automação
+                </h3>
+                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Automatize processos e aumente a produtividade.
+                </p>
+            </article>
+
+            <article class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8">
+                <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <i data-lucide="shield-check"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">
+                    Segurança
+                </h3>
+                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Proteção de dados e sistemas com as melhores práticas.
+                </p>
+            </article>
+
+            <article class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8">
+                <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <i data-lucide="bar-chart-3"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">
+                    Consultoria
+                </h3>
+                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Análise e estratégias para otimizar seus processos.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+    lucide.createIcons();
+</script>
+
+
+<section id="contato" class="py-20">
+    <div class="shell">
+
+        <header class="max-w-2xl mb-14 fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+                Entre em Contato
+            </h2>
+
+            <p class="mt-4 text-base md:text-lg text-slate-600 leading-relaxed">
+                Tem um projeto em mente? Vamos conversar e transformar sua ideia em realidade.
+            </p>
+        </header>
+
+        <div class="grid gap-10 lg:grid-cols-2 fade-in-up-delayed">
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-slate-900">
+                        Vamos começar uma conversa
+                    </h3>
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                        Preencha o formulário ao lado ou utilize um dos canais abaixo.
+                        Respondemos normalmente em até 1 dia útil.
+                    </p>
+                </div>
+
+                <ul class="space-y-4 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-0.5 h-2 w-2 rounded-full bg-indigo-600"></span>
+                        Atendimento personalizado para cada projeto
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-0.5 h-2 w-2 rounded-full bg-indigo-600"></span>
+                        Soluções sob medida para sua necessidade
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-0.5 h-2 w-2 rounded-full bg-indigo-600"></span>
+                        Comunicação clara e acompanhamento contínuo
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-elevated rounded-2xl bg-white/80 backdrop-blur p-8 md:p-10">
+
+                <form method="POST" action="{% url 'app_principal:landpage' %}" class="space-y-6">
+                    {% csrf_token %}
+
+                    <div class="space-y-1.5">
+                        <label for="{{ form.name.id_for_label }}" class="text-sm font-medium text-slate-700">
+                            {{ form.name.label }}
+                        </label>
+
+                        {{ form.name }}
+
+                        {% if form.name.errors %}
+                            <p class="text-sm text-rose-600">
+                                {{ form.name.errors.0 }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="{{ form.email.id_for_label }}" class="text-sm font-medium text-slate-700">
+                            {{ form.email.label }}
+                        </label>
+
+                        {{ form.email }}
+
+                        {% if form.email.errors %}
+                            <p class="text-sm text-rose-600">
+                                {{ form.email.errors.0 }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="{{ form.message.id_for_label }}" class="text-sm font-medium text-slate-700">
+                            {{ form.message.label }}
+                        </label>
+
+                        {{ form.message }}
+
+                        {% if form.message.errors %}
+                            <p class="text-sm text-rose-600">
+                                {{ form.message.errors.0 }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn-primary-soft w-full rounded-xl bg-indigo-600 px-6 py-3
+                               text-sm font-medium text-white"
+                    >
+                        Enviar mensagem
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

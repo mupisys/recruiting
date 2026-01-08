@@ -1,0 +1,86 @@
+{% extends 'app_principal/base_admin.html' %}
+
+{% block title %}Excluir Mensagem - TechSolutions{% endblock %}
+
+{% block admin_content %}
+<div class="mb-6 flex items-center justify-between">
+    <a href="{% url 'app_principal:message_detail' message.id %}"
+       class="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Voltar
+    </a>
+    <span class="text-[11px] uppercase tracking-widest text-slate-400">
+        Exclusão permanente
+    </span>
+</div>
+
+<div class="mx-auto max-w-xl">
+    <div class="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur p-8 shadow-sm">
+
+        <div class="flex items-start gap-4">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50 text-red-600">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </div>
+
+            <div>
+                <h1 class="text-lg font-semibold text-slate-900">
+                    Excluir mensagem
+                </h1>
+                <p class="mt-1 text-sm text-slate-600">
+                    Esta ação é permanente e não poderá ser desfeita.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
+            <div class="grid gap-3">
+                <div>
+                    <span class="block text-xs font-medium text-slate-500">Remetente</span>
+                    <span class="text-slate-900">
+                        {{ message.name }} · {{ message.email }}
+                    </span>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-medium text-slate-500">Recebida em</span>
+                    <span class="text-slate-900">
+                        {{ message.createdAt|date:"d/m/Y à\\s H:i" }}
+                    </span>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-medium text-slate-500">Conteúdo</span>
+                    <p class="mt-1 text-slate-800">
+                        {{ message.message|truncatewords:25 }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 flex justify-end gap-3">
+
+            <a href="{% url 'app_principal:message_detail' message.id %}"
+               class="rounded-lg border border-slate-300 bg-white px-4 py-2
+                      text-sm font-medium text-slate-700 hover:bg-slate-100 transition">
+                Cancelar
+            </a>
+
+            <form method="POST" action="{% url 'app_principal:message_delete' message.id %}">
+                {% csrf_token %}
+                <button type="submit"
+                        class="rounded-lg bg-red-600 px-4 py-2
+                               text-sm font-medium text-white hover:bg-red-700 transition">
+                    Excluir definitivamente
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
